@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FN2-b9-1B2">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Translate View Controller-->
+        <scene sceneID="ic2-te-CmN">
+            <objects>
+                <viewController id="9DO-Xp-hip" customClass="TranslateViewController" customModule="Le_Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zin-Pe-htS" customClass="transports">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JGa-A8-eq6">
+                                <rect key="frame" x="67" y="182" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBrownColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KtA-hS-VAK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="translate_icon" id="Dac-5v-vFV"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="elC-TY-4KL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-676" y="130"/>
+        </scene>
+        <!--Weather View Controller-->
+        <scene sceneID="bV6-eL-qLi">
+            <objects>
+                <viewController id="QaK-Ey-9SI" customClass="WeatherViewController" customModule="Le_Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y89-c5-Fwa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="5JH-XN-XRZ"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="weather_icon" id="uE7-0F-BiC"/>
+                    <navigationItem key="navigationItem" id="1g6-aj-RS3"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qsg-Dw-rcU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-676" y="868"/>
+        </scene>
+        <!--Money Rates View Controller-->
+        <scene sceneID="6m5-gM-wgW">
+            <objects>
+                <viewController id="3jO-Sn-7Zp" customClass="MoneyRatesViewController" customModule="Le_Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HxR-7l-BGw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZ0-Dg-U38">
+                                <rect key="frame" x="67" y="188" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bWx-Lc-AFe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="money_rates_icon" id="4Z3-T5-sWx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l1T-7e-ZBp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-676" y="-564"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ThJ-U8-Wnt">
+            <objects>
+                <tabBarController id="FN2-b9-1B2" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="82D-AQ-Dyg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="3jO-Sn-7Zp" kind="relationship" relationship="viewControllers" id="WH0-6h-ZdN"/>
+                        <segue destination="9DO-Xp-hip" kind="relationship" relationship="viewControllers" id="8e2-LW-uC0"/>
+                        <segue destination="QaK-Ey-9SI" kind="relationship" relationship="viewControllers" id="Z2A-vq-HSd"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FWJ-au-kf4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1597" y="95"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="money_rates_icon" width="48" height="48"/>
+        <image name="translate_icon" width="48" height="48"/>
+        <image name="weather_icon" width="48" height="48"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
