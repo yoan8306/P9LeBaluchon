@@ -10,13 +10,15 @@
 		5F53C9C127DFDACF00D34834 /* wallpaperCurrency.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5F53C9C027DFDACF00D34834 /* wallpaperCurrency.jpg */; };
 		5FE431EC27DD39C0001040D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE431EB27DD39C0001040D3 /* AppDelegate.swift */; };
 		5FE431EE27DD39C0001040D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE431ED27DD39C0001040D3 /* SceneDelegate.swift */; };
-		5FE431F027DD39C0001040D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE431EF27DD39C0001040D3 /* ViewController.swift */; };
 		5FE431F327DD39C0001040D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE431F127DD39C0001040D3 /* Main.storyboard */; };
 		5FE431F527DD39C3001040D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FE431F427DD39C3001040D3 /* Assets.xcassets */; };
 		5FE431F827DD39C3001040D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE431F627DD39C3001040D3 /* LaunchScreen.storyboard */; };
 		5FE4320327DD39C3001040D3 /* Le_BaluchonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE4320227DD39C3001040D3 /* Le_BaluchonTests.swift */; };
 		5FE4320D27DD39C4001040D3 /* Le_BaluchonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE4320C27DD39C4001040D3 /* Le_BaluchonUITests.swift */; };
 		5FE4320F27DD39C4001040D3 /* Le_BaluchonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE4320E27DD39C4001040D3 /* Le_BaluchonUITestsLaunchTests.swift */; };
+		5FE5A37127E0B64E0002B586 /* MoneyRatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE5A37027E0B64E0002B586 /* MoneyRatesViewController.swift */; };
+		5FE5A37327E0B6660002B586 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE5A37227E0B6660002B586 /* TranslateViewController.swift */; };
+		5FE5A37527E0B6770002B586 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE5A37427E0B6770002B586 /* WeatherViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +43,6 @@
 		5FE431E827DD39C0001040D3 /* Le Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Le Baluchon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE431EB27DD39C0001040D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FE431ED27DD39C0001040D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5FE431EF27DD39C0001040D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5FE431F227DD39C0001040D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5FE431F427DD39C3001040D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FE431F727DD39C3001040D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +52,9 @@
 		5FE4320827DD39C4001040D3 /* Le BaluchonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Le BaluchonUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE4320C27DD39C4001040D3 /* Le_BaluchonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Le_BaluchonUITests.swift; sourceTree = "<group>"; };
 		5FE4320E27DD39C4001040D3 /* Le_BaluchonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Le_BaluchonUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5FE5A37027E0B64E0002B586 /* MoneyRatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyRatesViewController.swift; sourceTree = "<group>"; };
+		5FE5A37227E0B6660002B586 /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
+		5FE5A37427E0B6770002B586 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,9 +82,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5FB7A8FB27E0B53F00BA1BF3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		5FCB6F3227DF96E900C90DBF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5FB7A8FB27E0B53F00BA1BF3 /* Services */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -89,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				5FE431F627DD39C3001040D3 /* LaunchScreen.storyboard */,
-				5FE431F427DD39C3001040D3 /* Assets.xcassets */,
 				5FE431F127DD39C0001040D3 /* Main.storyboard */,
 			);
 			path = View;
@@ -98,7 +109,9 @@
 		5FCB6F3527DF970700C90DBF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5FE431EF27DD39C0001040D3 /* ViewController.swift */,
+				5FE5A37027E0B64E0002B586 /* MoneyRatesViewController.swift */,
+				5FE5A37227E0B6660002B586 /* TranslateViewController.swift */,
+				5FE5A37427E0B6770002B586 /* WeatherViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -106,10 +119,9 @@
 		5FCB6F3627DF971100C90DBF /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				5FE431F427DD39C3001040D3 /* Assets.xcassets */,
 				5F53C9C027DFDACF00D34834 /* wallpaperCurrency.jpg */,
-				5FE431EB27DD39C0001040D3 /* AppDelegate.swift */,
 				5FE431F927DD39C3001040D3 /* Info.plist */,
-				5FE431ED27DD39C0001040D3 /* SceneDelegate.swift */,
 			);
 			path = "Supporting files";
 			sourceTree = "<group>";
@@ -137,6 +149,8 @@
 		5FE431EA27DD39C0001040D3 /* Le Baluchon */ = {
 			isa = PBXGroup;
 			children = (
+				5FE431EB27DD39C0001040D3 /* AppDelegate.swift */,
+				5FE431ED27DD39C0001040D3 /* SceneDelegate.swift */,
 				5FCB6F3227DF96E900C90DBF /* Model */,
 				5FCB6F3327DF96F300C90DBF /* View */,
 				5FCB6F3527DF970700C90DBF /* Controller */,
@@ -294,9 +308,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FE431F027DD39C0001040D3 /* ViewController.swift in Sources */,
+				5FE5A37527E0B6770002B586 /* WeatherViewController.swift in Sources */,
+				5FE5A37327E0B6660002B586 /* TranslateViewController.swift in Sources */,
 				5FE431EC27DD39C0001040D3 /* AppDelegate.swift in Sources */,
 				5FE431EE27DD39C0001040D3 /* SceneDelegate.swift in Sources */,
+				5FE5A37127E0B64E0002B586 /* MoneyRatesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,13 +9,20 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Translate View Controller-->
         <scene sceneID="ic2-te-CmN">
             <objects>
-                <viewController id="9DO-Xp-hip" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zin-Pe-htS">
+                <viewController id="9DO-Xp-hip" customClass="TranslateViewController" customModule="Le_Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zin-Pe-htS" customClass="transports">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JGa-A8-eq6">
+                                <rect key="frame" x="67" y="182" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBrownColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="KtA-hS-VAK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -25,15 +32,15 @@
             </objects>
             <point key="canvasLocation" x="-676" y="130"/>
         </scene>
-        <!--View Controller-->
+        <!--Weather View Controller-->
         <scene sceneID="bV6-eL-qLi">
             <objects>
-                <viewController id="QaK-Ey-9SI" sceneMemberID="viewController">
+                <viewController id="QaK-Ey-9SI" customClass="WeatherViewController" customModule="Le_Baluchon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y89-c5-Fwa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="5JH-XN-XRZ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="overcastday_weather_sun_cloudy_4493" id="uE7-0F-BiC"/>
                     <navigationItem key="navigationItem" id="1g6-aj-RS3"/>
@@ -43,17 +50,24 @@
             </objects>
             <point key="canvasLocation" x="-676" y="868"/>
         </scene>
-        <!--View Controller-->
+        <!--Money Rates View Controller-->
         <scene sceneID="6m5-gM-wgW">
             <objects>
-                <viewController id="3jO-Sn-7Zp" sceneMemberID="viewController">
+                <viewController id="3jO-Sn-7Zp" customClass="MoneyRatesViewController" customModule="Le_Baluchon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HxR-7l-BGw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZ0-Dg-U38">
+                                <rect key="frame" x="67" y="188" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="bWx-Lc-AFe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="business_network_globe_money_international_transfer_icon_188725" id="4Z3-T5-sWx"/>
+                    <tabBarItem key="tabBarItem" title="" image="moneyrates" id="4Z3-T5-sWx"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l1T-7e-ZBp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -80,11 +94,20 @@
         </scene>
     </scenes>
     <resources>
-        <image name="business_network_globe_money_international_transfer_icon_188725" width="48" height="48"/>
         <image name="chat_bubble_translate_icon_217473-2" width="32" height="32"/>
+        <image name="moneyrates" width="128" height="128"/>
         <image name="overcastday_weather_sun_cloudy_4493" width="48" height="48"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
