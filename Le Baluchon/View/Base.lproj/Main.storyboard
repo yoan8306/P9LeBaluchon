@@ -26,7 +26,7 @@
                         <viewLayoutGuide key="safeArea" id="KtA-hS-VAK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="chat_bubble_translate_icon_217473-2" id="Dac-5v-vFV"/>
+                    <tabBarItem key="tabBarItem" title="" image="translate_icon" id="Dac-5v-vFV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="elC-TY-4KL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -42,7 +42,7 @@
                         <viewLayoutGuide key="safeArea" id="5JH-XN-XRZ"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="overcastday_weather_sun_cloudy_4493" id="uE7-0F-BiC"/>
+                    <tabBarItem key="tabBarItem" title="" image="weather_icon" id="uE7-0F-BiC"/>
                     <navigationItem key="navigationItem" id="1g6-aj-RS3"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
@@ -67,7 +67,7 @@
                         <viewLayoutGuide key="safeArea" id="bWx-Lc-AFe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="moneyrates" id="4Z3-T5-sWx"/>
+                    <tabBarItem key="tabBarItem" title="" image="money_rates_icon" id="4Z3-T5-sWx"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l1T-7e-ZBp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -94,9 +94,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chat_bubble_translate_icon_217473-2" width="32" height="32"/>
-        <image name="moneyrates" width="128" height="128"/>
-        <image name="overcastday_weather_sun_cloudy_4493" width="48" height="48"/>
+        <image name="money_rates_icon" width="48" height="48"/>
+        <image name="translate_icon" width="48" height="48"/>
+        <image name="weather_icon" width="48" height="48"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
