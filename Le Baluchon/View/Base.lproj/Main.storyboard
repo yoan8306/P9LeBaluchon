@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FN2-b9-1B2">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ic2-te-CmN">
+            <objects>
+                <viewController id="9DO-Xp-hip" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zin-Pe-htS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="KtA-hS-VAK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="chat_bubble_translate_icon_217473-2" id="Dac-5v-vFV"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="elC-TY-4KL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-676" y="130"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bV6-eL-qLi">
+            <objects>
+                <viewController id="QaK-Ey-9SI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y89-c5-Fwa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="5JH-XN-XRZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="overcastday_weather_sun_cloudy_4493" id="uE7-0F-BiC"/>
+                    <navigationItem key="navigationItem" id="1g6-aj-RS3"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qsg-Dw-rcU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-676" y="868"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="6m5-gM-wgW">
+            <objects>
+                <viewController id="3jO-Sn-7Zp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HxR-7l-BGw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="bWx-Lc-AFe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="business_network_globe_money_international_transfer_icon_188725" id="4Z3-T5-sWx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l1T-7e-ZBp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-676" y="-564"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ThJ-U8-Wnt">
+            <objects>
+                <tabBarController id="FN2-b9-1B2" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="82D-AQ-Dyg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="3jO-Sn-7Zp" kind="relationship" relationship="viewControllers" id="WH0-6h-ZdN"/>
+                        <segue destination="9DO-Xp-hip" kind="relationship" relationship="viewControllers" id="8e2-LW-uC0"/>
+                        <segue destination="QaK-Ey-9SI" kind="relationship" relationship="viewControllers" id="Z2A-vq-HSd"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FWJ-au-kf4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1597" y="95"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="business_network_globe_money_international_transfer_icon_188725" width="48" height="48"/>
+        <image name="chat_bubble_translate_icon_217473-2" width="32" height="32"/>
+        <image name="overcastday_weather_sun_cloudy_4493" width="48" height="48"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

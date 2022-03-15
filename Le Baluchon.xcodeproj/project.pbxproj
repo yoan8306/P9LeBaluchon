@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F53C9C127DFDACF00D34834 /* wallpaperCurrency.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5F53C9C027DFDACF00D34834 /* wallpaperCurrency.jpg */; };
 		5FE431EC27DD39C0001040D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE431EB27DD39C0001040D3 /* AppDelegate.swift */; };
 		5FE431EE27DD39C0001040D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE431ED27DD39C0001040D3 /* SceneDelegate.swift */; };
 		5FE431F027DD39C0001040D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE431EF27DD39C0001040D3 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F53C9C027DFDACF00D34834 /* wallpaperCurrency.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wallpaperCurrency.jpg; sourceTree = "<group>"; };
 		5FE431E827DD39C0001040D3 /* Le Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Le Baluchon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE431EB27DD39C0001040D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FE431ED27DD39C0001040D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,7 +45,7 @@
 		5FE431F227DD39C0001040D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5FE431F427DD39C3001040D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FE431F727DD39C3001040D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		5FE431F927DD39C3001040D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FE431F927DD39C3001040D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Le Baluchon/Supporting files/Info.plist"; sourceTree = SOURCE_ROOT; };
 		5FE431FE27DD39C3001040D3 /* Le BaluchonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Le BaluchonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE4320227DD39C3001040D3 /* Le_BaluchonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Le_BaluchonTests.swift; sourceTree = "<group>"; };
 		5FE4320827DD39C4001040D3 /* Le BaluchonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Le BaluchonUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5FCB6F3227DF96E900C90DBF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5FCB6F3327DF96F300C90DBF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5FE431F627DD39C3001040D3 /* LaunchScreen.storyboard */,
+				5FE431F427DD39C3001040D3 /* Assets.xcassets */,
+				5FE431F127DD39C0001040D3 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5FCB6F3527DF970700C90DBF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5FE431EF27DD39C0001040D3 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5FCB6F3627DF971100C90DBF /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				5F53C9C027DFDACF00D34834 /* wallpaperCurrency.jpg */,
+				5FE431EB27DD39C0001040D3 /* AppDelegate.swift */,
+				5FE431F927DD39C3001040D3 /* Info.plist */,
+				5FE431ED27DD39C0001040D3 /* SceneDelegate.swift */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
 		5FE431DF27DD39C0001040D3 = {
 			isa = PBXGroup;
 			children = (
@@ -99,13 +137,10 @@
 		5FE431EA27DD39C0001040D3 /* Le Baluchon */ = {
 			isa = PBXGroup;
 			children = (
-				5FE431EB27DD39C0001040D3 /* AppDelegate.swift */,
-				5FE431ED27DD39C0001040D3 /* SceneDelegate.swift */,
-				5FE431EF27DD39C0001040D3 /* ViewController.swift */,
-				5FE431F127DD39C0001040D3 /* Main.storyboard */,
-				5FE431F427DD39C3001040D3 /* Assets.xcassets */,
-				5FE431F627DD39C3001040D3 /* LaunchScreen.storyboard */,
-				5FE431F927DD39C3001040D3 /* Info.plist */,
+				5FCB6F3227DF96E900C90DBF /* Model */,
+				5FCB6F3327DF96F300C90DBF /* View */,
+				5FCB6F3527DF970700C90DBF /* Controller */,
+				5FCB6F3627DF971100C90DBF /* Supporting files */,
 			);
 			path = "Le Baluchon";
 			sourceTree = "<group>";
@@ -232,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FE431F827DD39C3001040D3 /* LaunchScreen.storyboard in Resources */,
+				5F53C9C127DFDACF00D34834 /* wallpaperCurrency.jpg in Resources */,
 				5FE431F527DD39C3001040D3 /* Assets.xcassets in Resources */,
 				5FE431F327DD39C0001040D3 /* Main.storyboard in Resources */,
 			);
@@ -367,6 +403,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Le Baluchon/Supporting files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -422,6 +459,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Le Baluchon/Supporting files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -441,14 +479,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NLCUCTBNY2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Le Baluchon/Info.plist";
+				INFOPLIST_FILE = "Le Baluchon/Supporting files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -471,14 +509,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NLCUCTBNY2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Le Baluchon/Info.plist";
+				INFOPLIST_FILE = "Le Baluchon/Supporting files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
