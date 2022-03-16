@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F9839C927E138E700AD58D6 /* MoneyRatesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9839C827E138E700AD58D6 /* MoneyRatesServices.swift */; };
+		5F9839CB27E13A4A00AD58D6 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9839CA27E13A4A00AD58D6 /* ApiKeys.swift */; };
+		5F9839CE27E14EDF00AD58D6 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9839CD27E14EDF00AD58D6 /* Symbols.swift */; };
 		5FE431EC27DD39C0001040D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE431EB27DD39C0001040D3 /* AppDelegate.swift */; };
 		5FE431EE27DD39C0001040D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE431ED27DD39C0001040D3 /* SceneDelegate.swift */; };
 		5FE431F327DD39C0001040D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE431F127DD39C0001040D3 /* Main.storyboard */; };
@@ -38,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F9839C827E138E700AD58D6 /* MoneyRatesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyRatesServices.swift; sourceTree = "<group>"; };
+		5F9839CA27E13A4A00AD58D6 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
+		5F9839CD27E14EDF00AD58D6 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		5FE431E827DD39C0001040D3 /* Le Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Le Baluchon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE431EB27DD39C0001040D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FE431ED27DD39C0001040D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +89,7 @@
 		5FB7A8FB27E0B53F00BA1BF3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				5F9839C827E138E700AD58D6 /* MoneyRatesServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -90,6 +97,7 @@
 		5FCB6F3227DF96E900C90DBF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5F9839CD27E14EDF00AD58D6 /* Symbols.swift */,
 				5FB7A8FB27E0B53F00BA1BF3 /* Services */,
 			);
 			path = Model;
@@ -119,6 +127,7 @@
 			children = (
 				5FE431F427DD39C3001040D3 /* Assets.xcassets */,
 				5FE431F927DD39C3001040D3 /* Info.plist */,
+				5F9839CA27E13A4A00AD58D6 /* ApiKeys.swift */,
 			);
 			path = "Supporting files";
 			sourceTree = "<group>";
@@ -304,8 +313,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F9839CB27E13A4A00AD58D6 /* ApiKeys.swift in Sources */,
+				5F9839CE27E14EDF00AD58D6 /* Symbols.swift in Sources */,
 				5FE5A37527E0B6770002B586 /* WeatherViewController.swift in Sources */,
 				5FE5A37327E0B6660002B586 /* TranslateViewController.swift in Sources */,
+				5F9839C927E138E700AD58D6 /* MoneyRatesServices.swift in Sources */,
 				5FE431EC27DD39C0001040D3 /* AppDelegate.swift in Sources */,
 				5FE431EE27DD39C0001040D3 /* SceneDelegate.swift in Sources */,
 				5FE5A37127E0B64E0002B586 /* MoneyRatesViewController.swift in Sources */,

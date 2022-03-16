@@ -58,14 +58,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZ0-Dg-U38">
-                                <rect key="frame" x="67" y="188" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZ0-Dg-U38">
+                                <rect key="frame" x="50" y="100" width="275" height="418"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epz-yc-V06">
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="418"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <connections>
+                                            <action selector="buttonTest:" destination="3jO-Sn-7Zp" eventType="touchUpInside" id="gEY-cW-Xt2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="epz-yc-V06" secondAttribute="bottom" id="YUe-zk-UuS"/>
+                                    <constraint firstItem="epz-yc-V06" firstAttribute="leading" secondItem="EZ0-Dg-U38" secondAttribute="leading" id="eBT-dV-gbD"/>
+                                    <constraint firstItem="epz-yc-V06" firstAttribute="top" secondItem="EZ0-Dg-U38" secondAttribute="top" id="lLs-FT-mcc"/>
+                                    <constraint firstAttribute="trailing" secondItem="epz-yc-V06" secondAttribute="trailing" id="oLs-je-Vtv"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bWx-Lc-AFe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bWx-Lc-AFe" firstAttribute="trailing" secondItem="EZ0-Dg-U38" secondAttribute="trailing" constant="50" id="KJb-RB-w5u"/>
+                            <constraint firstItem="EZ0-Dg-U38" firstAttribute="top" secondItem="bWx-Lc-AFe" secondAttribute="top" constant="100" id="aum-dT-Dli"/>
+                            <constraint firstItem="bWx-Lc-AFe" firstAttribute="bottom" secondItem="EZ0-Dg-U38" secondAttribute="bottom" constant="100" id="iqi-5H-Cjq"/>
+                            <constraint firstItem="EZ0-Dg-U38" firstAttribute="leading" secondItem="bWx-Lc-AFe" secondAttribute="leading" constant="50" id="spB-ZH-eLQ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="money_rates_icon" id="4Z3-T5-sWx"/>
                 </viewController>
@@ -95,8 +117,11 @@
     </scenes>
     <resources>
         <image name="money_rates_icon" width="48" height="48"/>
-        <image name="translate_icon" width="48" height="48"/>
-        <image name="weather_icon" width="48" height="48"/>
+        <image name="translate_icon" width="32" height="32"/>
+        <image name="weather_icon" width="64" height="64"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
