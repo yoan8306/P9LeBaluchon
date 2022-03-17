@@ -64,8 +64,8 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epz-yc-V06">
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="418"/>
                                         <color key="tintColor" systemColor="labelColor"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         <connections>
                                             <action selector="buttonTest:" destination="3jO-Sn-7Zp" eventType="touchUpInside" id="gEY-cW-Xt2"/>
                                         </connections>
