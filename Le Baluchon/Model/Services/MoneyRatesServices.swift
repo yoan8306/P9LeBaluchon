@@ -41,7 +41,7 @@ class MoneyRatesService {
                         callBack(false, nil)
                         return
                     }
-                        let currentCurrency = MyCurrentCurrency(rates: data.rates, symbols: listSymbols.symbols)
+                    let currentCurrency = MyCurrentCurrency(rates: data.rates, symbols: listSymbols.symbols, updatedDate: Date(timeIntervalSince1970: TimeInterval(data.timestamp)))
                         callBack(true, currentCurrency)
                 }
             }
