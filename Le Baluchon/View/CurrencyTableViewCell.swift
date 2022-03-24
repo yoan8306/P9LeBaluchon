@@ -12,7 +12,7 @@ class CurrencyTableViewCell: UITableViewCell {
     @IBOutlet weak var keyLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var countryReferenceLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,7 +23,7 @@ class CurrencyTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
     func configureCell(key: String, countryReference: String, value: Float) {
         keyLabel.text = key
         valueLabel.text = String(value)
