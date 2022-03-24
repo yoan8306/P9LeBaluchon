@@ -33,11 +33,15 @@ class MoneyRatesViewController: UIViewController {
         listKey = myCurrency.sortListKey(myCurrency: self.myCurrency.rates)
         currencyTableView.reloadData()
         updatedDateLabel.text = dateFormatter.string(from: self.myCurrency.updatedDate)
+        valueSymbolFromTextField.addDoneButton(target: self, selector: #selector(tapDone(sender:)))
     }
 
     // MARK: - @IBAction
 
-    @IBAction func dissmissKeyBoard(_ sender: UITapGestureRecognizer) {
+    @objc func tapDone(sender: Any) {
+        self.view.endEditing(true)
+    }
+    @IBAction func dissMissKeyboard(_ sender: UITapGestureRecognizer) {
         valueSymbolFromTextField.resignFirstResponder()
     }
 
