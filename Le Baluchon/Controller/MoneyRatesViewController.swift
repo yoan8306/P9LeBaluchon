@@ -10,16 +10,19 @@ import UIKit
 class MoneyRatesViewController: UIViewController {
 
     // MARK: - Properties
+//    var myCurrency = MyCurrentCurrency(rates: ["No key": 0], symbols: ["": ""], updatedDate: Date())
     var myCurrency = MyCurrentCurrency(rates: CurrencyTest().rates, symbols: CurrencyTest().symbols, updatedDate: Date(timeIntervalSince1970: TimeInterval(CurrencyTest().timeStamp)))
     var listKey: [String] = []
+    var convertRate = CalculateExchangeRates()
 
     // MARK: - @IBOutlet
     @IBOutlet weak var symbolFromLabel: UILabel!
     @IBOutlet weak var symbolToLabel: UILabel!
     @IBOutlet weak var updatedDateLabel: UILabel!
+    @IBOutlet weak var resultConvertLabel: UILabel!
     @IBOutlet weak var currencyTableView: UITableView!
-
     @IBOutlet weak var valueSymbolFromTextField: UITextField!
+
 
     // MARK: - Life cycle
     override func viewWillAppear(_ animated: Bool) {
@@ -29,10 +32,9 @@ class MoneyRatesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let dateFormatter = DateFormatter()
+        makeTest()
         listKey = myCurrency.sortListKey(myCurrency: self.myCurrency.rates)
         currencyTableView.reloadData()
-        updatedDateLabel.text = dateFormatter.string(from: self.myCurrency.updatedDate)
         valueSymbolFromTextField.addDoneButton(target: self, selector: #selector(tapDone(sender:)))
     }
 
@@ -40,13 +42,22 @@ class MoneyRatesViewController: UIViewController {
 
     @objc func tapDone(sender: Any) {
         self.view.endEditing(true)
+        convertToUSD()
     }
+    
     @IBAction func dissMissKeyboard(_ sender: UITapGestureRecognizer) {
         valueSymbolFromTextField.resignFirstResponder()
+        convertToUSD()
     }
 
     // MARK: - Private function
 
+    private func makeTest() {
+        let dateFormatter = DateFormatter()
+        updatedDateLabel.text = dateFormatter.string(from: self.myCurrency.updatedDate)
+
+    }
+    
     private func callMoneyRatesService() {
         let dateFormatter = DateFormatter()
 
@@ -66,6 +77,16 @@ class MoneyRatesViewController: UIViewController {
             }
         }
     }
+    
+    private func convertToUSD() {
+        guard let symbol = symbolFromLabel.text else {
+            return
+        }
+        resultConvertLabel.text =  convertRate.calcul(fromBase: myCurrency.rates[symbol],
+                                                      textFieldValue: valueSymbolFromTextField.text,
+                                                      dollarValue: myCurrency.rates["USD"])
+    }
+    
     private func presentAlert_Alert (alertTitle title: String, alertMessage message: String,
                                      buttonTitle titleButton: String, alertStyle style: UIAlertAction.Style ) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)

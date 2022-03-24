@@ -64,7 +64,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggo-9U-Li5">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pR8-Wl-sSR">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pR8-Wl-sSR">
                                                 <rect key="frame" x="205" y="55" width="100" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="0dY-5Y-YsX"/>
@@ -79,7 +79,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdH-K8-9oK">
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdH-K8-9oK">
                                                 <rect key="frame" x="245" y="30" width="60" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="Ri6-Q1-5RM"/>
@@ -217,6 +217,7 @@
                     <tabBarItem key="tabBarItem" title="" image="money_rates_icon" id="4Z3-T5-sWx"/>
                     <connections>
                         <outlet property="currencyTableView" destination="5N2-cD-mrC" id="LkX-af-Geo"/>
+                        <outlet property="resultConvertLabel" destination="pR8-Wl-sSR" id="7IO-nz-3EG"/>
                         <outlet property="symbolFromLabel" destination="cJf-Qg-JLE" id="5xG-xT-yH5"/>
                         <outlet property="symbolToLabel" destination="IdH-K8-9oK" id="qOo-3T-6yT"/>
                         <outlet property="updatedDateLabel" destination="msk-ul-iDL" id="WIy-Mz-70m"/>

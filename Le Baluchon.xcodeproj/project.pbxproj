@@ -121,8 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				5FAE709627E37E50006E640C /* MyCurrentCurrency.swift */,
-				5FB7A8FB27E0B53F00BA1BF3 /* Services */,
 				5F217AC227EC94BE00C82D54 /* CalculateExchangeRates.swift */,
+				5FB7A8FB27E0B53F00BA1BF3 /* Services */,
 			);
 			path = Model;
 			sourceTree = "<group>";
