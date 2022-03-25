@@ -38,8 +38,6 @@ struct WeatherJson: Decodable {
 
     struct Wind: Decodable {
         let speed: Float
-        let deg: Int
-        let gust: Float
     }
 
     struct Sys: Decodable {
@@ -48,17 +46,5 @@ struct WeatherJson: Decodable {
         let country: String
         let sunrise: Int
         let sunset: Int
-    }
-}
-
-struct CoordCity: Decodable {
-    let name: [CityInfo?]
-    
-    struct CityInfo: Decodable {
-        let name: String
-        let lat: Float
-        let lon: Float
-        let country: String
-        let state: String
     }
 }
