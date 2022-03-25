@@ -140,7 +140,7 @@ extension MoneyRatesViewController: UITableViewDataSource, UITableViewDelegate {
             symbolFromLabel.text = keySelected
         }
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Value for 1 EURO"
     }

@@ -11,8 +11,8 @@ class MoneyRatesService {
     static var shared = MoneyRatesService()
     private init() {}
 
-    private static let moneyRatesUrl = URL(string: "http://data.fixer.io/api/symbols?access_key=\(ApiKeys.MoneyRates)")!
-    private static let deviseMoneyUrl = URL(string: "http://data.fixer.io/api/latest?access_key=\(ApiKeys.MoneyRates)")!
+    private static let moneyRatesUrl = URL(string: "http://data.fixer.io/api/symbols?access_key=\(ApiKeys.moneyRates)")!
+    private static let deviseMoneyUrl = URL(string: "http://data.fixer.io/api/latest?access_key=\(ApiKeys.moneyRates)")!
 
     private var task: URLSessionDataTask?
 

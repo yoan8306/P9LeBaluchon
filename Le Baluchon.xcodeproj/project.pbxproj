@@ -10,6 +10,8 @@
 		5F217AC127EC8F8400C82D54 /* CurrencyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F217AC027EC8F8400C82D54 /* CurrencyTest.swift */; };
 		5F217AC327EC94BE00C82D54 /* CalculateExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F217AC227EC94BE00C82D54 /* CalculateExchangeRates.swift */; };
 		5F217AC627EC9C1500C82D54 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F217AC527EC9C1500C82D54 /* UITextField.swift */; };
+		5F8C2F1C27EDB3CF005E9FF1 /* WeatherServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C2F1B27EDB3CF005E9FF1 /* WeatherServices.swift */; };
+		5F8C2F1E27EDBA23005E9FF1 /* WeatherJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C2F1D27EDBA23005E9FF1 /* WeatherJson.swift */; };
 		5F9839C927E138E700AD58D6 /* MoneyRatesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9839C827E138E700AD58D6 /* MoneyRatesServices.swift */; };
 		5F9839CB27E13A4A00AD58D6 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9839CA27E13A4A00AD58D6 /* ApiKeys.swift */; };
 		5FAE709727E37E50006E640C /* MyCurrentCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAE709627E37E50006E640C /* MyCurrentCurrency.swift */; };
@@ -50,6 +52,8 @@
 		5F217AC027EC8F8400C82D54 /* CurrencyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTest.swift; sourceTree = "<group>"; };
 		5F217AC227EC94BE00C82D54 /* CalculateExchangeRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateExchangeRates.swift; sourceTree = "<group>"; };
 		5F217AC527EC9C1500C82D54 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		5F8C2F1B27EDB3CF005E9FF1 /* WeatherServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServices.swift; sourceTree = "<group>"; };
+		5F8C2F1D27EDBA23005E9FF1 /* WeatherJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherJson.swift; sourceTree = "<group>"; };
 		5F9839C827E138E700AD58D6 /* MoneyRatesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyRatesServices.swift; sourceTree = "<group>"; };
 		5F9839CA27E13A4A00AD58D6 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		5FAE709627E37E50006E640C /* MyCurrentCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCurrentCurrency.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 				5FE02E9527E89D6E0067D89C /* APIError.swift */,
 				5FE02E9727E8A1720067D89C /* SessionTask.swift */,
 				5F217AC027EC8F8400C82D54 /* CurrencyTest.swift */,
+				5F8C2F1B27EDB3CF005E9FF1 /* WeatherServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 			children = (
 				5FAE709627E37E50006E640C /* MyCurrentCurrency.swift */,
 				5F217AC227EC94BE00C82D54 /* CalculateExchangeRates.swift */,
+				5F8C2F1D27EDBA23005E9FF1 /* WeatherJson.swift */,
 				5FB7A8FB27E0B53F00BA1BF3 /* Services */,
 			);
 			path = Model;
@@ -351,7 +357,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n    swiftlint autocorrect\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -366,7 +372,9 @@
 				5FAE709727E37E50006E640C /* MyCurrentCurrency.swift in Sources */,
 				5F217AC327EC94BE00C82D54 /* CalculateExchangeRates.swift in Sources */,
 				5FE02E9627E89D6E0067D89C /* APIError.swift in Sources */,
+				5F8C2F1C27EDB3CF005E9FF1 /* WeatherServices.swift in Sources */,
 				5FAE709927E48020006E640C /* CurrencyTableViewCell.swift in Sources */,
+				5F8C2F1E27EDBA23005E9FF1 /* WeatherJson.swift in Sources */,
 				5FE5A37327E0B6660002B586 /* TranslateViewController.swift in Sources */,
 				5F9839C927E138E700AD58D6 /* MoneyRatesServices.swift in Sources */,
 				5FE431EC27DD39C0001040D3 /* AppDelegate.swift in Sources */,
