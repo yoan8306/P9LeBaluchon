@@ -8,7 +8,6 @@
 import UIKit
 
 class CurrencyTableViewCell: UITableViewCell {
-
     @IBOutlet weak var keyLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var countryReferenceLabel: UILabel!
@@ -24,10 +23,15 @@ class CurrencyTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configureCell(key: String, countryReference: String, value: Float) {
+    func configureCell(key: String, countryReference: String?, value: Float?) {
+        guard countryReference != nil else {
+            return
+        }
+        guard let value = value else {
+            return
+        }
         keyLabel.text = key
         valueLabel.text = String(value)
         countryReferenceLabel.text = countryReference
     }
-
 }
