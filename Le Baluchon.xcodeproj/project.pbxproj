@@ -10,6 +10,10 @@
 		5F1BCEE427F1D543009267DA /* Date+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BCEE327F1D543009267DA /* Date+DateFormatter.swift */; };
 		5F1BCEE627F1D894009267DA /* Devise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BCEE527F1D894009267DA /* Devise.swift */; };
 		5F1BCEE827F1D8DA009267DA /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BCEE727F1D8DA009267DA /* Symbols.swift */; };
+		5F1BCEEA27F2533F009267DA /* MoneyRatesServiesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BCEE927F2533F009267DA /* MoneyRatesServiesTestCase.swift */; };
+		5F1BCEEC27F25434009267DA /* Symbols.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F1BCEEB27F25434009267DA /* Symbols.json */; };
+		5F1BCEEE27F254CD009267DA /* Devise.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F1BCEED27F254CD009267DA /* Devise.json */; };
+		5F1BCEF027F25574009267DA /* FakeResponseMoneyRatesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BCEEF27F25574009267DA /* FakeResponseMoneyRatesData.swift */; };
 		5F217AC127EC8F8400C82D54 /* CurrencyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F217AC027EC8F8400C82D54 /* CurrencyTest.swift */; };
 		5F217AC627EC9C1500C82D54 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F217AC527EC9C1500C82D54 /* UITextField.swift */; };
 		5F8C2F1C27EDB3CF005E9FF1 /* WeatherServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C2F1B27EDB3CF005E9FF1 /* WeatherServices.swift */; };
@@ -25,7 +29,6 @@
 		5FE431F327DD39C0001040D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE431F127DD39C0001040D3 /* Main.storyboard */; };
 		5FE431F527DD39C3001040D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FE431F427DD39C3001040D3 /* Assets.xcassets */; };
 		5FE431F827DD39C3001040D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE431F627DD39C3001040D3 /* LaunchScreen.storyboard */; };
-		5FE4320327DD39C3001040D3 /* LeBaluchonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE4320227DD39C3001040D3 /* LeBaluchonTests.swift */; };
 		5FE4320D27DD39C4001040D3 /* LeBaluchonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE4320C27DD39C4001040D3 /* LeBaluchonUITests.swift */; };
 		5FE4320F27DD39C4001040D3 /* LeBaluchonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE4320E27DD39C4001040D3 /* LeBaluchonUITestsLaunchTests.swift */; };
 		5FE5A37127E0B64E0002B586 /* MoneyRatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE5A37027E0B64E0002B586 /* MoneyRatesViewController.swift */; };
@@ -54,6 +57,10 @@
 		5F1BCEE327F1D543009267DA /* Date+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DateFormatter.swift"; sourceTree = "<group>"; };
 		5F1BCEE527F1D894009267DA /* Devise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Devise.swift; sourceTree = "<group>"; };
 		5F1BCEE727F1D8DA009267DA /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
+		5F1BCEE927F2533F009267DA /* MoneyRatesServiesTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyRatesServiesTestCase.swift; sourceTree = "<group>"; };
+		5F1BCEEB27F25434009267DA /* Symbols.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Symbols.json; sourceTree = "<group>"; };
+		5F1BCEED27F254CD009267DA /* Devise.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Devise.json; sourceTree = "<group>"; };
+		5F1BCEEF27F25574009267DA /* FakeResponseMoneyRatesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseMoneyRatesData.swift; sourceTree = "<group>"; };
 		5F217AC027EC8F8400C82D54 /* CurrencyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTest.swift; sourceTree = "<group>"; };
 		5F217AC527EC9C1500C82D54 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		5F8C2F1B27EDB3CF005E9FF1 /* WeatherServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServices.swift; sourceTree = "<group>"; };
@@ -72,7 +79,6 @@
 		5FE431F727DD39C3001040D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5FE431F927DD39C3001040D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Le Baluchon/Supporting files/Info.plist"; sourceTree = SOURCE_ROOT; };
 		5FE431FE27DD39C3001040D3 /* Le BaluchonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Le BaluchonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FE4320227DD39C3001040D3 /* LeBaluchonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeBaluchonTests.swift; sourceTree = "<group>"; };
 		5FE4320827DD39C4001040D3 /* Le BaluchonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Le BaluchonUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE4320C27DD39C4001040D3 /* LeBaluchonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeBaluchonUITests.swift; sourceTree = "<group>"; };
 		5FE4320E27DD39C4001040D3 /* LeBaluchonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeBaluchonUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -115,6 +121,25 @@
 				5F1BCEE527F1D894009267DA /* Devise.swift */,
 			);
 			path = MoneyRates;
+			sourceTree = "<group>";
+		};
+		5F1BCEF127F2557B009267DA /* MoneyRatesTest */ = {
+			isa = PBXGroup;
+			children = (
+				5F1BCEF227F255A3009267DA /* JsonFiles */,
+				5F1BCEE927F2533F009267DA /* MoneyRatesServiesTestCase.swift */,
+				5F1BCEEF27F25574009267DA /* FakeResponseMoneyRatesData.swift */,
+			);
+			path = MoneyRatesTest;
+			sourceTree = "<group>";
+		};
+		5F1BCEF227F255A3009267DA /* JsonFiles */ = {
+			isa = PBXGroup;
+			children = (
+				5F1BCEEB27F25434009267DA /* Symbols.json */,
+				5F1BCEED27F254CD009267DA /* Devise.json */,
+			);
+			path = JsonFiles;
 			sourceTree = "<group>";
 		};
 		5F217AC427EC9BFA00C82D54 /* Extension */ = {
@@ -214,7 +239,7 @@
 		5FE4320127DD39C3001040D3 /* Le BaluchonTests */ = {
 			isa = PBXGroup;
 			children = (
-				5FE4320227DD39C3001040D3 /* LeBaluchonTests.swift */,
+				5F1BCEF127F2557B009267DA /* MoneyRatesTest */,
 			);
 			path = "Le BaluchonTests";
 			sourceTree = "<group>";
@@ -343,6 +368,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F1BCEEC27F25434009267DA /* Symbols.json in Resources */,
+				5F1BCEEE27F254CD009267DA /* Devise.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,7 +432,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FE4320327DD39C3001040D3 /* LeBaluchonTests.swift in Sources */,
+				5F1BCEF027F25574009267DA /* FakeResponseMoneyRatesData.swift in Sources */,
+				5F1BCEEA27F2533F009267DA /* MoneyRatesServiesTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
