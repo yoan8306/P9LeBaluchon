@@ -14,19 +14,19 @@ struct WeatherJson: Decodable {
     let main: Main?
     let wind: Wind?
     let sys: Sys?
-    
+
     struct Coord: Decodable {
         let lon: Float
         let lat: Float
     }
-    
+
     struct Weather: Decodable {
         let id: Int
         let main: String
         let description: String
         let icon: String
     }
-
+// swiftlint:disable variable feels_like
     struct Main: Decodable {
         let temp: Float
         let feels_like: Float

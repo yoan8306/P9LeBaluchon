@@ -10,7 +10,7 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
     var locationManager = CLLocationManager()
-    
+
     @IBOutlet weak var weatherUIView: UIView!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var cityTextField: UITextField!
@@ -22,32 +22,31 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var sunsetLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var descriptionWeatherLabel: UILabel!
-    
-    
+
     // MARK: - Lyfe cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         uiViewButton.isHidden = true
         weatherUIView.isHidden = true
     }
-    
+
     // MARK: - @IBAction
     @IBAction func dissmissKeyboard(_ sender: UITapGestureRecognizer) {
         uiViewButton.isHidden = true
         cityTextField.resignFirstResponder()
     }
-    
+
     @IBAction func userLocalisationActionButton(_ sender: UIButton) {
         cityTextField.resignFirstResponder()
         uiViewButton.isHidden = true
         userLocationRequest()
     }
-    
+
     // MARK: - private functions
-    
+
     private func callWeatherServices(city: String) {
         WeatherServices.shared.getWeatherJson(city: city) { result in
-            
+
             switch result {
             case .success(let myWeather):
                 let dateFormatter = DateFormatter()
@@ -62,31 +61,41 @@ class WeatherViewController: UIViewController {
                 self.descriptionWeatherLabel.text = myWeather.weather.first??.description ?? "no data"
                 self.showUIViewWeather()
             case .failure(let error):
-                print("_________Error______ \(error.localizedDescription)")
+                self.presentAlert(alertMessage: error.localizedDescription)
             }
         }
     }
     private func showUIViewWeather() {
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
-            self.weatherUIView.isHidden = false
+        weatherUIView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        weatherUIView.isHidden = false
+        UIView.transition(with: weatherUIView.self, duration: 0.6, options: .curveEaseIn, animations: {
+            self.weatherUIView.transform = CGAffineTransform(scaleX: 1, y: 1)
         }, completion: nil)
     }
-}
 
+    private func presentAlert (alertTitle title: String = "Error", alertMessage message: String,
+                               buttonTitle titleButton: String = "Ok",
+                               alertStyle style: UIAlertAction.Style = .cancel ) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: titleButton, style: style, handler: nil)
+        alertVC.addAction(action)
+        present(alertVC, animated: true, completion: nil)
+    }
+
+}
 
 // MARK: - Extension location Manager Delegate
 
 extension WeatherViewController: CLLocationManagerDelegate {
     private func userLocationRequest() {
         locationManager.requestWhenInUseAuthorization()
-        
+
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.startUpdatingLocation()
         }
-        
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let firstLocation = locations.first else {
             return
