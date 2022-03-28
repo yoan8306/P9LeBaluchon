@@ -8,9 +8,19 @@
 import Foundation
 
 struct MyCurrentCurrency {
-    let rates: [String: Float]
-    let symbols: [String: String]
-    let updatedDate: Date
+
+    var rates: [String: Float] = [:]
+    var symbols: [String: String] = [:]
+    var updatedDate: Date = Date()
+    var usdRate: Float? {
+        rates["USD"]
+    }
+
+    init(rates: [String: Float] = [:], symbols: [String: String] = [:], updatedDate: Date = Date()) {
+       self.rates = rates
+       self.symbols = symbols
+        self.updatedDate = updatedDate
+   }
 
      func convertDateUpdate(updatedDate: Date) -> String {
         let mydate = DateFormatter()
@@ -35,18 +45,4 @@ struct MyCurrentCurrency {
         listSymbols.sort()
         return listSymbols
     }
-
-}
-
-struct Devise: Decodable {
-    let success: Bool
-    let timestamp: Int
-    let base: String
-    let date: String
-    let rates: [String: Float]
-}
-
-struct Symbols: Decodable {
-    let success: Bool
-    let symbols: [String: String]
 }
