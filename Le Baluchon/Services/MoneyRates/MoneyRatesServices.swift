@@ -14,19 +14,18 @@ class MoneyRatesService {
     private static let moneyRatesUrl = URL(string: "http://data.fixer.io/api/symbols?access_key=\(ApiKeys.moneyRates)")!
     private static let deviseMoneyUrl = URL(string: "http://data.fixer.io/api/latest?access_key=\(ApiKeys.moneyRates)")!
 
-    private var task: URLSessionDataTask?
-
     func getSymbolsCurrency(callBack: @escaping (Result<MyCurrentCurrency, Error>) -> Void) {
         SessionTask.shared.sendTask(url: MoneyRatesService.moneyRatesUrl) { result in
             switch result {
             case .success(let data):
 
                 guard let listSymbols = try? JSONDecoder().decode(Symbols.self, from: data) else {
-                        callBack(.failure(APIError.decoding))
+                    callBack(.failure(APIError.decoding))
                     return
                 }
 
                 self.getDeviseCurrency { result in
+
                     switch result {
                     case .success(let result):
                         let currentCurrency = MyCurrentCurrency(rates: result.rates,

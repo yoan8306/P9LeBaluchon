@@ -34,6 +34,7 @@
 		5FE5A37127E0B64E0002B586 /* MoneyRatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE5A37027E0B64E0002B586 /* MoneyRatesViewController.swift */; };
 		5FE5A37327E0B6660002B586 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE5A37227E0B6660002B586 /* TranslateViewController.swift */; };
 		5FE5A37527E0B6770002B586 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE5A37427E0B6770002B586 /* WeatherViewController.swift */; };
+		5FE6DC5D27F47574000F8064 /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6DC5C27F47574000F8064 /* URLSessionFake.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		5FE5A37027E0B64E0002B586 /* MoneyRatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyRatesViewController.swift; sourceTree = "<group>"; };
 		5FE5A37227E0B6660002B586 /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
 		5FE5A37427E0B6770002B586 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		5FE6DC5C27F47574000F8064 /* URLSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,9 +128,9 @@
 		5F1BCEF127F2557B009267DA /* MoneyRatesTest */ = {
 			isa = PBXGroup;
 			children = (
-				5F1BCEF227F255A3009267DA /* JsonFiles */,
-				5F1BCEE927F2533F009267DA /* MoneyRatesServiesTestCase.swift */,
 				5F1BCEEF27F25574009267DA /* FakeResponseMoneyRatesData.swift */,
+				5F1BCEE927F2533F009267DA /* MoneyRatesServiesTestCase.swift */,
+				5F1BCEF227F255A3009267DA /* JsonFiles */,
 			);
 			path = MoneyRatesTest;
 			sourceTree = "<group>";
@@ -240,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				5F1BCEF127F2557B009267DA /* MoneyRatesTest */,
+				5FE6DC5C27F47574000F8064 /* URLSessionFake.swift */,
 			);
 			path = "Le BaluchonTests";
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F1BCEF027F25574009267DA /* FakeResponseMoneyRatesData.swift in Sources */,
+				5FE6DC5D27F47574000F8064 /* URLSessionFake.swift in Sources */,
 				5F1BCEEA27F2533F009267DA /* MoneyRatesServiesTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
