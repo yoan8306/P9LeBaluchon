@@ -14,6 +14,7 @@ struct WeatherJson: Decodable {
     let main: Main?
     let wind: Wind?
     let sys: Sys?
+    let timezone: Int?
 
     struct Coord: Decodable {
         let lon: Float

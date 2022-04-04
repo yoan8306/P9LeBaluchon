@@ -28,6 +28,9 @@ class MoneyRatesViewController: UIViewController {
         super.viewWillAppear(true)
         listKey = myCurrency.sortListKey(myCurrency: myCurrency.rates)
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,13 +85,17 @@ class MoneyRatesViewController: UIViewController {
     }
 
         func presentAlert (alertTitle title: String = "Error", alertMessage message: String,
-                           buttonTitle titleButton: String = "Retry",
-                           alertStyle style: UIAlertAction.Style = .cancel) {
+                           buttonTitle titleButton: String = "Retry") {
             let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let action = UIAlertAction(title: titleButton, style: style) {_ in
+            let actionRetry = UIAlertAction(title: titleButton, style: .default) {_ in
                 self.callMoneyRatesService()
             }
-            alertVC.addAction(action)
+            let actionCancel = UIAlertAction(title: "Cancel", style: .destructive) {_ in
+                self.activityController.stopAnimating()
+            }
+
+            alertVC.addAction(actionCancel)
+            alertVC.addAction(actionRetry)
             present(alertVC, animated: true, completion: nil)
         }
 }

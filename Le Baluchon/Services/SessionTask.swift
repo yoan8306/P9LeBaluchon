@@ -9,7 +9,7 @@ import Foundation
 
 final class SessionTask {
     static let shared = SessionTask()
-    var session = URLSession.shared
+    var session: URLSession = .shared
 
     private init() {}
     init(session: URLSession) {
