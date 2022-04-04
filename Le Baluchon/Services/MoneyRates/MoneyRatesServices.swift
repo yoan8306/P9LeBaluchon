@@ -29,21 +29,6 @@ class MoneyRatesService {
                 }
                 callBack(.success(listSymbols))
 
-//                self.getDeviseCurrency { result in
-//
-//                    switch result {
-//                    case .success(let result):
-//                        let currentCurrency = MyCurrentCurrency(rates: result.rates,
-//                                                                symbols: listSymbols.symbols,
-//                                                                updatedDate:
-//                                                                    Date(timeIntervalSince1970: TimeInterval(result.timestamp)))
-//                        callBack(.success(currentCurrency))
-//
-//                    case .failure(let error):
-//                        callBack(.failure(error))
-//                    }
-//                }
-
             case .failure(let error):
                 callBack(.failure(error))
             }
