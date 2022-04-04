@@ -8,6 +8,6 @@
 import Foundation
 
 struct Symbols: Decodable {
-    let success: Bool
-    let symbols: [String: String]
+    var success: Bool? = false
+    var symbols: [String: String]? = [:]
 }

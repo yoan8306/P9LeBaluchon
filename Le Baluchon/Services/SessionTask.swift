@@ -7,7 +7,12 @@
 
 import Foundation
 
-final class SessionTask {
+protocol SessionTaskProtocol {
+    func sendTask(url: URL, completion: @escaping (Result<Data, Error>) -> Void)
+
+}
+
+final class SessionTask: SessionTaskProtocol {
     static let shared = SessionTask()
     var session: URLSession = .shared
 

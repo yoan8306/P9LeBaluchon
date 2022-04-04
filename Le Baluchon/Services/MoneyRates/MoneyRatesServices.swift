@@ -8,14 +8,18 @@
 import Foundation
 
 class MoneyRatesService {
-    static var shared = MoneyRatesService()
-    private init() {}
+    static var shared = MoneyRatesService(sessionTask: SessionTask.shared)
+    var sessionTask: SessionTaskProtocol
+
+    init(sessionTask: SessionTaskProtocol) {
+        self.sessionTask = sessionTask
+    }
 
     private static let moneyRatesUrl = URL(string: "http://data.fixer.io/api/symbols?access_key=\(ApiKeys.moneyRates)")!
     private static let deviseMoneyUrl = URL(string: "http://data.fixer.io/api/latest?access_key=\(ApiKeys.moneyRates)")!
 
-    func getSymbolsCurrency(callBack: @escaping (Result<MyCurrentCurrency, Error>) -> Void) {
-        SessionTask.shared.sendTask(url: MoneyRatesService.moneyRatesUrl) { result in
+    func getSymbolsCurrency(callBack: @escaping (Result<Symbols, Error>) -> Void) {
+        sessionTask.sendTask(url: MoneyRatesService.moneyRatesUrl) { result in
             switch result {
             case .success(let data):
 
@@ -23,21 +27,22 @@ class MoneyRatesService {
                     callBack(.failure(APIError.decoding))
                     return
                 }
+                callBack(.success(listSymbols))
 
-                self.getDeviseCurrency { result in
-
-                    switch result {
-                    case .success(let result):
-                        let currentCurrency = MyCurrentCurrency(rates: result.rates,
-                                                                symbols: listSymbols.symbols,
-                                                                updatedDate:
-                                                                    Date(timeIntervalSince1970: TimeInterval(result.timestamp)))
-                        callBack(.success(currentCurrency))
-
-                    case .failure(let error):
-                        callBack(.failure(error))
-                    }
-                }
+//                self.getDeviseCurrency { result in
+//
+//                    switch result {
+//                    case .success(let result):
+//                        let currentCurrency = MyCurrentCurrency(rates: result.rates,
+//                                                                symbols: listSymbols.symbols,
+//                                                                updatedDate:
+//                                                                    Date(timeIntervalSince1970: TimeInterval(result.timestamp)))
+//                        callBack(.success(currentCurrency))
+//
+//                    case .failure(let error):
+//                        callBack(.failure(error))
+//                    }
+//                }
 
             case .failure(let error):
                 callBack(.failure(error))
@@ -45,9 +50,8 @@ class MoneyRatesService {
         }
     }
 
-    private  func getDeviseCurrency(completionHandler: @escaping (Result<Devise, Error>) -> Void) {
-
-        SessionTask.shared.sendTask(url: MoneyRatesService.deviseMoneyUrl) { result in
+      func getDeviseCurrency(completionHandler: @escaping (Result<Devise, Error>) -> Void) {
+       sessionTask.sendTask(url: MoneyRatesService.deviseMoneyUrl) { result in
             switch result {
             case .success(let data):
                 guard let listDevise = try? JSONDecoder().decode(Devise.self, from: data) else {
