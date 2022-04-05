@@ -383,9 +383,9 @@
                                     </tableView>
                                 </subviews>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="e7r-ue-FNB">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
-                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" id="e7r-ue-FNB">
+                                <rect key="frame" x="0.0" y="241" width="320" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" systemColor="tintColor"/>
                             </activityIndicatorView>
                         </subviews>
@@ -393,13 +393,9 @@
                         <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="e7r-ue-FNB" firstAttribute="leading" secondItem="bWx-Lc-AFe" secondAttribute="leading" id="09R-wV-3aL"/>
                             <constraint firstAttribute="bottom" secondItem="fO3-Nc-af2" secondAttribute="bottom" id="6Mx-31-B9l"/>
-                            <constraint firstItem="bWx-Lc-AFe" firstAttribute="trailing" secondItem="e7r-ue-FNB" secondAttribute="trailing" id="9y7-eI-Bm9"/>
                             <constraint firstAttribute="trailing" secondItem="fO3-Nc-af2" secondAttribute="trailing" id="JeU-4f-6Ap"/>
-                            <constraint firstItem="e7r-ue-FNB" firstAttribute="top" secondItem="bWx-Lc-AFe" secondAttribute="top" id="MTw-yw-r9v"/>
                             <constraint firstItem="fO3-Nc-af2" firstAttribute="top" secondItem="bWx-Lc-AFe" secondAttribute="top" id="Qk7-KR-3zG"/>
-                            <constraint firstItem="bWx-Lc-AFe" firstAttribute="bottom" secondItem="e7r-ue-FNB" secondAttribute="bottom" id="ahk-yD-dRg"/>
                             <constraint firstItem="fO3-Nc-af2" firstAttribute="leading" secondItem="bWx-Lc-AFe" secondAttribute="leading" id="apV-44-bEm"/>
                         </constraints>
                     </view>
@@ -422,7 +418,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-676" y="-564.46776611694156"/>
+            <point key="canvasLocation" x="-676.875" y="-565.14084507042253"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ThJ-U8-Wnt">
