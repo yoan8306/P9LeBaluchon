@@ -7,12 +7,22 @@
 
 import Foundation
 
-final class SessionTask {
+protocol SessionTaskProtocol {
+    func sendTask(url: URL, completion: @escaping (Result<Data, Error>) -> Void)
+
+}
+
+final class SessionTask: SessionTaskProtocol {
     static let shared = SessionTask()
+    var session: URLSession = .shared
+
     private init() {}
+    init(session: URLSession) {
+        self.session = session
+    }
 
     func sendTask(url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
-        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+        session.dataTask(with: url, completionHandler: { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     completion(.failure(error ?? APIError.noData))
@@ -26,6 +36,5 @@ final class SessionTask {
                 completion(.success(data))
             }
         }).resume()
-
     }
 }
