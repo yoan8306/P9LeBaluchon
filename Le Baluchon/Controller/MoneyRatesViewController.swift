@@ -11,6 +11,8 @@ class MoneyRatesViewController: UIViewController {
 
     // MARK: - Properties
     var myCurrency = MyCurrentCurrency()
+    var listSymbol = Symbols()
+    var listDevise = Devise()
     var listKey: [String] = []
     private var headerTitle = "Value for 1 EURO"
 
@@ -20,12 +22,16 @@ class MoneyRatesViewController: UIViewController {
     @IBOutlet weak var updatedDateLabel: UILabel!
     @IBOutlet weak var resultConvertLabel: UILabel!
     @IBOutlet weak var currencyTableView: UITableView!
+    @IBOutlet weak var activityController: UIActivityIndicatorView!
     @IBOutlet weak var valueSymbolFromTextField: UITextField!
 
     // MARK: - Life cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         listKey = myCurrency.sortListKey(myCurrency: myCurrency.rates)
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     override func viewDidLoad() {
@@ -49,27 +55,23 @@ class MoneyRatesViewController: UIViewController {
     }
 }
 
-    private extension MoneyRatesViewController {
+private extension MoneyRatesViewController {
     // MARK: - Private function
 
-     func makeTest() {
-        let format = "EEEE, d MMM yyyy HH:mm"
-        updatedDateLabel.text = "Last updated: " + myCurrency.updatedDate.toFormat(format: format)
+    func callMoneyRatesService() {
+        callGetSymbolService()
     }
 
-     func callMoneyRatesService() {
+    func callGetSymbolService() {
         MoneyRatesService.shared.getSymbolsCurrency {[weak self] result in
             guard let self = self else {
                 return
             }
 
             switch result {
-            case .success(let myCurrency) :
-                let updateDate = myCurrency.updatedDate
-                self.myCurrency = myCurrency
-                self.listKey = myCurrency.sortListKey(myCurrency: self.myCurrency.rates)
-                self.currencyTableView.reloadData()
-                self.updatedDateLabel.text = myCurrency.convertDateUpdate(updatedDate: updateDate)
+            case .success(let mySymbol) :
+                self.listSymbol = mySymbol
+                self.callGetDevise()
 
             case .failure(let error) :
                 self.presentAlert(alertMessage: error.localizedDescription)
@@ -77,7 +79,41 @@ class MoneyRatesViewController: UIViewController {
         }
     }
 
-     func convertToUSD() {
+    func callGetDevise() {
+        MoneyRatesService.shared.getDeviseCurrency { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            switch result {
+            case .success(let myDevise):
+                self.listDevise = myDevise
+                self.createMyCurrency()
+
+            case .failure(let error):
+                self.presentAlert(alertMessage: error.localizedDescription)
+            }
+        }
+    }
+
+    func createMyCurrency() {
+        guard let rates = listDevise.rates,
+              let symbol = listSymbol.symbols,
+              let timeStamp = listDevise.timestamp else {
+                  return
+              }
+
+        let dateUpdated = Date(timeIntervalSince1970: TimeInterval(timeStamp))
+        let currentCurrency = MyCurrentCurrency(rates: rates, symbols: symbol, updatedDate: dateUpdated)
+
+        self.myCurrency = currentCurrency
+        let updateDate = myCurrency.updatedDate
+        self.listKey = myCurrency.sortListKey(myCurrency: self.myCurrency.rates)
+        self.currencyTableView.reloadData()
+        self.updatedDateLabel.text = myCurrency.convertDateUpdate(updatedDate: updateDate)
+        self.activityController.isHidden = true
+    }
+
+    func convertToUSD() {
         guard let symbol = symbolFromLabel.text, listKey.contains(symbol) else {
             return
         }
@@ -85,12 +121,18 @@ class MoneyRatesViewController: UIViewController {
                                                                        to: myCurrency.usdRate)
     }
 
-     func presentAlert (alertTitle title: String = "Error", alertMessage message: String,
-                               buttonTitle titleButton: String = "Ok",
-                               alertStyle style: UIAlertAction.Style = .cancel ) {
+    func presentAlert (alertTitle title: String = "Error", alertMessage message: String,
+                       buttonTitle titleButton: String = "Retry") {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: titleButton, style: style, handler: nil)
-        alertVC.addAction(action)
+        let actionRetry = UIAlertAction(title: titleButton, style: .default) {_ in
+            self.callMoneyRatesService()
+        }
+        let actionCancel = UIAlertAction(title: "Cancel", style: .destructive) {_ in
+            self.activityController.stopAnimating()
+        }
+
+        alertVC.addAction(actionCancel)
+        alertVC.addAction(actionRetry)
         present(alertVC, animated: true, completion: nil)
     }
 }
@@ -126,12 +168,5 @@ extension MoneyRatesViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return headerTitle
-    }
-}
-
-extension MoneyRatesViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        valueSymbolFromTextField.resignFirstResponder()
-        return true
     }
 }

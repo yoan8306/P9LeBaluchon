@@ -10,6 +10,7 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
     var locationManager = CLLocationManager()
+    var newYorkCity = "New York"
 
     @IBOutlet weak var weatherUIView: UIView!
     @IBOutlet weak var cityLabel: UILabel!
@@ -25,6 +26,7 @@ class WeatherViewController: UIViewController {
 
     // MARK: - Lyfe cycle
     override func viewDidLoad() {
+        callWeatherServices(city: newYorkCity)
         super.viewDidLoad()
         uiViewButton.isHidden = true
         weatherUIView.isHidden = true
@@ -53,11 +55,11 @@ class WeatherViewController: UIViewController {
                 dateFormatter.dateFormat = "EEE d HH:mm"
                 self.cityLabel.text = "\(myWeather.name ?? "no city"), \(myWeather.sys?.country ?? "no country")"
                 self.weatherImage.image = UIImage(named: myWeather.weather.first??.icon ?? "questionmark")
-                self.tempLabel.text = "Temp: " + String(myWeather.main?.temp ?? 0) + "°c"
+                self.tempLabel.text =  String(myWeather.main?.temp ?? 0) + "°c"
                 self.tempMaxLabel.text = "Temp Max: " + String(myWeather.main?.temp_max ?? 0) + "°c"
                 self.tempMinLabel.text = "Temp Min: " + String(myWeather.main?.temp_min ?? 0) + "°c"
-                self.sunriseLabel.text = "Sunrise: " + dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(myWeather.sys?.sunrise ?? 00)))
-                self.sunsetLabel.text = "Sunset: " + dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(myWeather.sys?.sunset ?? 00)))
+                self.sunriseLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(myWeather.sys?.sunrise ?? 00)))
+                self.sunsetLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(myWeather.sys?.sunset ?? 00)))
                 self.descriptionWeatherLabel.text = myWeather.weather.first??.description ?? "no data"
                 self.showUIViewWeather()
             case .failure(let error):

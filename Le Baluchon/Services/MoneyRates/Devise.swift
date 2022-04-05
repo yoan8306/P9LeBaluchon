@@ -8,9 +8,9 @@
 import Foundation
 
 struct Devise: Decodable {
-    let success: Bool
-    let timestamp: Int
-    let base: String
-    let date: String
-    let rates: [String: Float]
+    var success: Bool? = false
+    var timestamp: Int? = 0
+    var base: String?
+    var date: String?
+    var rates: [String: Float]?
 }
