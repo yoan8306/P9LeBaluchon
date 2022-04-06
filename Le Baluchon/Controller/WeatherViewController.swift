@@ -11,25 +11,23 @@ import CoreLocation
 class WeatherViewController: UIViewController {
     var locationManager = CLLocationManager()
     var newYorkCity = "New York"
+    var arrayDataWeather: [WeatherJson] = []
 
-    @IBOutlet weak var weatherUIView: UIView!
-    @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var cityTextField: UITextField!
-    @IBOutlet weak var tempLabel: UILabel!
-    @IBOutlet weak var tempMinLabel: UILabel!
     @IBOutlet weak var uiViewButton: UIView!
-    @IBOutlet weak var tempMaxLabel: UILabel!
-    @IBOutlet weak var sunriseLabel: UILabel!
-    @IBOutlet weak var sunsetLabel: UILabel!
-    @IBOutlet weak var weatherImage: UIImageView!
-    @IBOutlet weak var descriptionWeatherLabel: UILabel!
+    @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var weatherTableView: UITableView!
 
     // MARK: - Lyfe cycle
     override func viewDidLoad() {
-        callWeatherServices(city: newYorkCity)
         super.viewDidLoad()
+        arrayDataWeather = []
+        callWeatherServices(city: newYorkCity)
         uiViewButton.isHidden = true
-        weatherUIView.isHidden = true
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        weatherTableView.reloadData()
     }
 
     // MARK: - @IBAction
@@ -51,28 +49,12 @@ class WeatherViewController: UIViewController {
 
             switch result {
             case .success(let myWeather):
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "EEE d HH:mm"
-                self.cityLabel.text = "\(myWeather.name ?? "no city"), \(myWeather.sys?.country ?? "no country")"
-                self.weatherImage.image = UIImage(named: myWeather.weather.first??.icon ?? "questionmark")
-                self.tempLabel.text =  String(myWeather.main?.temp ?? 0) + "°c"
-                self.tempMaxLabel.text = "Temp Max: " + String(myWeather.main?.temp_max ?? 0) + "°c"
-                self.tempMinLabel.text = "Temp Min: " + String(myWeather.main?.temp_min ?? 0) + "°c"
-                self.sunriseLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(myWeather.sys?.sunrise ?? 00)))
-                self.sunsetLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(myWeather.sys?.sunset ?? 00)))
-                self.descriptionWeatherLabel.text = myWeather.weather.first??.description ?? "no data"
-                self.showUIViewWeather()
+                self.arrayDataWeather.append(myWeather)
+                self.weatherTableView.reloadData()
             case .failure(let error):
                 self.presentAlert(alertMessage: error.localizedDescription)
             }
         }
-    }
-    private func showUIViewWeather() {
-        weatherUIView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-        weatherUIView.isHidden = false
-        UIView.transition(with: weatherUIView.self, duration: 0.6, options: .curveEaseIn, animations: {
-            self.weatherUIView.transform = CGAffineTransform(scaleX: 1, y: 1)
-        }, completion: nil)
     }
 
     private func presentAlert (alertTitle title: String = "Error", alertMessage message: String,
@@ -110,8 +92,8 @@ extension WeatherViewController: CLLocationManagerDelegate {
                 return
             }
             self.callWeatherServices(city: cityName)
+            self.locationManager.stopUpdatingLocation()
         }
-        locationManager.stopUpdatingLocation()
     }
 }
 
@@ -129,5 +111,29 @@ extension WeatherViewController: UITextFieldDelegate {
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
         uiViewButton.isHidden = false
+    }
+}
+
+// MARK: - tableView DataSource
+
+extension WeatherViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayDataWeather.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let weatherData = arrayDataWeather[indexPath.row]
+
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "weatherCell", for: indexPath)
+                as? WeatherTableViewCell else {
+                    return UITableViewCell()
+                }
+        cell.configureCellWeather(city: weatherData.name, temp: weatherData.main?.temp,
+                                  tempMin: weatherData.main?.temp_min, tempMax: weatherData.main?.temp_max,
+                                  sunrise: weatherData.sys?.sunrise, sunset: weatherData.sys?.sunset,
+                                  weatherIcon: weatherData.weather.first??.icon,
+                                  description: weatherData.weather.first??.description)
+
+        return cell
     }
 }
