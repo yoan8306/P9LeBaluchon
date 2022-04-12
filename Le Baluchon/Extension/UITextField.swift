@@ -20,15 +20,4 @@ extension UITextField {
         self.inputAccessoryView = toolBar// 5
     }
 
-    func calculRates(fromBase: Float?, to dollarValue: Float?) -> String {
-        guard let textFieldValue = text,
-                let fromBase = fromBase,
-                let floatValue = Float(textFieldValue),
-                let dollarValue = dollarValue else {
-            return "0"
-        }
-
-        return String((floatValue/fromBase) * dollarValue)
-    }
-
 }

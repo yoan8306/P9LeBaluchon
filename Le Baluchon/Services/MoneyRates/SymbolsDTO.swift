@@ -7,7 +7,6 @@
 
 import Foundation
 
-struct Symbols: Decodable {
-    var success: Bool? = false
+struct SymbolsDTO: Decodable {
     var symbols: [String: String]? = [:]
 }
