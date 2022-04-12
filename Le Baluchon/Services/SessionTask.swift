@@ -35,6 +35,7 @@ final class SessionTask: SessionTaskProtocol {
                 }
                 completion(.success(data))
             }
-        }).resume()
+        })
+            .resume()
     }
 }

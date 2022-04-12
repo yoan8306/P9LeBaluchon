@@ -76,23 +76,26 @@ extension WeatherViewController: CLLocationManagerDelegate {
 
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
         guard let firstLocation = locations.first else {
             return
         }
+        locationManager.stopUpdatingLocation()
         CLGeocoder().reverseGeocodeLocation(firstLocation) { places, _ in
-            guard let firstPlace = places?.first else {
+
+            guard let myPlace = places?.first else {
                 return
             }
-            guard let cityName = firstPlace.locality else {
+            guard let city = myPlace.locality else {
                 return
             }
-            self.callWeatherServices(city: cityName)
-            self.locationManager.stopUpdatingLocation()
+                self.callWeatherServices(city: city)
         }
     }
 }

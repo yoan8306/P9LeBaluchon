@@ -1,11 +1,6 @@
 {
     "success": true,
     "symbols": {
-        "AED": "United Arab Emirates Dirham",
-        "AFN": "Afghan Afghani",
-        "ALL": "Albanian Lek",
-        "AMD": "Armenian Dram",
-        "ANG": "Netherlands Antillean Guilder",
         "AOA": "Angolan Kwanza",
         "ARS": "Argentine Peso",
         "AUD": "Australian Dollar",
@@ -168,6 +163,11 @@
         "ZAR": "South African Rand",
         "ZMK": "Zambian Kwacha (pre-2013)",
         "ZMW": "Zambian Kwacha",
-        "ZWL": "Zimbabwean Dollar"
+        "ZWL": "Zimbabwean Dollar",
+        "AED": "United Arab Emirates Dirham",
+        "AFN": "Afghan Afghani",
+        "ALL": "Albanian Lek",
+        "AMD": "Armenian Dram",
+        "ANG": "Netherlands Antillean Guilder"
     }
 }
