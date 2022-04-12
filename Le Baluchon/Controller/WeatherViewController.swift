@@ -13,16 +13,15 @@ class WeatherViewController: UIViewController {
     var newYorkCity = "New York"
     var arrayDataWeather: [WeatherJson] = []
 
-    @IBOutlet weak var uiViewButton: UIView!
+    @IBOutlet weak var localizeButtonUIView: UIView!
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var weatherTableView: UITableView!
 
     // MARK: - Lyfe cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        arrayDataWeather = []
         callWeatherServices(city: newYorkCity)
-        uiViewButton.isHidden = true
+        localizeButtonUIView.isHidden = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -32,13 +31,13 @@ class WeatherViewController: UIViewController {
 
     // MARK: - @IBAction
     @IBAction func dissmissKeyboard(_ sender: UITapGestureRecognizer) {
-        uiViewButton.isHidden = true
+        localizeButtonUIView.isHidden = true
         cityTextField.resignFirstResponder()
     }
 
     @IBAction func userLocalisationActionButton(_ sender: UIButton) {
         cityTextField.resignFirstResponder()
-        uiViewButton.isHidden = true
+        localizeButtonUIView.isHidden = true
         userLocationRequest()
     }
 
@@ -108,12 +107,12 @@ extension WeatherViewController: UITextFieldDelegate {
             return true
         }
         cityTextField.resignFirstResponder()
-        uiViewButton.isHidden = true
+        localizeButtonUIView.isHidden = true
         callWeatherServices(city: city)
         return true
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        uiViewButton.isHidden = false
+        localizeButtonUIView.isHidden = false
     }
 }
 
@@ -131,12 +130,7 @@ extension WeatherViewController: UITableViewDataSource {
                 as? WeatherTableViewCell else {
                     return UITableViewCell()
                 }
-        cell.configureCellWeather(city: weatherData.name, temp: weatherData.main?.temp,
-                                  tempMin: weatherData.main?.temp_min, tempMax: weatherData.main?.temp_max,
-                                  sunrise: weatherData.sys?.sunrise, sunset: weatherData.sys?.sunset,
-                                  weatherIcon: weatherData.weather.first??.icon,
-                                  description: weatherData.weather.first??.description)
-
+        cell.configureCellWeather(weatherData: weatherData)
         return cell
     }
 }
