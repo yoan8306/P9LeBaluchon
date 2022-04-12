@@ -18,12 +18,12 @@ class MoneyRatesService {
     private static let moneyRatesUrl = URL(string: "http://data.fixer.io/api/symbols?access_key=\(ApiKeys.moneyRates)")!
     private static let deviseMoneyUrl = URL(string: "http://data.fixer.io/api/latest?access_key=\(ApiKeys.moneyRates)")!
 
-    func getSymbolsCurrency(callBack: @escaping (Result<Symbols, Error>) -> Void) {
+    func getSymbolsCurrency(callBack: @escaping (Result<SymbolsDTO, Error>) -> Void) {
         sessionTask.sendTask(url: MoneyRatesService.moneyRatesUrl) { result in
             switch result {
             case .success(let data):
 
-                guard let listSymbols = try? JSONDecoder().decode(Symbols.self, from: data) else {
+                guard let listSymbols = try? JSONDecoder().decode(SymbolsDTO.self, from: data) else {
                     callBack(.failure(APIError.decoding))
                     return
                 }
@@ -35,11 +35,11 @@ class MoneyRatesService {
         }
     }
 
-      func getDeviseCurrency(completionHandler: @escaping (Result<Devise, Error>) -> Void) {
+      func getDeviseCurrency(completionHandler: @escaping (Result<DeviseDTO, Error>) -> Void) {
        sessionTask.sendTask(url: MoneyRatesService.deviseMoneyUrl) { result in
             switch result {
             case .success(let data):
-                guard let listDevise = try? JSONDecoder().decode(Devise.self, from: data) else {
+                guard let listDevise = try? JSONDecoder().decode(DeviseDTO.self, from: data) else {
                     completionHandler(.failure(APIError.decoding))
                     return
                 }
