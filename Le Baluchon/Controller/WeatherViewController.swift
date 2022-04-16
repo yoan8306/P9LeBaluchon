@@ -10,17 +10,19 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
     var locationManager = CLLocationManager()
-    var newYorkCity = "New York"
-    var arrayDataWeather: [WeatherJson] = []
+    var arrayDataWeather: [WeatherDTO] = []
+    var weatherLocalisation = WeatherLocalization()
 
+    // MARK: - IBOutlet
     @IBOutlet weak var localizeButtonUIView: UIView!
     @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var weatherTableView: UITableView!
 
     // MARK: - Lyfe cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        callWeatherServices(city: newYorkCity)
+        callWeatherServices(city: weatherLocalisation.listCityName.first)
         localizeButtonUIView.isHidden = true
     }
 
@@ -36,21 +38,26 @@ class WeatherViewController: UIViewController {
     }
 
     @IBAction func userLocalisationActionButton(_ sender: UIButton) {
-        cityTextField.resignFirstResponder()
         localizeButtonUIView.isHidden = true
+        cityTextField.resignFirstResponder()
         userLocationRequest()
     }
 
     // MARK: - private functions
-
-    private func callWeatherServices(city: String) {
+    private func callWeatherServices(city: String?) {
+        activityIndicator.isHidden = false
+        guard let city = city else {
+            return
+        }
         WeatherServices.shared.getWeatherJson(city: city) { result in
 
             switch result {
             case .success(let myWeather):
-                self.arrayDataWeather.append(myWeather)
+                self.weatherLocalisation.arrayWeatherData.append(myWeather)
                 self.weatherTableView.reloadData()
+                self.activityIndicator.isHidden = true
             case .failure(let error):
+                self.activityIndicator.isHidden = true
                 self.presentAlert(alertMessage: error.localizedDescription)
             }
         }
@@ -81,8 +88,12 @@ extension WeatherViewController: CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+            self.getCityName(location: locations)
+    }
 
-        guard let firstLocation = locations.first else {
+    func getCityName(location: [CLLocation]) {
+        activityIndicator.isHidden = false
+        guard let firstLocation = location.first else {
             return
         }
         locationManager.stopUpdatingLocation()
@@ -94,7 +105,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
             guard let city = myPlace.locality else {
                 return
             }
-                self.callWeatherServices(city: city)
+            self.callWeatherServices(city: city)
         }
     }
 }
@@ -104,6 +115,7 @@ extension WeatherViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let city = cityTextField.text else {
             cityTextField.resignFirstResponder()
+            localizeButtonUIView.isHidden = true
             return true
         }
         cityTextField.resignFirstResponder()
@@ -120,11 +132,11 @@ extension WeatherViewController: UITextFieldDelegate {
 
 extension WeatherViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayDataWeather.count
+       return weatherLocalisation.arrayWeatherData.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let weatherData = arrayDataWeather[indexPath.row]
+        let weatherData = weatherLocalisation.arrayWeatherData[indexPath.row]
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "weatherCell", for: indexPath)
                 as? WeatherTableViewCell else {

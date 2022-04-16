@@ -12,7 +12,7 @@ class WeatherServices {
     private init() {}
     private static let urlAirCondition = URL(string: "http://api.openweathermap.org/data/2.5/air_pollution")
 
-    func getWeatherJson(city: String?, completionHandler: @escaping (Result<WeatherJson, Error>) -> Void) {
+    func getWeatherJson(city: String?, completionHandler: @escaping (Result<WeatherDTO, Error>) -> Void) {
         var urlWeatherCondition = URLComponents()
 
         guard let city = city else {
@@ -35,7 +35,7 @@ class WeatherServices {
          SessionTask.shared.sendTask(url: urlWeatherCondition) { result in
              switch result {
              case .success(let data):
-                 guard let weatherCondition = try? JSONDecoder().decode(WeatherJson.self, from: data) else {
+                 guard let weatherCondition = try? JSONDecoder().decode(WeatherDTO.self, from: data) else {
                      completionHandler(.failure(APIError.decoding))
                      return
                  }

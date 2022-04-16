@@ -29,8 +29,8 @@ class WeatherTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func configureCellWeather(weatherData: WeatherJson) {
-        
+    func configureCellWeather(weatherData: WeatherDTO) {
+
         guard let city = weatherData.name,
               let temp = weatherData.main?.temp,
               let tempMin = weatherData.main?.temp_min,
