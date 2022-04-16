@@ -8,8 +8,12 @@
 import Foundation
 
 class WeatherServices {
-    static let shared = WeatherServices()
-    private init() {}
+    static let shared = WeatherServices(sessionTask: SessionTask.shared)
+    var sessionTask: SessionTaskProtocol
+
+    init(sessionTask: SessionTaskProtocol) {
+        self.sessionTask = sessionTask
+    }
     private static let urlAirCondition = URL(string: "http://api.openweathermap.org/data/2.5/air_pollution")
 
     func getWeatherJson(city: String?, completionHandler: @escaping (Result<WeatherDTO, Error>) -> Void) {
@@ -32,7 +36,7 @@ class WeatherServices {
             return
         }
 
-         SessionTask.shared.sendTask(url: urlWeatherCondition) { result in
+         sessionTask.sendTask(url: urlWeatherCondition) { result in
              switch result {
              case .success(let data):
                  guard let weatherCondition = try? JSONDecoder().decode(WeatherDTO.self, from: data) else {

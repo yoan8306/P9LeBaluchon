@@ -32,6 +32,7 @@ class WeatherTableViewCell: UITableViewCell {
     func configureCellWeather(weatherData: WeatherDTO) {
 
         guard let city = weatherData.name,
+              let country = weatherData.sys?.country,
               let temp = weatherData.main?.temp,
               let tempMin = weatherData.main?.temp_min,
               let tempMax = weatherData.main?.temp_max,
@@ -45,7 +46,7 @@ class WeatherTableViewCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
 
-        cityLabel.text = city
+        cityLabel.text = "\(city), \(country)"
         tempLabel.text = "\(temp) °c"
         tempMaxLabel.text = "Temp max: \(tempMax)°c"
         tempMinLabel.text = "Temp min: \(tempMin)°c"

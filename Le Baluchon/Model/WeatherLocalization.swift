@@ -8,12 +8,7 @@
 import Foundation
 
 class WeatherLocalization {
-    var listCityName = ["New York"]
     var arrayWeatherData: [WeatherDTO] = []
-
-    func addNewLocalization(cityName: String) {
-        listCityName.append(cityName)
-    }
 
     func addNewDataWeather(weatherData: WeatherDTO) {
         arrayWeatherData.append(weatherData)

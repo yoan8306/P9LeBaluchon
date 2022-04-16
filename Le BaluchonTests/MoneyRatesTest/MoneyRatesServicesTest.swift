@@ -43,7 +43,7 @@ class MoneyRatesServicesTest: XCTestCase {
             case .success:
                 fatalError()
             case .failure(let error):
-                XCTAssertTrue(error.localizedDescription != nil)
+                XCTAssertTrue(error.localizedDescription.isEmpty == false)
             }
         }
     }
@@ -82,7 +82,7 @@ class MoneyRatesServicesTest: XCTestCase {
             case .success:
                 fatalError()
             case .failure(let error):
-                XCTAssertTrue(error.localizedDescription != nil)
+                XCTAssertTrue(error.localizedDescription.isEmpty == false)
             }
         }
     }

@@ -24,7 +24,7 @@ class FakeResponseWeatherData {
     let weatherError = WeatherError()
 
     // MARK: - Data
-    var weattherCorrectData: Data {
+    var weatherCorrectData: Data {
         let bundle = Bundle(for: FakeResponseWeatherData.self)
         let url = bundle.url(forResource: "Weather", withExtension: "json")
         //        swiftlint:disable force_try

@@ -10,8 +10,7 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
     var locationManager = CLLocationManager()
-    var arrayDataWeather: [WeatherDTO] = []
-    var weatherLocalisation = WeatherLocalization()
+    var weatherLocalization = WeatherLocalization()
 
     // MARK: - IBOutlet
     @IBOutlet weak var localizeButtonUIView: UIView!
@@ -22,7 +21,8 @@ class WeatherViewController: UIViewController {
     // MARK: - Lyfe cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        callWeatherServices(city: weatherLocalisation.listCityName.first)
+        let newYorkCity = "New York"
+        callWeatherServices(city: newYorkCity)
         localizeButtonUIView.isHidden = true
     }
 
@@ -37,7 +37,7 @@ class WeatherViewController: UIViewController {
         cityTextField.resignFirstResponder()
     }
 
-    @IBAction func userLocalisationActionButton(_ sender: UIButton) {
+    @IBAction func userLocalizationActionButton(_ sender: UIButton) {
         localizeButtonUIView.isHidden = true
         cityTextField.resignFirstResponder()
         userLocationRequest()
@@ -53,7 +53,7 @@ class WeatherViewController: UIViewController {
 
             switch result {
             case .success(let myWeather):
-                self.weatherLocalisation.arrayWeatherData.append(myWeather)
+                self.weatherLocalization.arrayWeatherData.append(myWeather)
                 self.weatherTableView.reloadData()
                 self.activityIndicator.isHidden = true
             case .failure(let error):
@@ -110,10 +110,11 @@ extension WeatherViewController: CLLocationManagerDelegate {
     }
 }
 
-// MARK: - Extension UItexteField delegate
+// MARK: - Extension UItextField delegate
 extension WeatherViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let city = cityTextField.text else {
+        guard let city = cityTextField.text, city.isEmpty == false, city.count > 3 else {
+            presentAlert(alertMessage: "Veuillez entrer un nom de ville correcte")
             cityTextField.resignFirstResponder()
             localizeButtonUIView.isHidden = true
             return true
@@ -132,11 +133,11 @@ extension WeatherViewController: UITextFieldDelegate {
 
 extension WeatherViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return weatherLocalisation.arrayWeatherData.count
+       return weatherLocalization.arrayWeatherData.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let weatherData = weatherLocalisation.arrayWeatherData[indexPath.row]
+        let weatherData = weatherLocalization.arrayWeatherData[indexPath.row]
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "weatherCell", for: indexPath)
                 as? WeatherTableViewCell else {
@@ -144,5 +145,19 @@ extension WeatherViewController: UITableViewDataSource {
                 }
         cell.configureCellWeather(weatherData: weatherData)
         return cell
+    }
+}
+
+// MARK: - TableViewDelegate
+
+extension WeatherViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexpath: IndexPath) {
+
+        if indexpath.row > 0 {
+            if editingStyle == .delete {
+                weatherLocalization.arrayWeatherData.remove(at: indexpath.row)
+                tableView.deleteRows(at: [indexpath], with: .right)
+            }
+        }
     }
 }
