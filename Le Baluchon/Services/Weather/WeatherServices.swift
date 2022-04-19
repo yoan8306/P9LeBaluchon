@@ -14,7 +14,6 @@ class WeatherServices {
     init(sessionTask: SessionTaskProtocol) {
         self.sessionTask = sessionTask
     }
-    private static let urlAirCondition = URL(string: "http://api.openweathermap.org/data/2.5/air_pollution")
 
     func getWeatherJson(city: String?, completionHandler: @escaping (Result<WeatherDTO, Error>) -> Void) {
         var urlWeatherInfos = URLComponents()
@@ -29,7 +28,7 @@ class WeatherServices {
         urlWeatherInfos.queryItems = [
         URLQueryItem(name: "q", value: city),
         URLQueryItem(name: "units", value: "metric"),
-        URLQueryItem(name: "appid", value: ApiKeys.weather)
+        URLQueryItem(name: "appid", value: ApiKeys.weatherKey)
         ]
 
         guard let urlWeatherInfos = urlWeatherInfos.url else {
@@ -49,5 +48,4 @@ class WeatherServices {
              }
          }
      }
-
 }

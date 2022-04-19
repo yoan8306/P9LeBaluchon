@@ -13,7 +13,8 @@ class WeatherInformationTest: XCTestCase {
     func testGivenCorrectDataWeather_WhenAddIntoArray_ThenAllDataAreAvailable() {
         let weatherDTO = FakeResponseWeatherData()
         var listWeather: WeatherDTO? {
-            guard let weatherResponse  = try? JSONDecoder().decode(WeatherDTO.self, from: weatherDTO.weatherCorrectData) else {
+            guard let weatherResponse = try? JSONDecoder().decode(WeatherDTO.self,
+                                                                  from: weatherDTO.weatherCorrectData) else {
                 return nil
             }
             return weatherResponse
