@@ -49,4 +49,34 @@ class TranslateService {
             }
         }
     }
+    
+    func getSupportedLanguage(completionHandler: @escaping (Result <SupportedLanguagesDTO, Error>) -> Void) {
+        var urlSupportedLanguages = URLComponents()
+        
+        urlSupportedLanguages.scheme = "https"
+        urlSupportedLanguages.host = "translation.googleapis.com"
+        urlSupportedLanguages.path = "language/translate/v2/languages"
+        urlSupportedLanguages.queryItems = [
+        URLQueryItem(name: "target", value: "en"),
+        URLQueryItem(name: "key", value: ApiKeys.weatherKey)
+        ]
+        
+        guard let urlSupportedLanguages = urlSupportedLanguages.url else {
+            return
+        }
+        
+        sessionTask.sendTask(url: urlSupportedLanguages) { result in
+            switch  result {
+            case .success(let data):
+                guard let languagesList = try? JSONDecoder().decode(SupportedLanguagesDTO.self, from: data) else {
+                    completionHandler(.failure(APIError.decoding))
+                    return
+                }
+                completionHandler(.success(languagesList))
+            case .failure(let error):
+                completionHandler(.failure(error))
+            }
+        }
+    }
+    
 }
