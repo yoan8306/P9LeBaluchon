@@ -17,33 +17,33 @@ class WeatherServices {
     private static let urlAirCondition = URL(string: "http://api.openweathermap.org/data/2.5/air_pollution")
 
     func getWeatherJson(city: String?, completionHandler: @escaping (Result<WeatherDTO, Error>) -> Void) {
-        var urlWeatherCondition = URLComponents()
+        var urlWeatherInfos = URLComponents()
 
         guard let city = city else {
             return
         }
 
-        urlWeatherCondition.scheme = "https"
-        urlWeatherCondition.host = "api.openweathermap.org"
-        urlWeatherCondition.path = "/data/2.5/weather"
-        urlWeatherCondition.queryItems = [
+        urlWeatherInfos.scheme = "https"
+        urlWeatherInfos.host = "api.openweathermap.org"
+        urlWeatherInfos.path = "/data/2.5/weather"
+        urlWeatherInfos.queryItems = [
         URLQueryItem(name: "q", value: city),
         URLQueryItem(name: "units", value: "metric"),
         URLQueryItem(name: "appid", value: ApiKeys.weather)
         ]
 
-        guard let urlWeatherCondition = urlWeatherCondition.url else {
+        guard let urlWeatherInfos = urlWeatherInfos.url else {
             return
         }
 
-         sessionTask.sendTask(url: urlWeatherCondition) { result in
+         sessionTask.sendTask(url: urlWeatherInfos) { result in
              switch result {
              case .success(let data):
-                 guard let weatherCondition = try? JSONDecoder().decode(WeatherDTO.self, from: data) else {
+                 guard let weatherInfo = try? JSONDecoder().decode(WeatherDTO.self, from: data) else {
                      completionHandler(.failure(APIError.decoding))
                      return
                  }
-                 completionHandler(.success(weatherCondition))
+                 completionHandler(.success(weatherInfo))
              case .failure(let error):
                  completionHandler(.failure(error))
              }

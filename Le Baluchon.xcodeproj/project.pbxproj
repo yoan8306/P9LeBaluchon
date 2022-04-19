@@ -19,7 +19,8 @@
 		5F4DAB2F2805BEF700092430 /* FakeResponseWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4DAB2E2805BEF700092430 /* FakeResponseWeatherData.swift */; };
 		5F696FF027FC50B300DA45AD /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F696FEF27FC50B300DA45AD /* WeatherTableViewCell.swift */; };
 		5F7F7B2F280B50C6003171FA /* WeatherServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F7B2E280B50C6003171FA /* WeatherServiceTest.swift */; };
-		5F858A5728084E2B009B67DE /* WeatherLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F858A5628084E2B009B67DE /* WeatherLocalization.swift */; };
+		5F803C00280EBEC400C01F27 /* WeatherInformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F803BFF280EBEC400C01F27 /* WeatherInformationTest.swift */; };
+		5F858A5728084E2B009B67DE /* WeatherInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F858A5628084E2B009B67DE /* WeatherInformation.swift */; };
 		5F8C2F1C27EDB3CF005E9FF1 /* WeatherServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C2F1B27EDB3CF005E9FF1 /* WeatherServices.swift */; };
 		5F8C2F1E27EDBA23005E9FF1 /* WeatherDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C2F1D27EDBA23005E9FF1 /* WeatherDTO.swift */; };
 		5F9839C927E138E700AD58D6 /* MoneyRatesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9839C827E138E700AD58D6 /* MoneyRatesServices.swift */; };
@@ -72,7 +73,8 @@
 		5F4DAB2E2805BEF700092430 /* FakeResponseWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseWeatherData.swift; sourceTree = "<group>"; };
 		5F696FEF27FC50B300DA45AD /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		5F7F7B2E280B50C6003171FA /* WeatherServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceTest.swift; sourceTree = "<group>"; };
-		5F858A5628084E2B009B67DE /* WeatherLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocalization.swift; sourceTree = "<group>"; };
+		5F803BFF280EBEC400C01F27 /* WeatherInformationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInformationTest.swift; sourceTree = "<group>"; };
+		5F858A5628084E2B009B67DE /* WeatherInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInformation.swift; sourceTree = "<group>"; };
 		5F8C2F1B27EDB3CF005E9FF1 /* WeatherServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServices.swift; sourceTree = "<group>"; };
 		5F8C2F1D27EDBA23005E9FF1 /* WeatherDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDTO.swift; sourceTree = "<group>"; };
 		5F9839C827E138E700AD58D6 /* MoneyRatesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyRatesServices.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				5F4DAB292805BE2600092430 /* JsonFile */,
 				5F4DAB2E2805BEF700092430 /* FakeResponseWeatherData.swift */,
 				5F7F7B2E280B50C6003171FA /* WeatherServiceTest.swift */,
+				5F803BFF280EBEC400C01F27 /* WeatherInformationTest.swift */,
 			);
 			path = weatherTest;
 			sourceTree = "<group>";
@@ -205,7 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				5FAE709627E37E50006E640C /* MyCurrentCurrency.swift */,
-				5F858A5628084E2B009B67DE /* WeatherLocalization.swift */,
+				5F858A5628084E2B009B67DE /* WeatherInformation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -459,7 +462,7 @@
 				5F696FF027FC50B300DA45AD /* WeatherTableViewCell.swift in Sources */,
 				5FAE709927E48020006E640C /* CurrencyTableViewCell.swift in Sources */,
 				5F8C2F1E27EDBA23005E9FF1 /* WeatherDTO.swift in Sources */,
-				5F858A5728084E2B009B67DE /* WeatherLocalization.swift in Sources */,
+				5F858A5728084E2B009B67DE /* WeatherInformation.swift in Sources */,
 				5FE5A37327E0B6660002B586 /* TranslateViewController.swift in Sources */,
 				5F1BCEE827F1D8DA009267DA /* SymbolsDTO.swift in Sources */,
 				5F9839C927E138E700AD58D6 /* MoneyRatesServices.swift in Sources */,
@@ -479,6 +482,7 @@
 				5F1BCEF027F25574009267DA /* FakeResponseMoneyRatesData.swift in Sources */,
 				5FE6DC5F27F635ED000F8064 /* mockSessionTask.swift in Sources */,
 				5F1BCEEA27F2533F009267DA /* MyCurrentCurrencyTest.swift in Sources */,
+				5F803C00280EBEC400C01F27 /* WeatherInformationTest.swift in Sources */,
 				5F4DAB2F2805BEF700092430 /* FakeResponseWeatherData.swift in Sources */,
 				5F7F7B2F280B50C6003171FA /* WeatherServiceTest.swift in Sources */,
 				5FE6DC6127F6D807000F8064 /* MoneyRatesServicesTest.swift in Sources */,

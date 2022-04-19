@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WeatherLocalization {
+class WeatherInformation {
     var arrayWeatherData: [WeatherDTO] = []
 
     func addNewDataWeather(weatherData: WeatherDTO) {

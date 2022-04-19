@@ -10,7 +10,7 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
     var locationManager = CLLocationManager()
-    var weatherLocalization = WeatherLocalization()
+    var weatherInfo = WeatherInformation()
 
     // MARK: - IBOutlet
     @IBOutlet weak var localizeButtonUIView: UIView!
@@ -52,8 +52,8 @@ class WeatherViewController: UIViewController {
         WeatherServices.shared.getWeatherJson(city: city) { result in
 
             switch result {
-            case .success(let myWeather):
-                self.weatherLocalization.arrayWeatherData.append(myWeather)
+            case .success(let weatherInfo):
+                self.weatherInfo.addNewDataWeather(weatherData: weatherInfo)
                 self.weatherTableView.reloadData()
                 self.activityIndicator.isHidden = true
             case .failure(let error):
@@ -133,11 +133,11 @@ extension WeatherViewController: UITextFieldDelegate {
 
 extension WeatherViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return weatherLocalization.arrayWeatherData.count
+       return weatherInfo.arrayWeatherData.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let weatherData = weatherLocalization.arrayWeatherData[indexPath.row]
+        let weatherData = weatherInfo.arrayWeatherData[indexPath.row]
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "weatherCell", for: indexPath)
                 as? WeatherTableViewCell else {
@@ -155,7 +155,7 @@ extension WeatherViewController: UITableViewDelegate {
 
         if indexpath.row > 0 {
             if editingStyle == .delete {
-                weatherLocalization.arrayWeatherData.remove(at: indexpath.row)
+                weatherInfo.arrayWeatherData.remove(at: indexpath.row)
                 tableView.deleteRows(at: [indexpath], with: .right)
             }
         }
