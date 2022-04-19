@@ -10,19 +10,20 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
     var locationManager = CLLocationManager()
-    var newYorkCity = "New York"
-    var arrayDataWeather: [WeatherJson] = []
+    var weatherInfo = WeatherInformation()
 
-    @IBOutlet weak var uiViewButton: UIView!
+    // MARK: - IBOutlet
+    @IBOutlet weak var localizeButtonUIView: UIView!
     @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var weatherTableView: UITableView!
 
     // MARK: - Lyfe cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        arrayDataWeather = []
+        let newYorkCity = "New York"
         callWeatherServices(city: newYorkCity)
-        uiViewButton.isHidden = true
+        localizeButtonUIView.isHidden = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -32,26 +33,31 @@ class WeatherViewController: UIViewController {
 
     // MARK: - @IBAction
     @IBAction func dissmissKeyboard(_ sender: UITapGestureRecognizer) {
-        uiViewButton.isHidden = true
+        localizeButtonUIView.isHidden = true
         cityTextField.resignFirstResponder()
     }
 
-    @IBAction func userLocalisationActionButton(_ sender: UIButton) {
+    @IBAction func userLocalizationActionButton(_ sender: UIButton) {
+        localizeButtonUIView.isHidden = true
         cityTextField.resignFirstResponder()
-        uiViewButton.isHidden = true
         userLocationRequest()
     }
 
     // MARK: - private functions
-
-    private func callWeatherServices(city: String) {
+    private func callWeatherServices(city: String?) {
+        activityIndicator.isHidden = false
+        guard let city = city else {
+            return
+        }
         WeatherServices.shared.getWeatherJson(city: city) { result in
 
             switch result {
-            case .success(let myWeather):
-                self.arrayDataWeather.append(myWeather)
+            case .success(let weatherInfo):
+                self.weatherInfo.addNewDataWeather(weatherData: weatherInfo)
                 self.weatherTableView.reloadData()
+                self.activityIndicator.isHidden = true
             case .failure(let error):
+                self.activityIndicator.isHidden = true
                 self.presentAlert(alertMessage: error.localizedDescription)
             }
         }
@@ -82,8 +88,12 @@ extension WeatherViewController: CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+            self.getCityName(location: locations)
+    }
 
-        guard let firstLocation = locations.first else {
+    func getCityName(location: [CLLocation]) {
+        activityIndicator.isHidden = false
+        guard let firstLocation = location.first else {
             return
         }
         locationManager.stopUpdatingLocation()
@@ -95,25 +105,27 @@ extension WeatherViewController: CLLocationManagerDelegate {
             guard let city = myPlace.locality else {
                 return
             }
-                self.callWeatherServices(city: city)
+            self.callWeatherServices(city: city)
         }
     }
 }
 
-// MARK: - Extension UItexteField delegate
+// MARK: - Extension UItextField delegate
 extension WeatherViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let city = cityTextField.text else {
+        guard let city = cityTextField.text, city.isEmpty == false, city.count > 3 else {
+            presentAlert(alertMessage: "Veuillez entrer un nom de ville correcte")
             cityTextField.resignFirstResponder()
+            localizeButtonUIView.isHidden = true
             return true
         }
         cityTextField.resignFirstResponder()
-        uiViewButton.isHidden = true
+        localizeButtonUIView.isHidden = true
         callWeatherServices(city: city)
         return true
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        uiViewButton.isHidden = false
+        localizeButtonUIView.isHidden = false
     }
 }
 
@@ -121,22 +133,31 @@ extension WeatherViewController: UITextFieldDelegate {
 
 extension WeatherViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayDataWeather.count
+       return weatherInfo.arrayWeatherData.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let weatherData = arrayDataWeather[indexPath.row]
+        let weatherData = weatherInfo.arrayWeatherData[indexPath.row]
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "weatherCell", for: indexPath)
                 as? WeatherTableViewCell else {
                     return UITableViewCell()
                 }
-        cell.configureCellWeather(city: weatherData.name, temp: weatherData.main?.temp,
-                                  tempMin: weatherData.main?.temp_min, tempMax: weatherData.main?.temp_max,
-                                  sunrise: weatherData.sys?.sunrise, sunset: weatherData.sys?.sunset,
-                                  weatherIcon: weatherData.weather.first??.icon,
-                                  description: weatherData.weather.first??.description)
-
+        cell.configureCellWeather(weatherData: weatherData)
         return cell
+    }
+}
+
+// MARK: - TableViewDelegate
+
+extension WeatherViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexpath: IndexPath) {
+
+        if indexpath.row > 0 {
+            if editingStyle == .delete {
+                weatherInfo.arrayWeatherData.remove(at: indexpath.row)
+                tableView.deleteRows(at: [indexpath], with: .right)
+            }
+        }
     }
 }

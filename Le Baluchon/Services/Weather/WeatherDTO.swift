@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WeatherJson: Decodable {
+struct WeatherDTO: Decodable {
     let name: String?
     let coord: Coord?
     let weather: [Weather?]

@@ -8,7 +8,7 @@
 import XCTest
 @testable import Le_Baluchon
 
-class MycurrentCurrency: XCTestCase {
+class MycurrentCurrencyTest: XCTestCase {
     let data = FakeResponseMoneyRatesData()
     var listSymbols: SymbolsDTO? {
         guard let symbols = try? JSONDecoder().decode(SymbolsDTO.self, from: data.symbolsCorrectData) else {
