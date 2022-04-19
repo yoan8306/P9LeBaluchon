@@ -1,0 +1,45 @@
+
+{
+    "coord": {
+        "lon": 5.5,
+        "lat": 43.3333
+    },
+    "weather": [
+        {
+            "id": 804,
+            "main": "Clouds",
+            "description": "overcast clouds",
+            "icon": "04d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 18.61,
+        "feels_like": 17.36,
+        "temp_min": 15.08,
+        "temp_max": 20.1,
+        "pressure": 1014,
+        "humidity": 32
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 4.47,
+        "deg": 112,
+        "gust": 8.49
+    },
+    "clouds": {
+        "all": 98
+    },
+    "dt": 1649770063,
+    "sys": {
+        "type": 2,
+        "id": 80238,
+        "country": "FR",
+        "sunrise": 1649739653,
+        "sunset": 1649787379
+    },
+    "timezone": 7200,
+    "id": 2995468,
+    "name": "Arrondissement de Marseille",
+    "cod": 200
+}

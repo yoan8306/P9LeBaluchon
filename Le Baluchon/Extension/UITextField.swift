@@ -19,4 +19,5 @@ extension UITextField {
         toolBar.setItems([flexible, barButton], animated: false)// 4
         self.inputAccessoryView = toolBar// 5
     }
+
 }

@@ -8,45 +8,50 @@
 import Foundation
 
 struct MyCurrentCurrency {
-    let rates: [String: Float]
-    let symbols: [String: String]
-    let updatedDate: Date
 
-     func convertDateUpdate(updatedDate: Date) -> String {
+    var rates: [String: Float]
+    var symbols: [String: String]
+    var updatedDate: Date
+    var usdRate: Float? {
+        rates["USD"]
+    }
+
+    init() {
+        rates = [:]
+        symbols = [:]
+        updatedDate = Date()
+    }
+
+    init(devise: DeviseDTO, symbols: [String: String]) {
+        let dateUpdated = Date(timeIntervalSince1970: TimeInterval(devise.timestamp))
+        self.rates = devise.rates
+       self.symbols = symbols
+        self.updatedDate = dateUpdated
+   }
+
+     func convertDateUpdate() -> String {
         let mydate = DateFormatter()
         mydate.dateFormat = "EEEE, d MMM yyyy HH:mm"
        return mydate.string(from: updatedDate)
     }
 
-    func sortListKey (myCurrency: [String: Float]) -> [String] {
+    func sortListKey () -> [String] {
         var listKey: [String] = []
-        for (key, _) in myCurrency {
+        for (key, _) in rates {
             listKey.append(key)
         }
         listKey.sort()
         return listKey
     }
 
-    func sortlistSymbols (myCurrency: [String: String]) -> [String] {
-        var listSymbols: [String] = []
-        for (key, _) in myCurrency {
-            listSymbols.append(key)
+    func convertMoneyToDollar(fromSymbol: String, value: Float) -> String {
+
+        guard   let rate = rates[fromSymbol],
+                let dollarValue = usdRate else {
+            return "0"
         }
-        listSymbols.sort()
-        return listSymbols
+
+        return String((value/rate) * dollarValue)
     }
 
-}
-
-struct Devise: Decodable {
-    let success: Bool
-    let timestamp: Int
-    let base: String
-    let date: String
-    let rates: [String: Float]
-}
-
-struct Symbols: Decodable {
-    let success: Bool
-    let symbols: [String: String]
 }
