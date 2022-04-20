@@ -10,18 +10,19 @@ import Foundation
 class TranslateService {
     static let shared = TranslateService(sessionTask: SessionTask.shared)
     var sessionTask: SessionTaskProtocol
-    
+
     init(sessionTask: SessionTaskProtocol) {
         self.sessionTask = sessionTask
     }
-    
-    func getTranslation(text: String?, langSource: String, langTarget: String, completionHandler: @escaping (Result <TranslaterDTO, Error>) -> Void) {
+
+    func getTranslation(text: String?, langSource: String, langTarget: String,
+                        completionHandler: @escaping (Result <TranslaterDTO, Error>) -> Void) {
         var urlTranslate = URLComponents()
-        
+
         guard let text = text else {
             return
         }
-        
+
         urlTranslate.scheme = "https"
         urlTranslate.host = "translation.googleapis.com"
         urlTranslate.path = "/language/translate/v2"
@@ -31,11 +32,11 @@ class TranslateService {
         URLQueryItem(name: "target", value: langTarget),
         URLQueryItem(name: "key", value: ApiKeys.translateKey)
         ]
-        
+
         guard let urlTranslate = urlTranslate.url else {
             return
         }
-        
+
         sessionTask.sendTask(url: urlTranslate) { result in
             switch result {
             case .success(let data):
@@ -49,22 +50,22 @@ class TranslateService {
             }
         }
     }
-    
+
     func getSupportedLanguage(completionHandler: @escaping (Result <SupportedLanguagesDTO, Error>) -> Void) {
         var urlSupportedLanguages = URLComponents()
-        
+
         urlSupportedLanguages.scheme = "https"
         urlSupportedLanguages.host = "translation.googleapis.com"
-        urlSupportedLanguages.path = "language/translate/v2/languages"
+        urlSupportedLanguages.path = "/language/translate/v2/languages"
         urlSupportedLanguages.queryItems = [
         URLQueryItem(name: "target", value: "en"),
-        URLQueryItem(name: "key", value: ApiKeys.weatherKey)
+        URLQueryItem(name: "key", value: ApiKeys.translateKey)
         ]
-        
+
         guard let urlSupportedLanguages = urlSupportedLanguages.url else {
             return
         }
-        
+
         sessionTask.sendTask(url: urlSupportedLanguages) { result in
             switch  result {
             case .success(let data):
@@ -78,5 +79,4 @@ class TranslateService {
             }
         }
     }
-    
 }
