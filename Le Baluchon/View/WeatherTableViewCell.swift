@@ -27,27 +27,26 @@ class WeatherTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
     }
 
-    func configureCellWeather(city: String?, temp: Float?, tempMin: Float?,
-                              tempMax: Float?, sunrise: Int?, sunset: Int? ,
-                              weatherIcon: String?, description: String?) {
-        guard let city = city,
-              let temp = temp,
-              let tempMin = tempMin,
-              let tempMax = tempMax,
-              let sunrise = sunrise,
-              let sunset = sunset,
-              let weatherIcon = weatherIcon,
-              let description = description  else {
+    func configureCellWeather(weatherData: WeatherDTO) {
+
+        guard let city = weatherData.name,
+              let country = weatherData.sys?.country,
+              let temp = weatherData.main?.temp,
+              let tempMin = weatherData.main?.temp_min,
+              let tempMax = weatherData.main?.temp_max,
+              let sunrise = weatherData.sys?.sunrise,
+              let sunset = weatherData.sys?.sunset,
+              let weatherIcon = weatherData.weather.first??.icon,
+              let description = weatherData.weather.first??.description  else {
                   return
               }
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
 
-        cityLabel.text = city
+        cityLabel.text = "\(city), \(country)"
         tempLabel.text = "\(temp) °c"
         tempMaxLabel.text = "Temp max: \(tempMax)°c"
         tempMinLabel.text = "Temp min: \(tempMin)°c"

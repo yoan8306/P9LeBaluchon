@@ -13,11 +13,10 @@ import XCTest
 class MoneyRatesServicesTest: XCTestCase {
 
     func testCallSymbolService_WhenDataIsCorrect_ThenResultEqualSuccess () {
-        // Setup object
         let sessionTaskMock = SessionTaskMock()
         let moneyRatesService = MoneyRatesService(sessionTask: sessionTaskMock)
         let response = FakeResponseMoneyRatesData()
-        
+
         sessionTaskMock.data = response.symbolsCorrectData
 
         moneyRatesService.getSymbolsCurrency { result in
@@ -36,7 +35,7 @@ class MoneyRatesServicesTest: XCTestCase {
         let sessionTaskMock = SessionTaskMock()
         let moneyRatesService = MoneyRatesService(sessionTask: sessionTaskMock)
         let response = FakeResponseMoneyRatesData()
-        
+
         sessionTaskMock.data = response.moneyIncorrectData
 
         moneyRatesService.getSymbolsCurrency { result in
@@ -44,7 +43,7 @@ class MoneyRatesServicesTest: XCTestCase {
             case .success:
                 fatalError()
             case .failure(let error):
-                XCTAssertTrue(error.localizedDescription != nil)
+                XCTAssertTrue(error.localizedDescription.isEmpty == false)
             }
         }
     }
@@ -83,7 +82,7 @@ class MoneyRatesServicesTest: XCTestCase {
             case .success:
                 fatalError()
             case .failure(let error):
-                XCTAssertTrue(error.localizedDescription != nil)
+                XCTAssertTrue(error.localizedDescription.isEmpty == false)
             }
         }
     }
