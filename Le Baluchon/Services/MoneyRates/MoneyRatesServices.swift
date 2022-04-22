@@ -15,8 +15,10 @@ class MoneyRatesService {
         self.sessionTask = sessionTask
     }
 
-    private static let moneyRatesUrl = URL(string: "http://data.fixer.io/api/symbols?access_key=\(ApiKeys.moneyRates)")!
-    private static let deviseMoneyUrl = URL(string: "http://data.fixer.io/api/latest?access_key=\(ApiKeys.moneyRates)")!
+    private static let moneyRatesUrl =
+    URL(string: "http://data.fixer.io/api/symbols?access_key=\(ApiKeys.moneyRatesKey)")!
+    private static let deviseMoneyUrl =
+    URL(string: "http://data.fixer.io/api/latest?access_key=\(ApiKeys.moneyRatesKey)")!
 
     func getSymbolsCurrency(callBack: @escaping (Result<SymbolsDTO, Error>) -> Void) {
         sessionTask.sendTask(url: MoneyRatesService.moneyRatesUrl) { result in

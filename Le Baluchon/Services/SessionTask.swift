@@ -28,7 +28,6 @@ final class SessionTask: SessionTaskProtocol {
                     completion(.failure(error ?? APIError.noData))
                     return
                 }
-
                 guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                     completion(.failure(APIError.statusCodeInvalid))
                     return

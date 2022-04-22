@@ -151,7 +151,8 @@ extension WeatherViewController: UITableViewDataSource {
 // MARK: - TableViewDelegate
 
 extension WeatherViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexpath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexpath: IndexPath) {
 
         if indexpath.row > 0 {
             if editingStyle == .delete {
