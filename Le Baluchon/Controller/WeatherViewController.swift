@@ -63,6 +63,10 @@ class WeatherViewController: UIViewController {
         }
     }
 
+    private func initializeView() {
+
+    }
+
     private func presentAlert (alertTitle title: String = "Error", alertMessage message: String,
                                buttonTitle titleButton: String = "Ok",
                                alertStyle style: UIAlertAction.Style = .cancel ) {
@@ -144,6 +148,7 @@ extension WeatherViewController: UITableViewDataSource {
                     return UITableViewCell()
                 }
         cell.configureCellWeather(weatherData: weatherData)
+        cell.layer.cornerRadius = 10
         return cell
     }
 }

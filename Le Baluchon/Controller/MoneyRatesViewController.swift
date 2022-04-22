@@ -28,6 +28,7 @@ class MoneyRatesViewController: UIViewController {
         super.viewDidLoad()
         callMoneyRatesService()
         valueSymbolFromTextField.addDoneButton(target: self, selector: #selector(tapDone(sender:)))
+        resultConvertLabel.layer.cornerRadius = 8
     }
 
     // MARK: - @IBAction

@@ -16,13 +16,13 @@ class WeatherTableViewCell: UITableViewCell {
     @IBOutlet weak var sunriseLabel: UILabel!
     @IBOutlet weak var sunsetLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
+    @IBOutlet weak var weatherUIViewCell: UIView!
     @IBOutlet weak var descriptionWeatherLabel: UILabel!
     @IBOutlet weak var whiteView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        addShadow()
-
+        initializeView()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -61,6 +61,11 @@ class WeatherTableViewCell: UITableViewCell {
         whiteView.layer.shadowRadius = 2.0
         whiteView.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
         whiteView.layer.shadowOpacity = 2.0
+    }
+
+    private func initializeView() {
+        addShadow()
+        weatherUIViewCell.layer.cornerRadius = 10
     }
 
 }
