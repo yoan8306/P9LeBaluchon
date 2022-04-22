@@ -12,15 +12,8 @@ class TranslationManager {
     var firstLangSelected = "fr"
     var secondLangSelected = "en"
     var reverseTranslate = false
-    var firstText = ""
-    var secondText = ""
 
     func reverseTranslation() {
     reverseTranslate = !reverseTranslate
     }
-
-    func getSelectedLanguages(selected: Language) -> String {
-        selected.language
-    }
-
 }
