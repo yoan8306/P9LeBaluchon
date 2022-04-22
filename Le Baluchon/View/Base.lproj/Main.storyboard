@@ -568,6 +568,21 @@
             </objects>
             <point key="canvasLocation" x="-676.875" y="867.25352112676057"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="aU4-aQ-Efm">
+            <objects>
+                <viewController id="U2d-np-uJK" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="68i-aw-oqD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="NSK-1g-vqi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="laR-QV-dT8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-677" y="1564"/>
+        </scene>
         <!--Money Rates View Controller-->
         <scene sceneID="6m5-gM-wgW">
             <objects>
