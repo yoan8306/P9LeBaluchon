@@ -10,14 +10,12 @@ import UIKit
 class TranslateViewController: UIViewController {
 
     // MARK: - Properties
-    var listSupportLanguages = TranslateLanguagesSupport()
-    var langSourceSelected = "fr"
-    var langTargetSelected = "en"
-    var reverseTranslate = false
+    var translateManager = TranslationManager()
 
     // MARK: - IBOutlet
     @IBOutlet weak var sourceActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var translatedActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var sourceUIView: UIView!
     @IBOutlet weak var reverseButton: UIButton!
     @IBOutlet weak var targetUIViewTable: UIView!
     @IBOutlet weak var targetTableView: UITableView!
@@ -54,11 +52,11 @@ class TranslateViewController: UIViewController {
     }
     @IBAction func reverseButtonAction() {
         UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseIn) {
-            if self.reverseTranslate {
-                self.reverseTranslate = false
+            if self.translateManager.reverseTranslate {
+                self.translateManager.reverseTranslation()
                 self.reverseButton.transform = .identity
             } else {
-                self.reverseTranslate = true
+                self.translateManager.reverseTranslation()
                 self.reverseButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
             }
         }
@@ -66,14 +64,14 @@ class TranslateViewController: UIViewController {
 
     @IBAction func translateAction() {
         var text = ""
-        if reverseTranslate {
+        if translateManager.reverseTranslate {
             text = translatedTexView.text
             showSourceActivity(shown: true)
-            callGetTranslation(langSource: langTargetSelected, langTarget: langSourceSelected, text: text)
+            callGetTranslation(langSource: translateManager.secondLangSelected, langTarget: translateManager.firstLangSelected, text: text)
         } else {
             text = sourceTextView.text
             showTranslateActivity(shown: true)
-            callGetTranslation(langSource: langSourceSelected, langTarget: langTargetSelected, text: text)
+            callGetTranslation(langSource: translateManager.firstLangSelected, langTarget: translateManager.secondLangSelected, text: text)
         }
     }
 
@@ -88,7 +86,7 @@ class TranslateViewController: UIViewController {
             case .success(let translatedText):
 
                 let translation = translatedText.data.translations.first?.translatedText
-                if self.reverseTranslate {
+                if self.translateManager.reverseTranslate {
                     self.showSourceActivity(shown: false)
                     self.sourceTextView.text = translation
                 } else {
@@ -106,7 +104,7 @@ class TranslateViewController: UIViewController {
         TranslateService.shared.getSupportedLanguage { result in
             switch result {
             case .success(let supportedLangList):
-                self.listSupportLanguages.listSupportLanguages = supportedLangList.data.languages
+                self.translateManager.listSupportLanguages = supportedLangList.data.languages
                 self.sourceTableView.reloadData()
                 self.targetTableView.reloadData()
             case .failure(let error):
@@ -118,10 +116,15 @@ class TranslateViewController: UIViewController {
     private func initializeView() {
         hideUIViewTableView()
         translatedUIView.isHidden = true
+        sourceUIView.layer.cornerRadius = 8
+        translatedUIView.layer.cornerRadius = 8
+        langSourceButton.layer.cornerRadius = 8
+        langTargetButton.layer.cornerRadius = 8
+        translatedButton.layer.cornerRadius = 8
     }
 
     private func showSourceActivity(shown: Bool) {
-        if reverseTranslate {
+        if translateManager.reverseTranslate {
             sourceActivityIndicator.isHidden = !shown
             sourceTextView.isHidden = shown
         }
@@ -131,7 +134,7 @@ class TranslateViewController: UIViewController {
         UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseOut) {
             self.translatedUIView.isHidden = false
         }
-        if !reverseTranslate {
+        if !translateManager.reverseTranslate {
             translatedActivityIndicator.isHidden = !shown
             translatedTexView.isHidden = shown
         }
@@ -156,11 +159,11 @@ class TranslateViewController: UIViewController {
 // MARK: - TableView DataSource
 extension TranslateViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        listSupportLanguages.listSupportLanguages.count
+        translateManager.listSupportLanguages.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let supportLang = listSupportLanguages.listSupportLanguages[indexPath.row]
+        let supportLang = translateManager.listSupportLanguages[indexPath.row]
         var  cell = UITableViewCell()
         switch tableView {
         case sourceTableView:
@@ -187,14 +190,14 @@ extension TranslateViewController: UITableViewDataSource {
 // MARK: - TableView Delegate
 extension TranslateViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let langSelected = listSupportLanguages.listSupportLanguages[indexPath.row]
+        let langSelected = translateManager.listSupportLanguages[indexPath.row]
         switch tableView {
         case sourceTableView:
-            langSourceSelected = langSelected.language
+            translateManager.firstLangSelected = langSelected.language
             langSourceButton.setTitle(langSelected.name, for: .normal)
             sourceUIViewTableView.isHidden = true
         case targetTableView:
-            langTargetSelected = langSelected.language
+            translateManager.secondLangSelected = langSelected.language
             langTargetButton.setTitle(langSelected.name, for: .normal)
             targetUIViewTable.isHidden = true
         default:
