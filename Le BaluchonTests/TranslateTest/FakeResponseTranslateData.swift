@@ -8,6 +8,8 @@
 import Foundation
 
 class FakeResponseTranslateData {
+    
+    // non utilisé `responseOK` `responseFailed`
     // MARK: - Response
     let responseOK = HTTPURLResponse(url: URL(string: "https://duckduckgo.com")!,
                                      statusCode: 200,

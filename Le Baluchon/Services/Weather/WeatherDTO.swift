@@ -20,8 +20,7 @@ struct WeatherDTO: Decodable {
         let lon: Float
         let lat: Float
     }
-
-//    swiftlint:disable identifier_name
+// non utile
     struct Weather: Decodable {
         let id: Int
         let main: String

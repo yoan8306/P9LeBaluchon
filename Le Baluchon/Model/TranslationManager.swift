@@ -9,6 +9,7 @@ import Foundation
 
 class TranslationManager {
     var listSupportLanguages: [Language] = []
+    // language au lieu de 'lang' 
     var firstLangSelected = "fr"
     var secondLangSelected = "en"
     var reverseTranslate = false

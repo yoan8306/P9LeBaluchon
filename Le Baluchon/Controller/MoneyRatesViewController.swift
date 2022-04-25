@@ -47,10 +47,12 @@ class MoneyRatesViewController: UIViewController {
 private extension MoneyRatesViewController {
     // MARK: - Private function
 
+    // Autant appeler direct la fonction dedans ?
     func callMoneyRatesService() {
         callGetSymbolService()
     }
 
+    // tu peux renommer la fonction en simplement `getSymbols`
     func callGetSymbolService() {
         MoneyRatesService.shared.getSymbolsCurrency {[weak self] result in
             guard let self = self else {
@@ -67,6 +69,7 @@ private extension MoneyRatesViewController {
         }
     }
 
+    // tu peux renommer la fonction en simplement `getDevise`
     func callGetDevise(symbols: [String: String]) {
         MoneyRatesService.shared.getDeviseCurrency { [weak self] result in
             guard let self = self else {

@@ -79,6 +79,11 @@ class TranslateViewController: UIViewController {
     }
 
     // MARK: - private func
+    
+    // language au lieu de `lang`
+    // tu peux utiliser simplement `source` `target`
+    // tu peux renommer translate(_ text: String?, from source: String, to destination: String)
+    // Il faut `essayer`de faire des phrases quand tu composes tes méthodes avec paramètres
     private func callGetTranslation(langSource: String, langTarget: String, text: String?) {
 
         TranslateService.shared.getTranslation(text: text,
@@ -106,6 +111,7 @@ class TranslateViewController: UIViewController {
         }
     }
 
+    // getSupportedLanguages
     private func callGetSupportedLanguages() {
         TranslateService.shared.getSupportedLanguage {[weak self] result in
             guard let self = self else {
