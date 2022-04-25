@@ -13,7 +13,7 @@ struct WeatherDTO: Decodable {
     let main: Main?
     let sys: Sys?
     let timezone: Int?
-    
+
     struct Weather: Decodable {
         let description: String
         let icon: String

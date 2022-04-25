@@ -24,18 +24,18 @@ class MyCurrentCurrencyTest: XCTestCase {
         super.setUp()
         myCurrency = MyCurrentCurrency(devise: listDevise, symbols: listSymbols.symbols!)
     }
-    
+
 // MARK: - Test
     func testGivenCorrectData_WhenPassDateIntoCurrentCurrency_ThenReturnString() {
         let stringDate = myCurrency.convertDateUpdate()
         XCTAssertEqual(stringDate, "Monday, 28 Mar 2022 21:49")
     }
-    
+
     func testGivenReceiveListSymbol_WhenSortListSymbol_ThenIsFilterByOrderAlphabetic() {
         let firstElementInArray = myCurrency.sortListKey().first
         XCTAssertEqual(firstElementInArray, "AED")
     }
-    
+
     func testGivenValueInMoney_WhenConvertMoneyToDollar_ThenMyValueAreConvertedInDollar() {
         let valuEuro = myCurrency.convertMoneyToDollar(fromSymbol: "EUR", value: 1)
         XCTAssertEqual(valuEuro, "1.097767")

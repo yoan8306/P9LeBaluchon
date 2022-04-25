@@ -16,13 +16,13 @@ final class SessionTask: SessionTaskProtocol {
 // MARK: - Properties
     static let shared = SessionTask()
     var session: URLSession = .shared
-    
+
 // MARK: - Life cycle
     private init() {}
     init(session: URLSession) {
         self.session = session
     }
-    
+
 // MARK: - function
     func sendTask(url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
         session.dataTask(with: url, completionHandler: { (data, response, error) in

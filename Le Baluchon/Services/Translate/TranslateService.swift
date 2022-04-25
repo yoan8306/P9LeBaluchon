@@ -16,7 +16,7 @@ class TranslateService {
     init(sessionTask: SessionTaskProtocol) {
         self.sessionTask = sessionTask
     }
-    
+
 // MARK: - Functions
     func getTranslation(text: String?, langSource: String, langTarget: String,
                         completionHandler: @escaping (Result <TranslaterDTO, Error>) -> Void) {

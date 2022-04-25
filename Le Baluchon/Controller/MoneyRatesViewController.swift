@@ -44,7 +44,7 @@ class MoneyRatesViewController: UIViewController {
 }
 
 private extension MoneyRatesViewController {
-    
+
     // MARK: - Private function
     func moneyRatesService() {
         MoneyRatesService.shared.getSymbolsCurrency {[weak self] result in

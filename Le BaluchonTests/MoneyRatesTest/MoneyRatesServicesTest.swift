@@ -50,9 +50,9 @@ class MoneyRatesServicesTest: XCTestCase {
         let sessionTaskMock = SessionTaskMock()
         let moneyRatesService = MoneyRatesService(sessionTask: sessionTaskMock)
         let response = FakeResponseMoneyRatesData()
-        
+
         sessionTaskMock.data = response.deviseCorrectData
-        
+
         moneyRatesService.getDeviseCurrency { result in
             switch result {
             case .success(let myCurrentCurrency):
@@ -70,7 +70,7 @@ class MoneyRatesServicesTest: XCTestCase {
         let sessionTaskMock = SessionTaskMock()
         let moneyRatesService = MoneyRatesService(sessionTask: sessionTaskMock)
         let response = FakeResponseMoneyRatesData()
-        
+
         sessionTaskMock.data = response.moneyIncorrectData
 
         moneyRatesService.getDeviseCurrency { result in

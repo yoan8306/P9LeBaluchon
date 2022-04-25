@@ -8,7 +8,7 @@
 import Foundation
 
 class MoneyRatesService {
-    
+
 // MARK: - Properties
     static var shared = MoneyRatesService(sessionTask: SessionTask.shared)
     var sessionTask: SessionTaskProtocol
@@ -21,7 +21,7 @@ class MoneyRatesService {
     init(sessionTask: SessionTaskProtocol) {
         self.sessionTask = sessionTask
     }
-    
+
 // MARK: - Functions
     func getSymbolsCurrency(callBack: @escaping (Result<SymbolsDTO, Error>) -> Void) {
         sessionTask.sendTask(url: MoneyRatesService.moneyRatesUrl) { result in

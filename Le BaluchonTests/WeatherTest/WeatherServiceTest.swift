@@ -15,7 +15,7 @@ class WeatherServiceTest: XCTestCase {
         let session = SessionTaskMock()
         let weatherService = WeatherServices(sessionTask: session)
         let response = FakeResponseWeatherData()
-        
+
         session.data = response.weatherCorrectData
 
         weatherService.getWeatherJson(city: "Marseille") { result in
@@ -33,7 +33,7 @@ class WeatherServiceTest: XCTestCase {
         let session = SessionTaskMock()
         let weatherService = WeatherServices(sessionTask: session)
         let response = FakeResponseWeatherData()
-        
+
         session.data = response.weatherIncorrectData
 
         weatherService.getWeatherJson(city: "Marseille") { result in

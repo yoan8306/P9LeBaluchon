@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F1BCEE427F1D543009267DA /* Date+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BCEE327F1D543009267DA /* Date+DateFormatter.swift */; };
 		5F1BCEE627F1D894009267DA /* DeviseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BCEE527F1D894009267DA /* DeviseDTO.swift */; };
 		5F1BCEE827F1D8DA009267DA /* SymbolsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BCEE727F1D8DA009267DA /* SymbolsDTO.swift */; };
 		5F1BCEEA27F2533F009267DA /* MyCurrentCurrencyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BCEE927F2533F009267DA /* MyCurrentCurrencyTest.swift */; };
@@ -71,7 +70,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5F1BCEE327F1D543009267DA /* Date+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DateFormatter.swift"; sourceTree = "<group>"; };
 		5F1BCEE527F1D894009267DA /* DeviseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviseDTO.swift; sourceTree = "<group>"; };
 		5F1BCEE727F1D8DA009267DA /* SymbolsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsDTO.swift; sourceTree = "<group>"; };
 		5F1BCEE927F2533F009267DA /* MyCurrentCurrencyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCurrentCurrencyTest.swift; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				5F217AC527EC9C1500C82D54 /* UITextField.swift */,
-				5F1BCEE327F1D543009267DA /* Date+DateFormatter.swift */,
 				5FDBD20B2816BAE600D4BBAD /* UIViewController+Alert.swift */,
 			);
 			path = Extension;
@@ -362,7 +359,6 @@
 				5FE431E427DD39C0001040D3 /* Sources */,
 				5FE431E527DD39C0001040D3 /* Frameworks */,
 				5FE431E627DD39C0001040D3 /* Resources */,
-				5FAE709A27E4E063006E640C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -484,26 +480,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		5FAE709A27E4E063006E640C /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nif which swiftlint >/dev/null; then\n    swiftlint autocorrect\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		5FE431E427DD39C0001040D3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -531,7 +507,6 @@
 				5FE431EE27DD39C0001040D3 /* SceneDelegate.swift in Sources */,
 				5F681360280F5CCC00E69813 /* SupportedLanguagesDTO.swift in Sources */,
 				5FE5A37127E0B64E0002B586 /* MoneyRatesViewController.swift in Sources */,
-				5F1BCEE427F1D543009267DA /* Date+DateFormatter.swift in Sources */,
 				5F1BCEE627F1D894009267DA /* DeviseDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
