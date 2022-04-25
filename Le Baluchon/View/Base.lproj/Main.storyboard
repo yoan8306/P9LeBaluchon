@@ -523,7 +523,7 @@
                         <constraints>
                             <constraint firstItem="Jt8-Ka-eRR" firstAttribute="trailing" secondItem="DdJ-DI-WcG" secondAttribute="trailing" id="ECh-uc-2XF"/>
                             <constraint firstItem="5JH-XN-XRZ" firstAttribute="trailing" secondItem="kqn-Nj-aSq" secondAttribute="trailing" constant="8" id="GnB-te-cOp"/>
-                            <constraint firstItem="SA8-lm-VMH" firstAttribute="top" secondItem="y89-c5-Fwa" secondAttribute="top" id="HmT-5V-QbA"/>
+                            <constraint firstItem="SA8-lm-VMH" firstAttribute="top" secondItem="5JH-XN-XRZ" secondAttribute="top" id="HmT-5V-QbA"/>
                             <constraint firstItem="DdJ-DI-WcG" firstAttribute="top" secondItem="5JH-XN-XRZ" secondAttribute="top" constant="10" id="Jhe-Hy-5Qa"/>
                             <constraint firstItem="kqn-Nj-aSq" firstAttribute="leading" secondItem="5JH-XN-XRZ" secondAttribute="leading" constant="8" id="OSY-zE-n0Y"/>
                             <constraint firstItem="5JH-XN-XRZ" firstAttribute="bottom" secondItem="kqn-Nj-aSq" secondAttribute="bottom" constant="50" id="RQc-Vm-e8r"/>
@@ -589,7 +589,7 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="0dY-5Y-YsX"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" red="0.013691956179999999" green="0.13306105139999999" blue="0.25463044639999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msk-ul-iDL">
@@ -732,7 +732,6 @@
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bWx-Lc-AFe"/>
-                        <color key="backgroundColor" red="0.89719015359999998" green="0.93390220400000001" blue="0.14040389659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="fO3-Nc-af2" secondAttribute="bottom" id="6Mx-31-B9l"/>
@@ -772,11 +771,11 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="82D-AQ-Dyg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.89719015359999998" green="0.93390220400000001" blue="0.14040389659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <color key="barTintColor" red="0.1649948359" green="0.63495355840000001" blue="0.80595189330000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <tabBarAppearance key="standardAppearance">
                             <color key="backgroundColor" red="0.1649948359" green="0.63495355840000001" blue="0.80595189330000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="selectionIndicatorTintColor" red="0.89719015359999998" green="0.93390220400000001" blue="0.14040389659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="selectionIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tabBarAppearance>
                     </tabBar>
                     <connections>
@@ -792,14 +791,14 @@
     </scenes>
     <resources>
         <image name="arrow.down.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="moneyBackground" width="612" height="340"/>
+        <image name="moneyBackground" width="5184" height="3456"/>
         <image name="money_rates_icon" width="50" height="50"/>
         <image name="questionmark" catalog="system" width="96" height="128"/>
         <image name="sunrise" width="80" height="80"/>
         <image name="sunset" width="80" height="80"/>
         <image name="translateBackground" width="567" height="305"/>
         <image name="translate_icon" width="50" height="50"/>
-        <image name="weatherBackground" width="6240" height="4160"/>
+        <image name="weatherBackground" width="2448" height="3264"/>
         <image name="weather_icon" width="50" height="50"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -809,6 +808,9 @@
         </systemColor>
         <systemColor name="systemCyanColor">
             <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

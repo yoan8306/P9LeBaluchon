@@ -154,7 +154,7 @@ class TranslateViewController: UIViewController {
         sourceUIViewTableView.isHidden = true
         targetUIViewTable.isHidden = true
     }
-    
+
 }
 
 // MARK: - TableView DataSource
