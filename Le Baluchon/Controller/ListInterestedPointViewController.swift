@@ -4,49 +4,49 @@
 //
 //  Created by Yoan on 22/04/2022.
 //
-
+import Foundation
 import UIKit
 import CoreLocation
 import MapKit
 
+protocol HandleMapSearch {
+    func dropPinZoomIn(placemark: MKPlacemark)
+}
+
 class ListInterestedPointViewController: UIViewController {
-var locationManager = CLLocationManager()
-var pointOfInterestCategory: MKPointOfInterestCategory?
-    var mapView = MKMapView()
+    @IBOutlet weak var mapView: MKMapView!
+
+    var locationManager = CLLocationManager()
+    var pointOfInterestCategory: MKPointOfInterestCategory?
+    var resultSearchController: UISearchController?
+    var selectedPin: MKPlacemark?
+
+    // swiftlint:disable force_cast
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        userLocationRequest()
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        resultSearchController?.searchResultsUpdater = locationSearchTable
 
-    }
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Search for places"
+        navigationItem.searchController = resultSearchController
 
-    private func search(using searchRequest: MKLocalSearch.Request) {
-        mapView.region =  MKCoordinateRegion(center: (locationManager.location?.coordinate)!, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
-        // Confine the map search area to an area around the user's current location.
-        searchRequest.region = mapView.region
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        resultSearchController?.obscuresBackgroundDuringPresentation = true
+        definesPresentationContext = true
 
-        // Include only point of interest results. This excludes results based on address matches.
-        searchRequest.resultTypes = .pointOfInterest
+        locationSearchTable.mapView = mapView
 
-//        localSearch = MKLocalSearch(request: searchRequest)
-//        localSearch?.start { [unowned self] (response, error) in
-//            guard error == nil else {
-//                self.displaySearchError(error)
-//                return
-//            }
-//
-//            self.places = response?.mapItems
-//
-//            // Used when setting the map's region in `prepareForSegue`.
-//            if let updatedRegion = response?.boundingRegion {
-//                self.boundingRegion = updatedRegion
-//            }
-//        }
+        locationSearchTable.handleMapSearchDelegate = self
     }
 
 }
 
 extension ListInterestedPointViewController: CLLocationManagerDelegate {
-
     private func userLocationRequest() {
         locationManager.requestWhenInUseAuthorization()
 
@@ -55,5 +55,38 @@ extension ListInterestedPointViewController: CLLocationManagerDelegate {
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            // mkcoordinatespanmake
+            let region = MKCoordinateRegion(center: location.coordinate, span: span)
+            mapView.showsUserLocation = true
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("error: \(error)")
+    }
+}
+
+extension ListInterestedPointViewController: HandleMapSearch {
+    func dropPinZoomIn(placemark: MKPlacemark) {
+        // cache the pin
+        selectedPin = placemark
+        // clear existing pins
+        mapView.removeAnnotations(mapView.annotations)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        annotation.title = placemark.name
+        if let city = placemark.locality,
+        let state = placemark.administrativeArea {
+            annotation.subtitle = "(city) (state)"
+        }
+        mapView.addAnnotation(annotation)
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: placemark.coordinate, span: span)
+        mapView.setRegion(region, animated: true)
     }
 }
