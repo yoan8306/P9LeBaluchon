@@ -44,12 +44,8 @@ class WeatherViewController: UIViewController {
     }
 
     // MARK: - private functions
-    // le city ne devrait pas être optionnel
-    private func callWeatherServices(city: String?) {
+    private func callWeatherServices(city: String) {
         activityIndicator.isHidden = false
-        guard let city = city else {
-            return
-        }
         WeatherServices.shared.getWeatherJson(city: city) {[weak self] result in
             guard let self = self else {
                 return
@@ -90,14 +86,10 @@ extension WeatherViewController: CLLocationManagerDelegate {
         guard let firstLocation = location.first else {
             return
         }
+
         locationManager.stopUpdatingLocation()
         CLGeocoder().reverseGeocodeLocation(firstLocation) { places, _ in
-
-            guard let myPlace = places?.first else {
-                return
-            }
-            // tu peux direct faire `let city = places?.first?.locality`
-            guard let city = myPlace.locality else {
+            guard let city = places?.first?.locality else {
                 return
             }
             self.callWeatherServices(city: city)
@@ -105,19 +97,18 @@ extension WeatherViewController: CLLocationManagerDelegate {
     }
 }
 
-// MARK: - Extension UItextField delegate
+// MARK: - Extension UITextField delegate
 extension WeatherViewController: UITextFieldDelegate {
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        cityTextField.resignFirstResponder()
+
         guard let city = cityTextField.text, city.isEmpty == false, city.count > 3 else {
             presentAlert(alertMessage: "Veuillez entrer un nom de ville correcte")
-            
-            // déplace ce code avant le guard, tu le fait 2 fois.
-            cityTextField.resignFirstResponder()
             localizeButtonUIView.isHidden = true
             return true
         }
-        cityTextField.resignFirstResponder()
+
         localizeButtonUIView.isHidden = true
         callWeatherServices(city: city)
         return true

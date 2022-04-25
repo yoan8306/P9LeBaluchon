@@ -10,18 +10,18 @@ import Foundation
 class WeatherServices {
     static let shared = WeatherServices(sessionTask: SessionTask.shared)
     var sessionTask: SessionTaskProtocol
-    
+
     init(sessionTask: SessionTaskProtocol) {
         self.sessionTask = sessionTask
     }
-    
+
     func getWeatherJson(city: String?, completionHandler: @escaping (Result<WeatherDTO, Error>) -> Void) {
         var urlWeatherInfos = URLComponents()
-        
+
         guard let city = city else {
             return
         }
-        
+
         urlWeatherInfos.scheme = "https"
         urlWeatherInfos.host = "api.openweathermap.org"
         urlWeatherInfos.path = "/data/2.5/weather"
@@ -30,11 +30,11 @@ class WeatherServices {
             URLQueryItem(name: "units", value: "metric"),
             URLQueryItem(name: "appid", value: ApiKeys.weatherKey)
         ]
-        
+
         guard let urlWeatherInfos = urlWeatherInfos.url else {
             return
         }
-        
+
         sessionTask.sendTask(url: urlWeatherInfos) { result in
             switch result {
             case .success(let data):

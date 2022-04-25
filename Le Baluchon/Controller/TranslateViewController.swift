@@ -33,24 +33,25 @@ class TranslateViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        callGetSupportedLanguages()
+        getSupportedLanguages()
         initializeView()
     }
 
     // MARK: - IBOAction
     @IBAction func dissmissKeyboard(_ sender: UITapGestureRecognizer) {
-        hideUIViewTableView()
         sourceTextView.resignFirstResponder()
         translatedTexView.resignFirstResponder()
     }
 
     @IBAction func sourceLangActionButton() {
         sourceUIViewTableView.isHidden = false
+        targetUIViewTable.isHidden = true
         dissmissKeyboardTapGesture.isEnabled = false
     }
 
     @IBAction func changeTargetLangAction() {
         targetUIViewTable.isHidden = false
+        sourceUIViewTableView.isHidden  = true
         dissmissKeyboardTapGesture.isEnabled = false
     }
     @IBAction func reverseButtonAction() {
@@ -70,25 +71,22 @@ class TranslateViewController: UIViewController {
         if translateManager.reverseTranslate {
             text = translatedTexView.text
             showSourceActivity(shown: true)
-            callGetTranslation(langSource: translateManager.secondLangSelected, langTarget: translateManager.firstLangSelected, text: text)
+            getTranslation(source: translateManager.secondLangSelected,
+                           target: translateManager.firstLangSelected, text: text)
         } else {
             text = sourceTextView.text
             showTranslateActivity(shown: true)
-            callGetTranslation(langSource: translateManager.firstLangSelected, langTarget: translateManager.secondLangSelected, text: text)
+            getTranslation(source: translateManager.firstLangSelected,
+                           target: translateManager.secondLangSelected, text: text)
         }
     }
 
     // MARK: - private func
-    
-    // language au lieu de `lang`
-    // tu peux utiliser simplement `source` `target`
-    // tu peux renommer translate(_ text: String?, from source: String, to destination: String)
-    // Il faut `essayer`de faire des phrases quand tu composes tes méthodes avec paramètres
-    private func callGetTranslation(langSource: String, langTarget: String, text: String?) {
 
+    private func getTranslation(source: String, target: String, text: String?) {
         TranslateService.shared.getTranslation(text: text,
-                                               langSource: langSource,
-                                               langTarget: langTarget) { [weak self] result in
+                                               langSource: source,
+                                               langTarget: target) { [weak self] result in
             guard let self = self else {
                 return
             }
@@ -111,8 +109,7 @@ class TranslateViewController: UIViewController {
         }
     }
 
-    // getSupportedLanguages
-    private func callGetSupportedLanguages() {
+    private func getSupportedLanguages() {
         TranslateService.shared.getSupportedLanguage {[weak self] result in
             guard let self = self else {
                 return
@@ -160,7 +157,6 @@ class TranslateViewController: UIViewController {
         sourceUIViewTableView.isHidden = true
         targetUIViewTable.isHidden = true
     }
-
 }
 
 // MARK: - TableView DataSource
@@ -198,6 +194,8 @@ extension TranslateViewController: UITableViewDataSource {
 extension TranslateViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let langSelected = translateManager.listSupportLanguages[indexPath.row]
+        dissmissKeyboardTapGesture.isEnabled = true
+
         switch tableView {
         case sourceTableView:
             translateManager.firstLangSelected = langSelected.language

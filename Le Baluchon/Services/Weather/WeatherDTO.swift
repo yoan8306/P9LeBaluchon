@@ -27,7 +27,7 @@ struct WeatherDTO: Decodable {
         let description: String
         let icon: String
     }
-
+// swiftlint:disable identifier_name
     struct Main: Decodable {
         let temp: Float
         let feels_like: Float
