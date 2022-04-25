@@ -36,6 +36,7 @@
 		5FC3BABB2812ABE500653EBE /* TranslateServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC3BABA2812ABE500653EBE /* TranslateServiceTest.swift */; };
 		5FC3BABD2812AD7E00653EBE /* LangSupportedList.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FC3BABC2812AD7E00653EBE /* LangSupportedList.json */; };
 		5FC3BABF2812BB9600653EBE /* TranslateManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC3BABE2812BB9600653EBE /* TranslateManagerTest.swift */; };
+		5FDBD20C2816BAE600D4BBAD /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDBD20B2816BAE600D4BBAD /* UIViewController+Alert.swift */; };
 		5FE02E9627E89D6E0067D89C /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE02E9527E89D6E0067D89C /* APIError.swift */; };
 		5FE02E9827E8A1720067D89C /* SessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE02E9727E8A1720067D89C /* SessionTask.swift */; };
 		5FE431EC27DD39C0001040D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE431EB27DD39C0001040D3 /* AppDelegate.swift */; };
@@ -99,6 +100,7 @@
 		5FC3BABA2812ABE500653EBE /* TranslateServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateServiceTest.swift; sourceTree = "<group>"; };
 		5FC3BABC2812AD7E00653EBE /* LangSupportedList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LangSupportedList.json; sourceTree = "<group>"; };
 		5FC3BABE2812BB9600653EBE /* TranslateManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateManagerTest.swift; sourceTree = "<group>"; };
+		5FDBD20B2816BAE600D4BBAD /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		5FE02E9527E89D6E0067D89C /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		5FE02E9727E8A1720067D89C /* SessionTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTask.swift; sourceTree = "<group>"; };
 		5FE431E827DD39C0001040D3 /* Le Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Le Baluchon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,6 +181,7 @@
 			children = (
 				5F217AC527EC9C1500C82D54 /* UITextField.swift */,
 				5F1BCEE327F1D543009267DA /* Date+DateFormatter.swift */,
+				5FDBD20B2816BAE600D4BBAD /* UIViewController+Alert.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				5F68135E280F3F3A00E69813 /* TranslateService.swift in Sources */,
 				5F2EAD86280FF55C001725F3 /* TranslationManager.swift in Sources */,
 				5F9839C927E138E700AD58D6 /* MoneyRatesServices.swift in Sources */,
+				5FDBD20C2816BAE600D4BBAD /* UIViewController+Alert.swift in Sources */,
 				5F68135C280F3E6000E69813 /* TranslaterDTO.swift in Sources */,
 				5FE431EC27DD39C0001040D3 /* AppDelegate.swift in Sources */,
 				5F217AC627EC9C1500C82D54 /* UITextField.swift in Sources */,

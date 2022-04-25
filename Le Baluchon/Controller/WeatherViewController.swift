@@ -49,8 +49,11 @@ class WeatherViewController: UIViewController {
         guard let city = city else {
             return
         }
-        WeatherServices.shared.getWeatherJson(city: city) { result in
-
+        WeatherServices.shared.getWeatherJson(city: city) {[weak self] result in
+            guard let self = self else {
+                return
+            }
+            
             switch result {
             case .success(let weatherInfo):
                 self.weatherInfo.addNewDataWeather(weatherData: weatherInfo)
@@ -62,20 +65,6 @@ class WeatherViewController: UIViewController {
             }
         }
     }
-
-    private func initializeView() {
-
-    }
-
-    private func presentAlert (alertTitle title: String = "Error", alertMessage message: String,
-                               buttonTitle titleButton: String = "Ok",
-                               alertStyle style: UIAlertAction.Style = .cancel ) {
-        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: titleButton, style: style, handler: nil)
-        alertVC.addAction(action)
-        present(alertVC, animated: true, completion: nil)
-    }
-
 }
 
 // MARK: - Extension location Manager Delegate
@@ -86,7 +75,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
 
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
             locationManager.startUpdatingLocation()
         }
     }
@@ -166,4 +155,9 @@ extension WeatherViewController: UITableViewDelegate {
             }
         }
     }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.row > 0
+    }
+
 }

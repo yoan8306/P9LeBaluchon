@@ -26,6 +26,7 @@ class TranslateViewController: UIViewController {
     @IBOutlet weak var langTargetButton: UIButton!
     @IBOutlet weak var translatedTexView: UITextView!
     @IBOutlet weak var translatedUIView: UIView!
+    @IBOutlet weak var dissmissKeyboardTapGesture: UITapGestureRecognizer!
     @IBOutlet weak var translatedButton: UIButton!
 
     // MARK: - LifeCycle
@@ -45,10 +46,12 @@ class TranslateViewController: UIViewController {
 
     @IBAction func sourceLangActionButton() {
         sourceUIViewTableView.isHidden = false
+        dissmissKeyboardTapGesture.isEnabled = false
     }
 
     @IBAction func changeTargetLangAction() {
         targetUIViewTable.isHidden = false
+        dissmissKeyboardTapGesture.isEnabled = false
     }
     @IBAction func reverseButtonAction() {
         UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseIn) {
@@ -80,7 +83,10 @@ class TranslateViewController: UIViewController {
 
         TranslateService.shared.getTranslation(text: text,
                                                langSource: langSource,
-                                               langTarget: langTarget) { result in
+                                               langTarget: langTarget) { [weak self] result in
+            guard let self = self else {
+                return
+            }
 
             switch result {
             case .success(let translatedText):
@@ -101,7 +107,10 @@ class TranslateViewController: UIViewController {
     }
 
     private func callGetSupportedLanguages() {
-        TranslateService.shared.getSupportedLanguage { result in
+        TranslateService.shared.getSupportedLanguage {[weak self] result in
+            guard let self = self else {
+                return
+            }
             switch result {
             case .success(let supportedLangList):
                 self.translateManager.listSupportLanguages = supportedLangList.data.languages
@@ -145,15 +154,7 @@ class TranslateViewController: UIViewController {
         sourceUIViewTableView.isHidden = true
         targetUIViewTable.isHidden = true
     }
-
-    private func presentAlert (alertTitle title: String = "Error", alertMessage message: String,
-                               buttonTitle titleButton: String = "Ok",
-                               alertStyle style: UIAlertAction.Style = .cancel ) {
-        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: titleButton, style: style, handler: nil)
-        alertVC.addAction(action)
-        present(alertVC, animated: true, completion: nil)
-    }
+    
 }
 
 // MARK: - TableView DataSource
