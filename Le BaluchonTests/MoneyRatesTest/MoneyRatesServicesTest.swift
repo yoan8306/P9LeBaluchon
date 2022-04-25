@@ -8,8 +8,6 @@
 import XCTest
 @testable import Le_Baluchon
 
-// swiftlint:disable force_try
-
 class MoneyRatesServicesTest: XCTestCase {
 
     func testCallSymbolService_WhenDataIsCorrect_ThenResultEqualSuccess () {
@@ -51,12 +49,10 @@ class MoneyRatesServicesTest: XCTestCase {
     func testGivenCallDeviseService_WhenCorrecteDataReceive_ThenResultEqualSuccess() {
         let sessionTaskMock = SessionTaskMock()
         let moneyRatesService = MoneyRatesService(sessionTask: sessionTaskMock)
-
-        // create data
         let response = FakeResponseMoneyRatesData()
+        
         sessionTaskMock.data = response.deviseCorrectData
-
-        // perform request
+        
         moneyRatesService.getDeviseCurrency { result in
             switch result {
             case .success(let myCurrentCurrency):
@@ -73,8 +69,8 @@ class MoneyRatesServicesTest: XCTestCase {
     func testGivenCallDeviseService_WhenIncorrecteDataReceive_ThenResultEqualFailure() {
         let sessionTaskMock = SessionTaskMock()
         let moneyRatesService = MoneyRatesService(sessionTask: sessionTaskMock)
-
         let response = FakeResponseMoneyRatesData()
+        
         sessionTaskMock.data = response.moneyIncorrectData
 
         moneyRatesService.getDeviseCurrency { result in

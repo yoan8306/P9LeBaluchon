@@ -26,13 +26,12 @@ class MoneyRatesViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        callMoneyRatesService()
+        moneyRatesService()
         valueSymbolFromTextField.addDoneButton(target: self, selector: #selector(tapDone(sender:)))
         resultConvertLabel.layer.cornerRadius = 8
     }
 
     // MARK: - @IBAction
-
     @objc func tapDone(sender: Any) {
         self.view.endEditing(true)
         convertToUSD()
@@ -45,15 +44,9 @@ class MoneyRatesViewController: UIViewController {
 }
 
 private extension MoneyRatesViewController {
+    
     // MARK: - Private function
-
-    // Autant appeler direct la fonction dedans ?
-    func callMoneyRatesService() {
-        callGetSymbolService()
-    }
-
-    // tu peux renommer la fonction en simplement `getSymbols`
-    func callGetSymbolService() {
+    func moneyRatesService() {
         MoneyRatesService.shared.getSymbolsCurrency {[weak self] result in
             guard let self = self else {
                 return
@@ -61,7 +54,7 @@ private extension MoneyRatesViewController {
 
             switch result {
             case .success(let mySymbol) :
-                self.callGetDevise(symbols: mySymbol.symbols ?? [:])
+                self.getDevise(symbols: mySymbol.symbols ?? [:])
 
             case .failure(let error) :
                 self.presentAlert(alertMessage: error.localizedDescription)
@@ -69,8 +62,7 @@ private extension MoneyRatesViewController {
         }
     }
 
-    // tu peux renommer la fonction en simplement `getDevise`
-    func callGetDevise(symbols: [String: String]) {
+    func getDevise(symbols: [String: String]) {
         MoneyRatesService.shared.getDeviseCurrency { [weak self] result in
             guard let self = self else {
                 return
@@ -105,7 +97,7 @@ private extension MoneyRatesViewController {
                        buttonTitle titleButton: String = "Retry") {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let actionRetry = UIAlertAction(title: titleButton, style: .default) {_ in
-            self.callMoneyRatesService()
+            self.moneyRatesService()
         }
         let actionCancel = UIAlertAction(title: "Cancel", style: .destructive) {_ in
             self.activityController.stopAnimating()
@@ -119,7 +111,6 @@ private extension MoneyRatesViewController {
 
 // MARK: - tableView Currency
 extension MoneyRatesViewController: UITableViewDataSource, UITableViewDelegate {
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listKey.count
     }

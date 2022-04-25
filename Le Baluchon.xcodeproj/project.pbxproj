@@ -239,10 +239,9 @@
 		5FC3BAB52812A93500653EBE /* TranslateTest */ = {
 			isa = PBXGroup;
 			children = (
-				5FC3BAB62812A97400653EBE /* Translate.json */,
+				5FDBD20D2817306B00D4BBAD /* JsonFiles */,
 				5FC3BAB82812AA4500653EBE /* FakeResponseTranslateData.swift */,
 				5FC3BABA2812ABE500653EBE /* TranslateServiceTest.swift */,
-				5FC3BABC2812AD7E00653EBE /* LangSupportedList.json */,
 				5FC3BABE2812BB9600653EBE /* TranslateManagerTest.swift */,
 			);
 			path = TranslateTest;
@@ -287,6 +286,15 @@
 				5F9839CA27E13A4A00AD58D6 /* ApiKeys.swift */,
 			);
 			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		5FDBD20D2817306B00D4BBAD /* JsonFiles */ = {
+			isa = PBXGroup;
+			children = (
+				5FC3BABC2812AD7E00653EBE /* LangSupportedList.json */,
+				5FC3BAB62812A97400653EBE /* Translate.json */,
+			);
+			path = JsonFiles;
 			sourceTree = "<group>";
 		};
 		5FE431DF27DD39C0001040D3 = {

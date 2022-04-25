@@ -7,15 +7,12 @@
 
 import Foundation
 
-// les marks ne sont pas en rapport avec les structures
-// DataClass c'est pas très parlant, utilise un nom qui représente mieux ce qu'il représente
-
-// MARK: - Welcome
+// MARK: - Translater
 struct TranslaterDTO: Codable {
     let data: DataClass
 }
 
-// MARK: - DataClass
+// MARK: - array response translation
 struct DataClass: Codable {
     let translations: [Translation]
 }

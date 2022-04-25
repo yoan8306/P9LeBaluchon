@@ -8,13 +8,16 @@
 import Foundation
 
 class TranslateService {
+// MARK: - Properties
     static let shared = TranslateService(sessionTask: SessionTask.shared)
     var sessionTask: SessionTaskProtocol
 
+// MARK: - life cycle
     init(sessionTask: SessionTaskProtocol) {
         self.sessionTask = sessionTask
     }
-
+    
+// MARK: - Functions
     func getTranslation(text: String?, langSource: String, langTarget: String,
                         completionHandler: @escaping (Result <TranslaterDTO, Error>) -> Void) {
         var urlTranslate = URLComponents()
@@ -51,7 +54,7 @@ class TranslateService {
         }
     }
 
-    func getSupportedLanguage(completionHandler: @escaping (Result <SupportedLanguagesDTO, Error>) -> Void) {
+    func getSupportedLanguages(completionHandler: @escaping (Result <SupportedLanguagesDTO, Error>) -> Void) {
         var urlSupportedLanguages = URLComponents()
 
         urlSupportedLanguages.scheme = "https"

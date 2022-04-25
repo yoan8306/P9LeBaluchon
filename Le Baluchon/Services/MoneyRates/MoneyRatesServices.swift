@@ -7,21 +7,22 @@
 
 import Foundation
 
-// Saut des lignes entre variables / méthodes
 class MoneyRatesService {
+    
+// MARK: - Properties
     static var shared = MoneyRatesService(sessionTask: SessionTask.shared)
     var sessionTask: SessionTaskProtocol
-
-    init(sessionTask: SessionTaskProtocol) {
-        self.sessionTask = sessionTask
-    }
-
-    // les 2 urls sont les mêmes
     private static let moneyRatesUrl =
     URL(string: "http://data.fixer.io/api/symbols?access_key=\(ApiKeys.moneyRatesKey)")!
     private static let deviseMoneyUrl =
     URL(string: "http://data.fixer.io/api/latest?access_key=\(ApiKeys.moneyRatesKey)")!
 
+// MARK: - Life cycle
+    init(sessionTask: SessionTaskProtocol) {
+        self.sessionTask = sessionTask
+    }
+    
+// MARK: - Functions
     func getSymbolsCurrency(callBack: @escaping (Result<SymbolsDTO, Error>) -> Void) {
         sessionTask.sendTask(url: MoneyRatesService.moneyRatesUrl) { result in
             switch result {

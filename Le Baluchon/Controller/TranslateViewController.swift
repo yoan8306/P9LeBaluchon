@@ -43,13 +43,13 @@ class TranslateViewController: UIViewController {
         translatedTexView.resignFirstResponder()
     }
 
-    @IBAction func sourceLangActionButton() {
+    @IBAction func sourceLanguageAction() {
         sourceUIViewTableView.isHidden = false
         targetUIViewTable.isHidden = true
         dissmissKeyboardTapGesture.isEnabled = false
     }
 
-    @IBAction func changeTargetLangAction() {
+    @IBAction func targetLanguageAction() {
         targetUIViewTable.isHidden = false
         sourceUIViewTableView.isHidden  = true
         dissmissKeyboardTapGesture.isEnabled = false
@@ -110,7 +110,7 @@ class TranslateViewController: UIViewController {
     }
 
     private func getSupportedLanguages() {
-        TranslateService.shared.getSupportedLanguage {[weak self] result in
+        TranslateService.shared.getSupportedLanguages {[weak self] result in
             guard let self = self else {
                 return
             }
