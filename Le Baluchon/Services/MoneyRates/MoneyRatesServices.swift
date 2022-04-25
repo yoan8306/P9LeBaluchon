@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Saut des lignes entre variables / méthodes
 class MoneyRatesService {
     static var shared = MoneyRatesService(sessionTask: SessionTask.shared)
     var sessionTask: SessionTaskProtocol
@@ -15,6 +16,7 @@ class MoneyRatesService {
         self.sessionTask = sessionTask
     }
 
+    // les 2 urls sont les mêmes
     private static let moneyRatesUrl =
     URL(string: "http://data.fixer.io/api/symbols?access_key=\(ApiKeys.moneyRatesKey)")!
     private static let deviseMoneyUrl =

@@ -7,6 +7,8 @@
 
 import Foundation
 
+// les marks ne sont pas en rapport avec les structures
+
 // MARK: - Welcome
 struct SupportedLanguagesDTO: Codable {
     let data: ListLanguages

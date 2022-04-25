@@ -44,6 +44,7 @@ class WeatherViewController: UIViewController {
     }
 
     // MARK: - private functions
+    // le city ne devrait pas être optionnel
     private func callWeatherServices(city: String?) {
         activityIndicator.isHidden = false
         guard let city = city else {
@@ -106,6 +107,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
             guard let myPlace = places?.first else {
                 return
             }
+            // tu peux direct faire `let city = places?.first?.locality`
             guard let city = myPlace.locality else {
                 return
             }
@@ -116,9 +118,12 @@ extension WeatherViewController: CLLocationManagerDelegate {
 
 // MARK: - Extension UItextField delegate
 extension WeatherViewController: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let city = cityTextField.text, city.isEmpty == false, city.count > 3 else {
             presentAlert(alertMessage: "Veuillez entrer un nom de ville correcte")
+            
+            // déplace ce code avant le guard, tu le fait 2 fois.
             cityTextField.resignFirstResponder()
             localizeButtonUIView.isHidden = true
             return true
