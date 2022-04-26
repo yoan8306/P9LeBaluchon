@@ -7,7 +7,13 @@
 
 import Foundation
 import UIKit
+
 extension UITextField {
+    /// create toolbar with done button on top keyboard
+    /// - Parameters:
+    ///   - title: name button
+    ///   - target: textfield
+    ///   - selector: action after tape on button
     func addDoneButton(title: String = "Done", target: Any, selector: Selector) {
         let toolBar = UIToolbar(frame: CGRect(x: 0.0,
                                               y: 0.0,

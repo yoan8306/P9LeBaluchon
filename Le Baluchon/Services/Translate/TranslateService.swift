@@ -10,9 +10,12 @@ import Foundation
 class TranslateService {
 // MARK: - Properties
     static let shared = TranslateService(sessionTask: SessionTask.shared)
+    /// It's injection dependance
     var sessionTask: SessionTaskProtocol
 
 // MARK: - life cycle
+    /// initialize injection dependance for create tests
+    /// - Parameter sessionTask: Or SessionTask because conform to protocol or SessionTaskMock for tests
     init(sessionTask: SessionTaskProtocol) {
         self.sessionTask = sessionTask
     }

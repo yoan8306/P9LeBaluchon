@@ -16,7 +16,7 @@ class TranslateViewController: UIViewController {
     @IBOutlet weak var sourceActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var translatedActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var sourceUIView: UIView!
-    @IBOutlet weak var reverseButton: UIButton!
+    @IBOutlet weak var inverseButton: UIButton!
     @IBOutlet weak var targetUIViewTable: UIView!
     @IBOutlet weak var targetTableView: UITableView!
     @IBOutlet weak var sourceUIViewTableView: UIView!
@@ -30,7 +30,6 @@ class TranslateViewController: UIViewController {
     @IBOutlet weak var translatedButton: UIButton!
 
     // MARK: - LifeCycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         getSupportedLanguages()
@@ -54,35 +53,42 @@ class TranslateViewController: UIViewController {
         sourceUIViewTableView.isHidden  = true
         dissmissKeyboardTapGesture.isEnabled = false
     }
-    @IBAction func reverseButtonAction() {
+    
+    /// Inverse the meaning of the translation
+    @IBAction func inverseButtonAction() {
         UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseIn) {
-            if self.translateManager.reverseTranslate {
-                self.translateManager.reverseTranslation()
-                self.reverseButton.transform = .identity
+            if self.translateManager.inverseTranslate {
+                self.inverseButton.transform = .identity
             } else {
-                self.translateManager.reverseTranslation()
-                self.reverseButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+                self.inverseButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
             }
+            self.translateManager.inverseTranslation()
         }
     }
-
+    
+    /// Make translate
     @IBAction func translateAction() {
         var text = ""
-        if translateManager.reverseTranslate {
+        if translateManager.inverseTranslate {
             text = translatedTexView.text
             showSourceActivity(shown: true)
-            getTranslation(source: translateManager.secondLangSelected,
-                           target: translateManager.firstLangSelected, text: text)
+            getTranslation(source: translateManager.secondLanguageSelected,
+                           target: translateManager.firstLanguageSelected, text: text)
         } else {
             text = sourceTextView.text
-            showTranslateActivity(shown: true)
-            getTranslation(source: translateManager.firstLangSelected,
-                           target: translateManager.secondLangSelected, text: text)
+            showTranslatedActivity(shown: true)
+            getTranslation(source: translateManager.firstLanguageSelected,
+                           target: translateManager.secondLanguageSelected, text: text)
         }
     }
 
     // MARK: - private func
-
+    
+    /// Call service for get translation
+    /// - Parameters:
+    ///   - source: Origine write texte
+    ///   - target: What language user get translate
+    ///   - text: the texte to be translated
     private func getTranslation(source: String, target: String, text: String?) {
         TranslateService.shared.getTranslation(text: text,
                                                langSource: source,
@@ -95,11 +101,11 @@ class TranslateViewController: UIViewController {
             case .success(let translatedText):
 
                 let translation = translatedText.data.translations.first?.translatedText
-                if self.translateManager.reverseTranslate {
+                if self.translateManager.inverseTranslate {
                     self.showSourceActivity(shown: false)
                     self.sourceTextView.text = translation
                 } else {
-                    self.showTranslateActivity(shown: false)
+                    self.showTranslatedActivity(shown: false)
                     self.translatedTexView.text = translation
                 }
 
@@ -134,25 +140,29 @@ class TranslateViewController: UIViewController {
         langTargetButton.layer.cornerRadius = 8
         translatedButton.layer.cornerRadius = 8
     }
-
+    
+    /// Hide sourceTextView texte view and show activity indicator
+    /// - Parameter shown: show or hide activity indicator
     private func showSourceActivity(shown: Bool) {
-        if translateManager.reverseTranslate {
+        if translateManager.inverseTranslate {
             sourceActivityIndicator.isHidden = !shown
             sourceTextView.isHidden = shown
         }
     }
-
-    private func showTranslateActivity(shown: Bool) {
+    /// Hide translatedTextView texte view and show activity indicator
+    /// - Parameter shown: show or hide activity indicator
+    private func showTranslatedActivity(shown: Bool) {
         UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseOut) {
             self.translatedUIView.isHidden = false
         }
-        if !translateManager.reverseTranslate {
+        if !translateManager.inverseTranslate {
             translatedActivityIndicator.isHidden = !shown
             translatedTexView.isHidden = shown
         }
 
     }
-
+    
+    /// Hide all tablesView
     private func hideUIViewTableView() {
         sourceUIViewTableView.isHidden = true
         targetUIViewTable.isHidden = true
@@ -198,11 +208,11 @@ extension TranslateViewController: UITableViewDelegate {
 
         switch tableView {
         case sourceTableView:
-            translateManager.firstLangSelected = langSelected.language
+            translateManager.firstLanguageSelected = langSelected.language
             langSourceButton.setTitle(langSelected.name, for: .normal)
             sourceUIViewTableView.isHidden = true
         case targetTableView:
-            translateManager.secondLangSelected = langSelected.language
+            translateManager.secondLanguageSelected = langSelected.language
             langTargetButton.setTitle(langSelected.name, for: .normal)
             targetUIViewTable.isHidden = true
         default:

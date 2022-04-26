@@ -7,14 +7,14 @@
 
 import Foundation
 
+
 class TranslationManager {
     var listSupportLanguages: [Language] = []
-    // language au lieu de 'lang' 
-    var firstLangSelected = "fr"
-    var secondLangSelected = "en"
-    var reverseTranslate = false
+    var firstLanguageSelected = "fr"
+    var secondLanguageSelected = "en"
+    var inverseTranslate = false
 
-    func reverseTranslation() {
-    reverseTranslate = !reverseTranslate
+    func inverseTranslation() {
+    inverseTranslate = !inverseTranslate
     }
 }

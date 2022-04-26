@@ -7,7 +7,6 @@
 
 import XCTest
 @testable import Le_Baluchon
-// swiftlint:disable force_try
 
 class WeatherServiceTest: XCTestCase {
 

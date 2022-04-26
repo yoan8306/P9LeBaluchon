@@ -7,23 +7,22 @@
 
 import Foundation
 
+/// Use for create tests
 protocol SessionTaskProtocol {
     func sendTask(url: URL, completion: @escaping (Result<Data, Error>) -> Void)
-
 }
 
+
 final class SessionTask: SessionTaskProtocol {
-// MARK: - Properties
     static let shared = SessionTask()
     var session: URLSession = .shared
 
-// MARK: - Life cycle
     private init() {}
-    init(session: URLSession) {
-        self.session = session
-    }
-
-// MARK: - function
+    
+    ///Call Api and return data if call is success
+    /// - Parameters:
+    ///   - url: API url
+    ///   - completion: return data or error
     func sendTask(url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
         session.dataTask(with: url, completionHandler: { (data, response, error) in
             DispatchQueue.main.async {

@@ -11,13 +11,13 @@ import XCTest
 
 class TranslateManagerTest: XCTestCase {
 
-    func testGivenReverseTranslationEqualFalse_WhenCallFunctionReverse_ThenReverseTranslationEqualTrue() {
+    func testGivenInverseTranslationEqualFalse_WhenCallFunctionInverse_ThenInverseTranslationEqualTrue() {
         let translationManger = TranslationManager()
-        translationManger.reverseTranslate = false
+        translationManger.inverseTranslate = false
 
-        translationManger.reverseTranslation()
+        translationManger.inverseTranslation()
 
-        XCTAssertTrue(translationManger.reverseTranslate)
+        XCTAssertTrue(translationManger.inverseTranslate)
     }
 
 }

@@ -9,8 +9,11 @@ import Foundation
 
 class WeatherServices {
     static let shared = WeatherServices(sessionTask: SessionTask.shared)
+    /// It's injection dependance
     var sessionTask: SessionTaskProtocol
 
+    /// initialize injection dependance for create tests
+    /// - Parameter sessionTask: Or SessionTask because conform to protocol or SessionTaskMock for tests
     init(sessionTask: SessionTaskProtocol) {
         self.sessionTask = sessionTask
     }

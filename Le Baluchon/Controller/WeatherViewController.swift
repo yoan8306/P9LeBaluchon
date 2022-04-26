@@ -11,6 +11,7 @@ import CoreLocation
 class WeatherViewController: UIViewController {
     var locationManager = CLLocationManager()
     var weatherInfo = WeatherInformation()
+    var getUserLocated = false
 
     // MARK: - IBOutlet
     @IBOutlet weak var localizeButtonUIView: UIView!
@@ -22,7 +23,7 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let newYorkCity = "New York"
-        callWeatherServices(city: newYorkCity)
+        weatherServices(city: newYorkCity)
         localizeButtonUIView.isHidden = true
     }
 
@@ -36,15 +37,20 @@ class WeatherViewController: UIViewController {
         localizeButtonUIView.isHidden = true
         cityTextField.resignFirstResponder()
     }
-
+    
+    /// Get user localization
+    /// - Parameter sender: UIButton "Detect position"
     @IBAction func userLocalizationActionButton(_ sender: UIButton) {
         localizeButtonUIView.isHidden = true
         cityTextField.resignFirstResponder()
+        getUserLocated = true
         userLocationRequest()
     }
 
     // MARK: - private functions
-    private func callWeatherServices(city: String) {
+    /// Get weather information on API
+    /// - Parameter city: city name
+    private func weatherServices(city: String) {
         activityIndicator.isHidden = false
         WeatherServices.shared.getWeatherJson(city: city) {[weak self] result in
             guard let self = self else {
@@ -76,23 +82,26 @@ extension WeatherViewController: CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         }
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             self.getCityName(location: locations)
     }
-
+    
+    /// get city name with location and stop updating location
+    /// - Parameter location: data user location
     func getCityName(location: [CLLocation]) {
         activityIndicator.isHidden = false
         guard let firstLocation = location.first else {
             return
         }
-
-        locationManager.stopUpdatingLocation()
+        
         CLGeocoder().reverseGeocodeLocation(firstLocation) { places, _ in
-            guard let city = places?.first?.locality else {
+            guard let city = places?.first?.locality, self.getUserLocated else {
                 return
             }
-            self.callWeatherServices(city: city)
+            self.weatherServices(city: city)
+            self.getUserLocated = false
+            self.locationManager.stopUpdatingLocation()
         }
     }
 }
@@ -110,7 +119,7 @@ extension WeatherViewController: UITextFieldDelegate {
         }
 
         localizeButtonUIView.isHidden = true
-        callWeatherServices(city: city)
+        weatherServices(city: city)
         return true
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {

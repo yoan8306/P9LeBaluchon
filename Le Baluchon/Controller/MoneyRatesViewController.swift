@@ -32,6 +32,9 @@ class MoneyRatesViewController: UIViewController {
     }
 
     // MARK: - @IBAction
+    
+    /// Action after tap on "Done" button on top keyboard
+    /// - Parameter sender: no sender
     @objc func tapDone(sender: Any) {
         self.view.endEditing(true)
         convertToUSD()
@@ -42,10 +45,10 @@ class MoneyRatesViewController: UIViewController {
         convertToUSD()
     }
 }
-
+// MARK: - Private functions
 private extension MoneyRatesViewController {
-
-    // MARK: - Private function
+    
+    /// call service for get devise and symbols
     func moneyRatesService() {
         MoneyRatesService.shared.getSymbolsCurrency {[weak self] result in
             guard let self = self else {
@@ -83,7 +86,8 @@ private extension MoneyRatesViewController {
         updatedDateLabel.text = myCurrency.convertDateUpdate()
         activityController.isHidden = true
     }
-
+    
+    /// Convert value to USD
     func convertToUSD() {
         guard let symbol = symbolFromLabel.text, listKey.contains(symbol),
               let value = valueSymbolFromTextField.text, let floatValue = Float(value) else {
@@ -92,7 +96,12 @@ private extension MoneyRatesViewController {
 
         resultConvertLabel.text =  myCurrency.convertMoneyToDollar(fromSymbol: symbol, value: floatValue )
     }
-
+    
+    /// Present alert if error
+    /// - Parameters:
+    ///   - title: Present alert UI
+    ///   - message: detail error
+    ///   - titleButton: action on button
     func presentAlert (alertTitle title: String = "Error", alertMessage message: String,
                        buttonTitle titleButton: String = "Retry") {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -109,8 +118,8 @@ private extension MoneyRatesViewController {
     }
 }
 
-// MARK: - tableView Currency
-extension MoneyRatesViewController: UITableViewDataSource, UITableViewDelegate {
+// MARK: - tableView Currency DataSource
+extension MoneyRatesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listKey.count
     }
@@ -128,7 +137,10 @@ extension MoneyRatesViewController: UITableViewDataSource, UITableViewDelegate {
                            value: myCurrency.rates[currency])
         return cell
     }
+}
 
+// MARK: - TableView currency delegate
+extension MoneyRatesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard symbolFromLabel.text != listKey[indexPath.row] else {
             return
