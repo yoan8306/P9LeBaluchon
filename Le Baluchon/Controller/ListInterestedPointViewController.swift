@@ -54,18 +54,10 @@ extension ListInterestedPointViewController: CLLocationManagerDelegate {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
+            mapView.setUserTrackingMode(.follow, animated: true)
         }
     }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-            // mkcoordinatespanmake
-            let region = MKCoordinateRegion(center: location.coordinate, span: span)
-            mapView.showsUserLocation = true
-            mapView.setRegion(region, animated: true)
-        }
-    }
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error: \(error)")
     }
@@ -82,7 +74,7 @@ extension ListInterestedPointViewController: HandleMapSearch {
         annotation.title = placemark.name
         if let city = placemark.locality,
         let state = placemark.administrativeArea {
-            annotation.subtitle = "(city) (state)"
+            annotation.subtitle = "\(city) \(state)"
         }
         mapView.addAnnotation(annotation)
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)

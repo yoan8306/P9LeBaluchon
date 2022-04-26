@@ -26,7 +26,7 @@ class MoneyRatesViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        callMoneyRatesService()
+//        callMoneyRatesService()
         valueSymbolFromTextField.addDoneButton(target: self, selector: #selector(tapDone(sender:)))
         resultConvertLabel.layer.cornerRadius = 8
     }
