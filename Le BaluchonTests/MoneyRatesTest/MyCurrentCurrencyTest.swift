@@ -8,33 +8,24 @@
 import XCTest
 @testable import Le_Baluchon
 
-class MycurrentCurrencyTest: XCTestCase {
+class MyCurrentCurrencyTest: XCTestCase {
+// MARK: - Properties
     let data = FakeResponseMoneyRatesData()
-    var listSymbols: SymbolsDTO? {
-        guard let symbols = try? JSONDecoder().decode(SymbolsDTO.self, from: data.symbolsCorrectData) else {
-            return nil
-        }
-        return symbols
+    var listSymbols: SymbolsDTO {
+        try! XCTUnwrap(try JSONDecoder().decode(SymbolsDTO.self, from: data.symbolsCorrectData))
     }
-
-    var listDevise: DeviseDTO? {
-        guard let devises = try? JSONDecoder().decode(DeviseDTO.self, from: data.deviseCorrectData) else {
-            return nil
-        }
-        return devises
+    var listDevise: DeviseDTO {
+        try! XCTUnwrap(try JSONDecoder().decode(DeviseDTO.self, from: data.deviseCorrectData))
     }
     var myCurrency = MyCurrentCurrency()
 
-    override func setUpWithError() throws {
-        guard let listDevise = listDevise else {
-            return
-        }
-        guard let listSymbols = listSymbols else {
-            return
-        }
+// MARK: - Life cycle
+    override func setUp() {
+        super.setUp()
         myCurrency = MyCurrentCurrency(devise: listDevise, symbols: listSymbols.symbols!)
     }
 
+// MARK: - Test
     func testGivenCorrectData_WhenPassDateIntoCurrentCurrency_ThenReturnString() {
         let stringDate = myCurrency.convertDateUpdate()
         XCTAssertEqual(stringDate, "Monday, 28 Mar 2022 21:49")

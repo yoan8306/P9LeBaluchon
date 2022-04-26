@@ -11,6 +11,7 @@ import CoreLocation
 class WeatherViewController: UIViewController {
     var locationManager = CLLocationManager()
     var weatherInfo = WeatherInformation()
+    var getUserLocated = false
 
     // MARK: - IBOutlet
     @IBOutlet weak var localizeButtonUIView: UIView!
@@ -22,7 +23,7 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let newYorkCity = "New York"
-        callWeatherServices(city: newYorkCity)
+        weatherServices(city: newYorkCity)
         localizeButtonUIView.isHidden = true
     }
 
@@ -36,20 +37,25 @@ class WeatherViewController: UIViewController {
         localizeButtonUIView.isHidden = true
         cityTextField.resignFirstResponder()
     }
-
+    
+    /// Get user localization
+    /// - Parameter sender: UIButton "Detect position"
     @IBAction func userLocalizationActionButton(_ sender: UIButton) {
         localizeButtonUIView.isHidden = true
         cityTextField.resignFirstResponder()
+        getUserLocated = true
         userLocationRequest()
     }
 
     // MARK: - private functions
-    private func callWeatherServices(city: String?) {
+    /// Get weather information on API
+    /// - Parameter city: city name
+    private func weatherServices(city: String) {
         activityIndicator.isHidden = false
-        guard let city = city else {
-            return
-        }
-        WeatherServices.shared.getWeatherJson(city: city) { result in
+        WeatherServices.shared.getWeatherJson(city: city) {[weak self] result in
+            guard let self = self else {
+                return
+            }
 
             switch result {
             case .success(let weatherInfo):
@@ -62,20 +68,6 @@ class WeatherViewController: UIViewController {
             }
         }
     }
-
-    private func initializeView() {
-
-    }
-
-    private func presentAlert (alertTitle title: String = "Error", alertMessage message: String,
-                               buttonTitle titleButton: String = "Ok",
-                               alertStyle style: UIAlertAction.Style = .cancel ) {
-        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: titleButton, style: style, handler: nil)
-        alertVC.addAction(action)
-        present(alertVC, animated: true, completion: nil)
-    }
-
 }
 
 // MARK: - Extension location Manager Delegate
@@ -86,48 +78,54 @@ extension WeatherViewController: CLLocationManagerDelegate {
 
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
             locationManager.startUpdatingLocation()
         }
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             self.getCityName(location: locations)
     }
-
+    
+    /// get city name with location and stop updating location
+    /// - Parameter location: data user location
     func getCityName(location: [CLLocation]) {
         activityIndicator.isHidden = false
         guard let firstLocation = location.first else {
             return
         }
-        locationManager.stopUpdatingLocation()
+        
         CLGeocoder().reverseGeocodeLocation(firstLocation) { places, _ in
-
-            guard let myPlace = places?.first else {
+            guard let city = places?.first?.locality, self.getUserLocated else {
                 return
             }
-            guard let city = myPlace.locality else {
-                return
-            }
-            self.callWeatherServices(city: city)
+            self.weatherServices(city: city)
+            self.getUserLocated = false
+            self.locationManager.stopUpdatingLocation()
         }
     }
 }
 
-// MARK: - Extension UItextField delegate
+// MARK: - Extension UITextField delegate
 extension WeatherViewController: UITextFieldDelegate {
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        cityTextField.resignFirstResponder()
+
         guard let city = cityTextField.text, city.isEmpty == false, city.count > 3 else {
-            presentAlert(alertMessage: "Veuillez entrer un nom de ville correcte")
-            cityTextField.resignFirstResponder()
+            presentAlert(alertMessage: "Please enter a correct city name."
+                         + "\nif necessary specify the country code like this:"
+                         + "\nFor France -> FR"
+                         + "\nFor America -> US.")
             localizeButtonUIView.isHidden = true
             return true
         }
-        cityTextField.resignFirstResponder()
+
         localizeButtonUIView.isHidden = true
-        callWeatherServices(city: city)
+        weatherServices(city: city)
         return true
     }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         localizeButtonUIView.isHidden = false
     }
@@ -159,11 +157,14 @@ extension WeatherViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexpath: IndexPath) {
 
-        if indexpath.row > 0 {
-            if editingStyle == .delete {
-                weatherInfo.arrayWeatherData.remove(at: indexpath.row)
-                tableView.deleteRows(at: [indexpath], with: .right)
-            }
+        if indexpath.row > 0, editingStyle == .delete  {
+            weatherInfo.arrayWeatherData.remove(at: indexpath.row)
+            tableView.deleteRows(at: [indexpath], with: .right)
         }
     }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.row > 0
+    }
+
 }

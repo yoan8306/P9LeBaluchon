@@ -7,15 +7,14 @@
 
 import XCTest
 @testable import Le_Baluchon
-// swiftlint:disable force_try
 
 class WeatherServiceTest: XCTestCase {
 
-    func testCallWeatherService_WhenDataIsCorrect_ThenResultEqualSuccess () {
+    func testGivenCallWeatherService_WhenDataIsCorrect_ThenResultEqualSuccess () {
         let session = SessionTaskMock()
         let weatherService = WeatherServices(sessionTask: session)
-
         let response = FakeResponseWeatherData()
+
         session.data = response.weatherCorrectData
 
         weatherService.getWeatherJson(city: "Marseille") { result in
@@ -29,11 +28,11 @@ class WeatherServiceTest: XCTestCase {
         }
     }
 
-    func testCallWeather_WhenDataIsIncorrect_ThenReturnError() {
+    func testGivenCallWeather_WhenDataIsIncorrect_ThenReturnError() {
         let session = SessionTaskMock()
         let weatherService = WeatherServices(sessionTask: session)
-
         let response = FakeResponseWeatherData()
+
         session.data = response.weatherIncorrectData
 
         weatherService.getWeatherJson(city: "Marseille") { result in

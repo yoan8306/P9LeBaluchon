@@ -26,13 +26,15 @@ class MoneyRatesViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        callMoneyRatesService()
+        moneyRatesService()
         valueSymbolFromTextField.addDoneButton(target: self, selector: #selector(tapDone(sender:)))
         resultConvertLabel.layer.cornerRadius = 8
     }
 
     // MARK: - @IBAction
-
+    
+    /// Action after tap on "Done" button on top keyboard
+    /// - Parameter sender: no sender
     @objc func tapDone(sender: Any) {
         self.view.endEditing(true)
         convertToUSD()
@@ -43,15 +45,11 @@ class MoneyRatesViewController: UIViewController {
         convertToUSD()
     }
 }
-
+// MARK: - Private functions
 private extension MoneyRatesViewController {
-    // MARK: - Private function
-
-    func callMoneyRatesService() {
-        callGetSymbolService()
-    }
-
-    func callGetSymbolService() {
+    
+    /// call service for get devise and symbols
+    func moneyRatesService() {
         MoneyRatesService.shared.getSymbolsCurrency {[weak self] result in
             guard let self = self else {
                 return
@@ -59,7 +57,7 @@ private extension MoneyRatesViewController {
 
             switch result {
             case .success(let mySymbol) :
-                self.callGetDevise(symbols: mySymbol.symbols ?? [:])
+                self.getDevise(symbols: mySymbol.symbols ?? [:])
 
             case .failure(let error) :
                 self.presentAlert(alertMessage: error.localizedDescription)
@@ -67,7 +65,7 @@ private extension MoneyRatesViewController {
         }
     }
 
-    func callGetDevise(symbols: [String: String]) {
+    func getDevise(symbols: [String: String]) {
         MoneyRatesService.shared.getDeviseCurrency { [weak self] result in
             guard let self = self else {
                 return
@@ -88,7 +86,8 @@ private extension MoneyRatesViewController {
         updatedDateLabel.text = myCurrency.convertDateUpdate()
         activityController.isHidden = true
     }
-
+    
+    /// Convert value to USD
     func convertToUSD() {
         guard let symbol = symbolFromLabel.text, listKey.contains(symbol),
               let value = valueSymbolFromTextField.text, let floatValue = Float(value) else {
@@ -97,12 +96,17 @@ private extension MoneyRatesViewController {
 
         resultConvertLabel.text =  myCurrency.convertMoneyToDollar(fromSymbol: symbol, value: floatValue )
     }
-
+    
+    /// Present alert if error
+    /// - Parameters:
+    ///   - title: Present alert UI
+    ///   - message: detail error
+    ///   - titleButton: action on button
     func presentAlert (alertTitle title: String = "Error", alertMessage message: String,
                        buttonTitle titleButton: String = "Retry") {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let actionRetry = UIAlertAction(title: titleButton, style: .default) {_ in
-            self.callMoneyRatesService()
+            self.moneyRatesService()
         }
         let actionCancel = UIAlertAction(title: "Cancel", style: .destructive) {_ in
             self.activityController.stopAnimating()
@@ -114,9 +118,8 @@ private extension MoneyRatesViewController {
     }
 }
 
-// MARK: - tableView Currency
-extension MoneyRatesViewController: UITableViewDataSource, UITableViewDelegate {
-
+// MARK: - tableView Currency DataSource
+extension MoneyRatesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listKey.count
     }
@@ -134,7 +137,10 @@ extension MoneyRatesViewController: UITableViewDataSource, UITableViewDelegate {
                            value: myCurrency.rates[currency])
         return cell
     }
+}
 
+// MARK: - TableView currency delegate
+extension MoneyRatesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard symbolFromLabel.text != listKey[indexPath.row] else {
             return

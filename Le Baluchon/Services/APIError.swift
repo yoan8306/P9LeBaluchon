@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// for describe if in error they are no data
 enum APIError: Error {
     case noData
     case statusCodeInvalid

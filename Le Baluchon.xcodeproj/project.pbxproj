@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F1BCEE427F1D543009267DA /* Date+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BCEE327F1D543009267DA /* Date+DateFormatter.swift */; };
 		5F1BCEE627F1D894009267DA /* DeviseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BCEE527F1D894009267DA /* DeviseDTO.swift */; };
 		5F1BCEE827F1D8DA009267DA /* SymbolsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BCEE727F1D8DA009267DA /* SymbolsDTO.swift */; };
 		5F1BCEEA27F2533F009267DA /* MyCurrentCurrencyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BCEE927F2533F009267DA /* MyCurrentCurrencyTest.swift */; };
@@ -15,8 +14,6 @@
 		5F1BCEEE27F254CD009267DA /* Devise.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F1BCEED27F254CD009267DA /* Devise.json */; };
 		5F1BCEF027F25574009267DA /* FakeResponseMoneyRatesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BCEEF27F25574009267DA /* FakeResponseMoneyRatesData.swift */; };
 		5F217AC627EC9C1500C82D54 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F217AC527EC9C1500C82D54 /* UITextField.swift */; };
-		5F24DE1F2814A33A009BCD17 /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F24DE1E2814A33A009BCD17 /* SearchResultController.swift */; };
-		5F24DE212814B1F2009BCD17 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F24DE202814B1F2009BCD17 /* LocationSearchTableViewController.swift */; };
 		5F2EAD86280FF55C001725F3 /* TranslationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2EAD85280FF55C001725F3 /* TranslationManager.swift */; };
 		5F4DAB2D2805BE9D00092430 /* Weather.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F4DAB2C2805BE9D00092430 /* Weather.json */; };
 		5F4DAB2F2805BEF700092430 /* FakeResponseWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4DAB2E2805BEF700092430 /* FakeResponseWeatherData.swift */; };
@@ -38,7 +35,7 @@
 		5FC3BABB2812ABE500653EBE /* TranslateServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC3BABA2812ABE500653EBE /* TranslateServiceTest.swift */; };
 		5FC3BABD2812AD7E00653EBE /* LangSupportedList.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FC3BABC2812AD7E00653EBE /* LangSupportedList.json */; };
 		5FC3BABF2812BB9600653EBE /* TranslateManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC3BABE2812BB9600653EBE /* TranslateManagerTest.swift */; };
-		5FC3BAC12812D26600653EBE /* ListInterestedPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC3BAC02812D26600653EBE /* ListInterestedPointViewController.swift */; };
+		5FDBD20C2816BAE600D4BBAD /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDBD20B2816BAE600D4BBAD /* UIViewController+Alert.swift */; };
 		5FE02E9627E89D6E0067D89C /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE02E9527E89D6E0067D89C /* APIError.swift */; };
 		5FE02E9827E8A1720067D89C /* SessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE02E9727E8A1720067D89C /* SessionTask.swift */; };
 		5FE431EC27DD39C0001040D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE431EB27DD39C0001040D3 /* AppDelegate.swift */; };
@@ -73,7 +70,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5F1BCEE327F1D543009267DA /* Date+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DateFormatter.swift"; sourceTree = "<group>"; };
 		5F1BCEE527F1D894009267DA /* DeviseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviseDTO.swift; sourceTree = "<group>"; };
 		5F1BCEE727F1D8DA009267DA /* SymbolsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsDTO.swift; sourceTree = "<group>"; };
 		5F1BCEE927F2533F009267DA /* MyCurrentCurrencyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCurrentCurrencyTest.swift; sourceTree = "<group>"; };
@@ -81,8 +77,6 @@
 		5F1BCEED27F254CD009267DA /* Devise.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Devise.json; sourceTree = "<group>"; };
 		5F1BCEEF27F25574009267DA /* FakeResponseMoneyRatesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseMoneyRatesData.swift; sourceTree = "<group>"; };
 		5F217AC527EC9C1500C82D54 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
-		5F24DE1E2814A33A009BCD17 /* SearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
-		5F24DE202814B1F2009BCD17 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 		5F2EAD85280FF55C001725F3 /* TranslationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationManager.swift; sourceTree = "<group>"; };
 		5F4DAB2C2805BE9D00092430 /* Weather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Weather.json; sourceTree = "<group>"; };
 		5F4DAB2E2805BEF700092430 /* FakeResponseWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseWeatherData.swift; sourceTree = "<group>"; };
@@ -104,7 +98,7 @@
 		5FC3BABA2812ABE500653EBE /* TranslateServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateServiceTest.swift; sourceTree = "<group>"; };
 		5FC3BABC2812AD7E00653EBE /* LangSupportedList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LangSupportedList.json; sourceTree = "<group>"; };
 		5FC3BABE2812BB9600653EBE /* TranslateManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateManagerTest.swift; sourceTree = "<group>"; };
-		5FC3BAC02812D26600653EBE /* ListInterestedPointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInterestedPointViewController.swift; sourceTree = "<group>"; };
+		5FDBD20B2816BAE600D4BBAD /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		5FE02E9527E89D6E0067D89C /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		5FE02E9727E8A1720067D89C /* SessionTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTask.swift; sourceTree = "<group>"; };
 		5FE431E827DD39C0001040D3 /* Le Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Le Baluchon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,7 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				5F217AC527EC9C1500C82D54 /* UITextField.swift */,
-				5F1BCEE327F1D543009267DA /* Date+DateFormatter.swift */,
+				5FDBD20B2816BAE600D4BBAD /* UIViewController+Alert.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -242,10 +236,9 @@
 		5FC3BAB52812A93500653EBE /* TranslateTest */ = {
 			isa = PBXGroup;
 			children = (
-				5FC3BAB62812A97400653EBE /* Translate.json */,
+				5FDBD20D2817306B00D4BBAD /* JsonFiles */,
 				5FC3BAB82812AA4500653EBE /* FakeResponseTranslateData.swift */,
 				5FC3BABA2812ABE500653EBE /* TranslateServiceTest.swift */,
-				5FC3BABC2812AD7E00653EBE /* LangSupportedList.json */,
 				5FC3BABE2812BB9600653EBE /* TranslateManagerTest.swift */,
 			);
 			path = TranslateTest;
@@ -278,9 +271,6 @@
 				5FE5A37027E0B64E0002B586 /* MoneyRatesViewController.swift */,
 				5FE5A37227E0B6660002B586 /* TranslateViewController.swift */,
 				5FE5A37427E0B6770002B586 /* WeatherViewController.swift */,
-				5FC3BAC02812D26600653EBE /* ListInterestedPointViewController.swift */,
-				5F24DE1E2814A33A009BCD17 /* SearchResultController.swift */,
-				5F24DE202814B1F2009BCD17 /* LocationSearchTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -293,6 +283,15 @@
 				5F9839CA27E13A4A00AD58D6 /* ApiKeys.swift */,
 			);
 			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		5FDBD20D2817306B00D4BBAD /* JsonFiles */ = {
+			isa = PBXGroup;
+			children = (
+				5FC3BABC2812AD7E00653EBE /* LangSupportedList.json */,
+				5FC3BAB62812A97400653EBE /* Translate.json */,
+			);
+			path = JsonFiles;
 			sourceTree = "<group>";
 		};
 		5FE431DF27DD39C0001040D3 = {
@@ -492,25 +491,22 @@
 				5FAE709727E37E50006E640C /* MyCurrentCurrency.swift in Sources */,
 				5FE02E9627E89D6E0067D89C /* APIError.swift in Sources */,
 				5F8C2F1C27EDB3CF005E9FF1 /* WeatherServices.swift in Sources */,
-				5FC3BAC12812D26600653EBE /* ListInterestedPointViewController.swift in Sources */,
 				5F696FF027FC50B300DA45AD /* WeatherTableViewCell.swift in Sources */,
 				5FAE709927E48020006E640C /* CurrencyTableViewCell.swift in Sources */,
 				5F8C2F1E27EDBA23005E9FF1 /* WeatherDTO.swift in Sources */,
 				5F858A5728084E2B009B67DE /* WeatherInformation.swift in Sources */,
 				5FE5A37327E0B6660002B586 /* TranslateViewController.swift in Sources */,
-				5F24DE1F2814A33A009BCD17 /* SearchResultController.swift in Sources */,
-				5F24DE212814B1F2009BCD17 /* LocationSearchTableViewController.swift in Sources */,
 				5F1BCEE827F1D8DA009267DA /* SymbolsDTO.swift in Sources */,
 				5F68135E280F3F3A00E69813 /* TranslateService.swift in Sources */,
 				5F2EAD86280FF55C001725F3 /* TranslationManager.swift in Sources */,
 				5F9839C927E138E700AD58D6 /* MoneyRatesServices.swift in Sources */,
+				5FDBD20C2816BAE600D4BBAD /* UIViewController+Alert.swift in Sources */,
 				5F68135C280F3E6000E69813 /* TranslaterDTO.swift in Sources */,
 				5FE431EC27DD39C0001040D3 /* AppDelegate.swift in Sources */,
 				5F217AC627EC9C1500C82D54 /* UITextField.swift in Sources */,
 				5FE431EE27DD39C0001040D3 /* SceneDelegate.swift in Sources */,
 				5F681360280F5CCC00E69813 /* SupportedLanguagesDTO.swift in Sources */,
 				5FE5A37127E0B64E0002B586 /* MoneyRatesViewController.swift in Sources */,
-				5F1BCEE427F1D543009267DA /* Date+DateFormatter.swift in Sources */,
 				5F1BCEE627F1D894009267DA /* DeviseDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -628,7 +624,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "Le Baluchon/Supporting files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -684,7 +680,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "Le Baluchon/Supporting files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

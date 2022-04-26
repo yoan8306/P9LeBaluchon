@@ -6,12 +6,13 @@
 //
 
 import Foundation
-// MARK: - Welcome
+
+// MARK: - Translater
 struct TranslaterDTO: Codable {
     let data: DataClass
 }
 
-// MARK: - DataClass
+// MARK: - array response translation
 struct DataClass: Codable {
     let translations: [Translation]
 }

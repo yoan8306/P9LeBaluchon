@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// stock weather data in array for list in tableView
 class WeatherInformation {
     var arrayWeatherData: [WeatherDTO] = []
 

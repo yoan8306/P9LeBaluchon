@@ -9,8 +9,11 @@ import Foundation
 
 class WeatherServices {
     static let shared = WeatherServices(sessionTask: SessionTask.shared)
+    /// It's injection dependance
     var sessionTask: SessionTaskProtocol
 
+    /// initialize injection dependance for create tests
+    /// - Parameter sessionTask: Or SessionTask because conform to protocol or SessionTaskMock for tests
     init(sessionTask: SessionTaskProtocol) {
         self.sessionTask = sessionTask
     }
@@ -26,26 +29,26 @@ class WeatherServices {
         urlWeatherInfos.host = "api.openweathermap.org"
         urlWeatherInfos.path = "/data/2.5/weather"
         urlWeatherInfos.queryItems = [
-        URLQueryItem(name: "q", value: city),
-        URLQueryItem(name: "units", value: "metric"),
-        URLQueryItem(name: "appid", value: ApiKeys.weatherKey)
+            URLQueryItem(name: "q", value: city),
+            URLQueryItem(name: "units", value: "metric"),
+            URLQueryItem(name: "appid", value: ApiKeys.weatherKey)
         ]
 
         guard let urlWeatherInfos = urlWeatherInfos.url else {
             return
         }
 
-         sessionTask.sendTask(url: urlWeatherInfos) { result in
-             switch result {
-             case .success(let data):
-                 guard let weatherInfo = try? JSONDecoder().decode(WeatherDTO.self, from: data) else {
-                     completionHandler(.failure(APIError.decoding))
-                     return
-                 }
-                 completionHandler(.success(weatherInfo))
-             case .failure(let error):
-                 completionHandler(.failure(error))
-             }
-         }
-     }
+        sessionTask.sendTask(url: urlWeatherInfos) { result in
+            switch result {
+            case .success(let data):
+                guard let weatherInfo = try? JSONDecoder().decode(WeatherDTO.self, from: data) else {
+                    completionHandler(.failure(APIError.decoding))
+                    return
+                }
+                completionHandler(.success(weatherInfo))
+            case .failure(let error):
+                completionHandler(.failure(error))
+            }
+        }
+    }
 }

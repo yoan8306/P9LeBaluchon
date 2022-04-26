@@ -8,13 +8,19 @@
 import Foundation
 
 class TranslateService {
+// MARK: - Properties
     static let shared = TranslateService(sessionTask: SessionTask.shared)
+    /// It's injection dependance
     var sessionTask: SessionTaskProtocol
 
+// MARK: - life cycle
+    /// initialize injection dependance for create tests
+    /// - Parameter sessionTask: Or SessionTask because conform to protocol or SessionTaskMock for tests
     init(sessionTask: SessionTaskProtocol) {
         self.sessionTask = sessionTask
     }
 
+// MARK: - Functions
     func getTranslation(text: String?, langSource: String, langTarget: String,
                         completionHandler: @escaping (Result <TranslaterDTO, Error>) -> Void) {
         var urlTranslate = URLComponents()
@@ -51,7 +57,7 @@ class TranslateService {
         }
     }
 
-    func getSupportedLanguage(completionHandler: @escaping (Result <SupportedLanguagesDTO, Error>) -> Void) {
+    func getSupportedLanguages(completionHandler: @escaping (Result <SupportedLanguagesDTO, Error>) -> Void) {
         var urlSupportedLanguages = URLComponents()
 
         urlSupportedLanguages.scheme = "https"

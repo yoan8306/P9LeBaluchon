@@ -8,18 +8,24 @@
 import Foundation
 
 class MoneyRatesService {
+
+// MARK: - Properties
     static var shared = MoneyRatesService(sessionTask: SessionTask.shared)
+    /// It's injection dependance
     var sessionTask: SessionTaskProtocol
-
-    init(sessionTask: SessionTaskProtocol) {
-        self.sessionTask = sessionTask
-    }
-
     private static let moneyRatesUrl =
     URL(string: "http://data.fixer.io/api/symbols?access_key=\(ApiKeys.moneyRatesKey)")!
     private static let deviseMoneyUrl =
     URL(string: "http://data.fixer.io/api/latest?access_key=\(ApiKeys.moneyRatesKey)")!
 
+    // MARK: - Life cycle
+    /// initialize injection dependance for create tests
+    /// - Parameter sessionTask: Or SessionTask because conform to protocol or SessionTaskMock for tests
+    init(sessionTask: SessionTaskProtocol) {
+        self.sessionTask = sessionTask
+    }
+
+// MARK: - Functions
     func getSymbolsCurrency(callBack: @escaping (Result<SymbolsDTO, Error>) -> Void) {
         sessionTask.sendTask(url: MoneyRatesService.moneyRatesUrl) { result in
             switch result {

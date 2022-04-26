@@ -10,7 +10,6 @@ import Foundation
 import XCTest
 
 class TranslateServiceTest: XCTestCase {
-//        swiftlint:disable force_try
     func testGivenCallListSupportLang_WhenDataIsCorrect_ThenGetListLangSupport() {
         let sessionTaskMock = SessionTaskMock()
         let translateService = TranslateService(sessionTask: sessionTaskMock)
@@ -18,7 +17,7 @@ class TranslateServiceTest: XCTestCase {
 
         sessionTaskMock.data = response.listSupportLang
 
-        translateService.getSupportedLanguage { result in
+        translateService.getSupportedLanguages { result in
             switch result {
             case .success(let response):
 
@@ -37,7 +36,7 @@ class TranslateServiceTest: XCTestCase {
 
         sessionTaskMock.data = response.translateIncorrectData
 
-        translateService.getSupportedLanguage { result in
+        translateService.getSupportedLanguages { result in
             switch result {
             case .success:
                 fatalError()

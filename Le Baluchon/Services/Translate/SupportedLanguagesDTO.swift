@@ -7,17 +7,19 @@
 
 import Foundation
 
-// MARK: - Welcome
+// les marks ne sont pas en rapport avec les structures
+
+// MARK: - DataLangauges
 struct SupportedLanguagesDTO: Codable {
     let data: ListLanguages
 }
 
-// MARK: - DataClass
+// MARK: - Array language
 struct ListLanguages: Codable {
     let languages: [Language]
 }
 
-// MARK: - Language
+// MARK: - Language details
 struct Language: Codable {
     let language, name: String
 }
