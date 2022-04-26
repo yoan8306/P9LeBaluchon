@@ -17,6 +17,9 @@
 		5F2EAD86280FF55C001725F3 /* TranslationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2EAD85280FF55C001725F3 /* TranslationManager.swift */; };
 		5F4DAB2D2805BE9D00092430 /* Weather.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F4DAB2C2805BE9D00092430 /* Weather.json */; };
 		5F4DAB2F2805BEF700092430 /* FakeResponseWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4DAB2E2805BEF700092430 /* FakeResponseWeatherData.swift */; };
+		5F58E3E628189A1C002589CB /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F58E3E328189A1C002589CB /* LocationSearchTableViewController.swift */; };
+		5F58E3E728189A1C002589CB /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F58E3E428189A1C002589CB /* SearchResultController.swift */; };
+		5F58E3E828189A1C002589CB /* ListInterestedPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F58E3E528189A1C002589CB /* ListInterestedPointViewController.swift */; };
 		5F68135C280F3E6000E69813 /* TranslaterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F68135B280F3E6000E69813 /* TranslaterDTO.swift */; };
 		5F68135E280F3F3A00E69813 /* TranslateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F68135D280F3F3A00E69813 /* TranslateService.swift */; };
 		5F681360280F5CCC00E69813 /* SupportedLanguagesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F68135F280F5CCC00E69813 /* SupportedLanguagesDTO.swift */; };
@@ -80,6 +83,9 @@
 		5F2EAD85280FF55C001725F3 /* TranslationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationManager.swift; sourceTree = "<group>"; };
 		5F4DAB2C2805BE9D00092430 /* Weather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Weather.json; sourceTree = "<group>"; };
 		5F4DAB2E2805BEF700092430 /* FakeResponseWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseWeatherData.swift; sourceTree = "<group>"; };
+		5F58E3E328189A1C002589CB /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
+		5F58E3E428189A1C002589CB /* SearchResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
+		5F58E3E528189A1C002589CB /* ListInterestedPointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListInterestedPointViewController.swift; sourceTree = "<group>"; };
 		5F68135B280F3E6000E69813 /* TranslaterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslaterDTO.swift; sourceTree = "<group>"; };
 		5F68135D280F3F3A00E69813 /* TranslateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateService.swift; sourceTree = "<group>"; };
 		5F68135F280F5CCC00E69813 /* SupportedLanguagesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedLanguagesDTO.swift; sourceTree = "<group>"; };
@@ -271,6 +277,9 @@
 				5FE5A37027E0B64E0002B586 /* MoneyRatesViewController.swift */,
 				5FE5A37227E0B6660002B586 /* TranslateViewController.swift */,
 				5FE5A37427E0B6770002B586 /* WeatherViewController.swift */,
+				5F58E3E528189A1C002589CB /* ListInterestedPointViewController.swift */,
+				5F58E3E328189A1C002589CB /* LocationSearchTableViewController.swift */,
+				5F58E3E428189A1C002589CB /* SearchResultController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -494,6 +503,7 @@
 				5F696FF027FC50B300DA45AD /* WeatherTableViewCell.swift in Sources */,
 				5FAE709927E48020006E640C /* CurrencyTableViewCell.swift in Sources */,
 				5F8C2F1E27EDBA23005E9FF1 /* WeatherDTO.swift in Sources */,
+				5F58E3E728189A1C002589CB /* SearchResultController.swift in Sources */,
 				5F858A5728084E2B009B67DE /* WeatherInformation.swift in Sources */,
 				5FE5A37327E0B6660002B586 /* TranslateViewController.swift in Sources */,
 				5F1BCEE827F1D8DA009267DA /* SymbolsDTO.swift in Sources */,
@@ -501,8 +511,10 @@
 				5F2EAD86280FF55C001725F3 /* TranslationManager.swift in Sources */,
 				5F9839C927E138E700AD58D6 /* MoneyRatesServices.swift in Sources */,
 				5FDBD20C2816BAE600D4BBAD /* UIViewController+Alert.swift in Sources */,
+				5F58E3E628189A1C002589CB /* LocationSearchTableViewController.swift in Sources */,
 				5F68135C280F3E6000E69813 /* TranslaterDTO.swift in Sources */,
 				5FE431EC27DD39C0001040D3 /* AppDelegate.swift in Sources */,
+				5F58E3E828189A1C002589CB /* ListInterestedPointViewController.swift in Sources */,
 				5F217AC627EC9C1500C82D54 /* UITextField.swift in Sources */,
 				5FE431EE27DD39C0001040D3 /* SceneDelegate.swift in Sources */,
 				5F681360280F5CCC00E69813 /* SupportedLanguagesDTO.swift in Sources */,
