@@ -113,7 +113,10 @@ extension WeatherViewController: UITextFieldDelegate {
         cityTextField.resignFirstResponder()
 
         guard let city = cityTextField.text, city.isEmpty == false, city.count > 3 else {
-            presentAlert(alertMessage: "Veuillez entrer un nom de ville correcte")
+            presentAlert(alertMessage: "Please enter a correct city name."
+                         + "\nif necessary specify the country code like this:"
+                         + "\nFor France -> FR"
+                         + "\nFor America -> US.")
             localizeButtonUIView.isHidden = true
             return true
         }
@@ -122,6 +125,7 @@ extension WeatherViewController: UITextFieldDelegate {
         weatherServices(city: city)
         return true
     }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         localizeButtonUIView.isHidden = false
     }
@@ -153,11 +157,9 @@ extension WeatherViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexpath: IndexPath) {
 
-        if indexpath.row > 0 {
-            if editingStyle == .delete {
-                weatherInfo.arrayWeatherData.remove(at: indexpath.row)
-                tableView.deleteRows(at: [indexpath], with: .right)
-            }
+        if indexpath.row > 0, editingStyle == .delete  {
+            weatherInfo.arrayWeatherData.remove(at: indexpath.row)
+            tableView.deleteRows(at: [indexpath], with: .right)
         }
     }
 

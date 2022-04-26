@@ -41,13 +41,15 @@ class TranslateViewController: UIViewController {
         sourceTextView.resignFirstResponder()
         translatedTexView.resignFirstResponder()
     }
-
+    
+    /// Show tableView language supported
     @IBAction func sourceLanguageAction() {
         sourceUIViewTableView.isHidden = false
         targetUIViewTable.isHidden = true
         dissmissKeyboardTapGesture.isEnabled = false
     }
-
+    
+    /// Show tableView language supported
     @IBAction func targetLanguageAction() {
         targetUIViewTable.isHidden = false
         sourceUIViewTableView.isHidden  = true
@@ -66,7 +68,7 @@ class TranslateViewController: UIViewController {
         }
     }
     
-    /// Make translate
+    /// Call translate service
     @IBAction func translateAction() {
         var text = ""
         if translateManager.inverseTranslate {
