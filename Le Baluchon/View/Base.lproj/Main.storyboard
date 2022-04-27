@@ -658,7 +658,7 @@
             <objects>
                 <navigationController id="s29-qm-iaD" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="zYM-GU-iw6">
-                        <imageReference key="image" image="mappin.square" catalog="system" symbolScale="large"/>
+                        <imageReference key="image" image="map_icon" symbolScale="large"/>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Djv-jH-5i5">
@@ -900,7 +900,7 @@
     </scenes>
     <resources>
         <image name="arrow.down.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="mappin.square" catalog="system" width="128" height="114"/>
+        <image name="map_icon" width="50" height="50"/>
         <image name="moneyBackground" width="5184" height="3456"/>
         <image name="money_rates_icon" width="50" height="50"/>
         <image name="questionmark" catalog="system" width="96" height="128"/>
