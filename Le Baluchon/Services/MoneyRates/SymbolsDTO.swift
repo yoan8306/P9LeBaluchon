@@ -8,5 +8,5 @@
 import Foundation
 
 struct SymbolsDTO: Decodable {
-    var symbols: [String: String]? = [:]
+    var symbols: [String: String]
 }

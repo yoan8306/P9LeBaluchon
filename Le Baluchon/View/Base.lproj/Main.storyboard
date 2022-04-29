@@ -773,10 +773,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <color key="barTintColor" red="0.1649948359" green="0.63495355840000001" blue="0.80595189330000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <tabBarAppearance key="standardAppearance">
-                            <color key="backgroundColor" red="0.1649948359" green="0.63495355840000001" blue="0.80595189330000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="selectionIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </tabBarAppearance>
                     </tabBar>
                     <connections>
                         <segue destination="3jO-Sn-7Zp" kind="relationship" relationship="viewControllers" id="WH0-6h-ZdN"/>

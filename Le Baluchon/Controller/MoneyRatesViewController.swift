@@ -57,7 +57,7 @@ private extension MoneyRatesViewController {
 
             switch result {
             case .success(let mySymbol) :
-                self.getDevise(symbols: mySymbol.symbols ?? [:])
+                self.getDevise(symbols: mySymbol.symbols)
 
             case .failure(let error) :
                 self.presentAlert(alertMessage: error.localizedDescription)

@@ -8,11 +8,11 @@
 import Foundation
 
 struct WeatherDTO: Decodable {
-    let name: String?
-    let weather: [Weather?]
-    let main: Main?
-    let sys: Sys?
-    let timezone: Int?
+    let name: String
+    let weather: [Weather]
+    let main: Main
+    let sys: Sys
+    let timezone: Int
 
     struct Weather: Decodable {
         let description: String
