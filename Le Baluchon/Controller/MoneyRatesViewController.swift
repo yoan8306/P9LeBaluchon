@@ -32,7 +32,7 @@ class MoneyRatesViewController: UIViewController {
     }
 
     // MARK: - @IBAction
-    
+
     /// Action after tap on "Done" button on top keyboard
     /// - Parameter sender: no sender
     @objc func tapDone(sender: Any) {
@@ -47,7 +47,7 @@ class MoneyRatesViewController: UIViewController {
 }
 // MARK: - Private functions
 private extension MoneyRatesViewController {
-    
+
     /// call service for get devise and symbols
     func moneyRatesService() {
         MoneyRatesService.shared.getSymbolsCurrency {[weak self] result in
@@ -86,7 +86,7 @@ private extension MoneyRatesViewController {
         updatedDateLabel.text = myCurrency.convertDateUpdate()
         activityController.isHidden = true
     }
-    
+
     /// Convert value to USD
     func convertToUSD() {
         guard let symbol = symbolFromLabel.text, listKey.contains(symbol),
@@ -96,7 +96,7 @@ private extension MoneyRatesViewController {
 
         resultConvertLabel.text =  myCurrency.convertMoneyToDollar(fromSymbol: symbol, value: floatValue )
     }
-    
+
     /// Present alert if error
     /// - Parameters:
     ///   - title: Present alert UI

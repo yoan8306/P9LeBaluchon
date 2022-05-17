@@ -380,7 +380,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.067097716030000004" green="0.38000810149999997" blue="0.57481396200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="weatherCell" focusStyle="custom" rowHeight="140" translatesAutoresizingMaskIntoConstraints="NO" id="9HS-hf-raF" customClass="WeatherTableViewCell" customModule="Le_Baluchon" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="weatherCell" focusStyle="custom" rowHeight="140" translatesAutoresizingMaskIntoConstraints="NO" id="9HS-hf-raF" customClass="WeatherTableViewCell" customModule="Le_Baluchon" customModuleProvider="target">
                                         <rect key="frame" x="20" y="49.5" width="358" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9HS-hf-raF" id="Uts-Hi-2xL">
@@ -563,7 +563,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-676.875" y="867.25352112676057"/>
+            <point key="canvasLocation" x="-678" y="858"/>
         </scene>
         <!--Money Rates View Controller-->
         <scene sceneID="6m5-gM-wgW">

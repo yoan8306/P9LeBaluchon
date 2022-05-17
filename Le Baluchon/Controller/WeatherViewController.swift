@@ -37,7 +37,7 @@ class WeatherViewController: UIViewController {
         localizeButtonUIView.isHidden = true
         cityTextField.resignFirstResponder()
     }
-    
+
     /// Get user localization
     /// - Parameter sender: UIButton "Detect position"
     @IBAction func userLocalizationActionButton(_ sender: UIButton) {
@@ -82,11 +82,11 @@ extension WeatherViewController: CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         }
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             self.getCityName(location: locations)
     }
-    
+
     /// get city name with location and stop updating location
     /// - Parameter location: data user location
     func getCityName(location: [CLLocation]) {
@@ -94,7 +94,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
         guard let firstLocation = location.first else {
             return
         }
-        
+
         CLGeocoder().reverseGeocodeLocation(firstLocation) { places, _ in
             guard let city = places?.first?.locality, self.getUserLocated else {
                 return
@@ -125,7 +125,7 @@ extension WeatherViewController: UITextFieldDelegate {
         weatherServices(city: city)
         return true
     }
-    
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         localizeButtonUIView.isHidden = false
     }
@@ -157,7 +157,7 @@ extension WeatherViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexpath: IndexPath) {
 
-        if indexpath.row > 0, editingStyle == .delete  {
+        if indexpath.row > 0, editingStyle == .delete {
             weatherInfo.arrayWeatherData.remove(at: indexpath.row)
             tableView.deleteRows(at: [indexpath], with: .right)
         }

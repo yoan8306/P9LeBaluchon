@@ -22,7 +22,7 @@ class MyCurrentCurrencyTest: XCTestCase {
 // MARK: - Life cycle
     override func setUp() {
         super.setUp()
-        myCurrency = MyCurrentCurrency(devise: listDevise, symbols: listSymbols.symbols!)
+        myCurrency = MyCurrentCurrency(devise: listDevise, symbols: listSymbols.symbols)
     }
 
 // MARK: - Test

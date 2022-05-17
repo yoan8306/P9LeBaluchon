@@ -15,14 +15,14 @@ struct MyCurrentCurrency {
     var usdRate: Float? {
         rates["USD"]
     }
-    
+
     /// init for application
     init() {
         rates = [:]
         symbols = [:]
         updatedDate = Date()
     }
-    
+
     /// init for test
     /// - Parameters:
     ///   - devise: deviseDTO from json file
@@ -39,7 +39,7 @@ struct MyCurrentCurrency {
         mydate.dateFormat = "EEEE, d MMM yyyy HH:mm"
        return mydate.string(from: updatedDate)
     }
-    
+
     /// sort symbol in alphapbet
     /// - Returns: array sorted
     func sortListKey () -> [String] {
@@ -50,7 +50,7 @@ struct MyCurrentCurrency {
         listKey.sort()
         return listKey
     }
-    
+
     /// Formula for convert any devise to dollar (value / rate)  convert in euro the value origin and after multiply in dollar value
     /// - Parameters:
     ///   - fromSymbol: Devise origin

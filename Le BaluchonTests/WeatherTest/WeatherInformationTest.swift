@@ -15,11 +15,11 @@ class WeatherInformationTest: XCTestCase {
         var listWeather: WeatherDTO {
             try! XCTUnwrap(try JSONDecoder().decode(WeatherDTO.self, from: weatherDTO.weatherCorrectData))
         }
-        
+
         let weatherInfo = WeatherInformation()
 
         weatherInfo.addNewDataWeather(weatherData: listWeather)
 
-        XCTAssertEqual(weatherInfo.arrayWeatherData[0].sys?.country, "FR")
+        XCTAssertEqual(weatherInfo.arrayWeatherData[0].sys.country, "FR")
     }
 }

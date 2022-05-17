@@ -12,14 +12,13 @@ protocol SessionTaskProtocol {
     func sendTask(url: URL, completion: @escaping (Result<Data, Error>) -> Void)
 }
 
-
 final class SessionTask: SessionTaskProtocol {
     static let shared = SessionTask()
     var session: URLSession = .shared
 
     private init() {}
-    
-    ///Call Api and return data if call is success
+
+    /// Call Api and return data if call is success
     /// - Parameters:
     ///   - url: API url
     ///   - completion: return data or error

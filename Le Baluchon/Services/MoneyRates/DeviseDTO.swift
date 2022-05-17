@@ -10,4 +10,13 @@ import Foundation
 struct DeviseDTO: Decodable {
     var timestamp: Int
     var rates: [String: Float]
+    var toDomain: Devise {
+        return Devise(timestamp: timestamp, rates: rates)
+
+    }
+}
+
+struct Devise {
+    var timestamp: Int
+    var rates: [String: Float]
 }

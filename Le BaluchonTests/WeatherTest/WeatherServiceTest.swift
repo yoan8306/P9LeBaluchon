@@ -20,7 +20,7 @@ class WeatherServiceTest: XCTestCase {
         weatherService.getWeatherJson(city: "Marseille") { result in
             switch result {
             case .success(let response):
-                let tempMax = try! XCTUnwrap(response.main?.temp_max)
+                let tempMax = try! XCTUnwrap(response.main.temp_max)
                 XCTAssertEqual(20.1, tempMax)
             case .failure:
                 fatalError()

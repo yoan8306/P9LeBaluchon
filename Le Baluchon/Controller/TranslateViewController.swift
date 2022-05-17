@@ -41,21 +41,21 @@ class TranslateViewController: UIViewController {
         sourceTextView.resignFirstResponder()
         translatedTexView.resignFirstResponder()
     }
-    
+
     /// Show tableView language supported
     @IBAction func sourceLanguageAction() {
         sourceUIViewTableView.isHidden = false
         targetUIViewTable.isHidden = true
         dissmissKeyboardTapGesture.isEnabled = false
     }
-    
+
     /// Show tableView language supported
     @IBAction func targetLanguageAction() {
         targetUIViewTable.isHidden = false
         sourceUIViewTableView.isHidden  = true
         dissmissKeyboardTapGesture.isEnabled = false
     }
-    
+
     /// Inverse the meaning of the translation
     @IBAction func inverseButtonAction() {
         UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseIn) {
@@ -67,7 +67,7 @@ class TranslateViewController: UIViewController {
             self.translateManager.inverseTranslation()
         }
     }
-    
+
     /// Call translate service
     @IBAction func translateAction() {
         var text = ""
@@ -85,7 +85,7 @@ class TranslateViewController: UIViewController {
     }
 
     // MARK: - private func
-    
+
     /// Call service for get translation
     /// - Parameters:
     ///   - source: Origine write texte
@@ -142,7 +142,7 @@ class TranslateViewController: UIViewController {
         langTargetButton.layer.cornerRadius = 8
         translatedButton.layer.cornerRadius = 8
     }
-    
+
     /// Hide sourceTextView texte view and show activity indicator
     /// - Parameter shown: show or hide activity indicator
     private func showSourceActivity(shown: Bool) {
@@ -163,7 +163,7 @@ class TranslateViewController: UIViewController {
         }
 
     }
-    
+
     /// Hide all tablesView
     private func hideUIViewTableView() {
         sourceUIViewTableView.isHidden = true
